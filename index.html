@@ -161,14 +161,14 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-出来吧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Thymeleaf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/16/%E5%87%BA%E6%9D%A5%E5%90%A7/">Thymeleaf</a>
+      <a class="article-title" href="/2020/05/16/Thymeleaf/">Thymeleaf</a>
     </h1>
   
 
@@ -176,7 +176,7 @@
         
 
 
-<a href="/2020/05/16/%E5%87%BA%E6%9D%A5%E5%90%A7/" class="archive-article-date">
+<a href="/2020/05/16/Thymeleaf/" class="archive-article-date">
   	<time datetime="2020-05-16T03:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
 </a>
         <!-- 需要添加的位置 -->
@@ -187,7 +187,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">716字</span>
+        <span class="post-count">717字</span>
       </span>
     </span>
 
@@ -208,98 +208,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><h4 id="Thymeleaf概述"><a href="#Thymeleaf概述" class="headerlink" title="Thymeleaf概述"></a>Thymeleaf概述</h4><p><strong>使用Thymeleaf首先需要引入命名空间</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>  <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h4><ul>
-<li><strong>引用web静态资源 **<br>**Thymeleaf通过”@{}”来引用web静态资源，例如：</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;bootstrap/js/boostrap.min.js&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>访问model模型中的数据，例如访问一个user对象的name属性</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>数据迭代 **<br>**例如迭代一个userlist集合</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user : $&#123;userlist&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>tyrone<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>使用th:each做循环迭代，并使用${对象.属性}来访问具体的值</p>
-</blockquote>
-<p><strong>进阶</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user,userStat:$&#123;userlist&#125;"</span> <span class="attr">th:class</span>=<span class="string">"$&#123;userStat.odd&#125;?'odd':'even'"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.id&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.username&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.petname&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>判断是否为空</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:if</span>=<span class="string">"$&#123;messages.empty&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"3"</span>&gt;</span>No messages<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>在Javascript中访问model模型数据</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> user = [[$&#123;user&#125;]]</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(user.name + <span class="string">"\t"</span> + user.age);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>通过添加th:inline=”javascript”到script标签来访问model模型数据<br>通过”[[${}]]”这种格式来获取具体的值</p>
-</blockquote>
-<h4 id="具体"><a href="#具体" class="headerlink" title="具体"></a>具体</h4><p><strong>表达式</strong></p>
-<p>*<em>简单表达式 *</em></p>
-<ul>
-<li>可用值表达式(后台设置): ${…}</li>
-<li>所有可用值表达式: *{…}</li>
-</ul>
-<blockquote>
-<p>比如*{name} 从可用值中查找name，如果有上下文，比如上层是object，则查object中的name属性。</p>
-</blockquote>
-<ul>
-<li>消息表达式: #{…} </li>
-</ul>
-<blockquote>
-<p>国际化时使用，也可以使用内置的对象，比如date格式化数据</p>
-</blockquote>
-<ul>
-<li>链接表达式: @{…}<br>用来配合link src href使用的语法</li>
-<li>片段表达式: ~{…}<br>用来引入公共部分代码片段，并进行传值操作使用的语法。</li>
-</ul>
-<p>*<em>替换：|The name is ${name}| *</em></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">th:href</span>=<span class="string">"@&#123;|/name/$&#123;test.size()&#125;|&#125;"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span> </span><br><span class="line">//渲染后的结果 </span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/name/3"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>布尔操作</strong></p>
-<ul>
-<li>一元 :  and   or</li>
-<li>二元 :  !  ,  not</li>
-</ul>
-<p><strong>比较</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">比较：&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span><br><span class="line">等于：== , != ( eq , ne )</span><br></pre></td></tr></table></figure>
-
-<p><strong>条件</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">If-then: (<span class="keyword">if</span>) ? (then)</span><br><span class="line">If-then-<span class="keyword">else</span>: (<span class="keyword">if</span>) ? (then) : (<span class="keyword">else</span>)</span><br><span class="line">Default: (value) ?: (defaultvalue)</span><br></pre></td></tr></table></figure>
-
-<p><strong>常用操作</strong></p>
-<ul>
-<li>日期格式化</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(content.createDate,'yyyy-MM-dd HH:mm:ss')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>下拉选择</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"subId"</span> <span class="attr">id</span>=<span class="string">"subId"</span> <span class="attr">lay-verify</span>=<span class="string">""</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>请选择<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:each</span>=<span class="string">"channelsub:$&#123;subchannels&#125;"</span> <span class="attr">th:selected</span>=<span class="string">"$&#123;channelsub.id == subId&#125;"</span>    <span class="attr">th:value</span>=<span class="string">"$&#123;channelsub.id&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;channelsub.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="js取值"><a href="#js取值" class="headerlink" title="js取值"></a>js取值</h4><p><strong>有时候需要传递参数到js中</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>  &gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> size= [[$&#123;test.size()&#125;]];</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.info(size)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="css取值"><a href="#css取值" class="headerlink" title="css取值"></a>css取值</h4><p><strong>首先需要后台设置classname、align的值</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">th:inline</span>=<span class="string">"css"</span>&gt;</span></span><br><span class="line"><span class="css">    .<span class="selector-attr">[[$&#123;classname&#125;]</span>] &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span>: <span class="selector-attr">[[$&#123;align&#125;]</span>];</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
+        <h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2>
+        
+          <a class="article-more-a" href="/2020/05/16/Thymeleaf/#more">more >></a>
+        
       
 
       
@@ -322,7 +234,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/16/%E5%87%BA%E6%9D%A5%E5%90%A7/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/16/Thymeleaf/">展开全文 >></a>
         </p>
       
 
@@ -559,11 +471,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习Thymeleaf</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习Thymeleaf</a>
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
               </li>
             
             <div class="clearfix"></div>
