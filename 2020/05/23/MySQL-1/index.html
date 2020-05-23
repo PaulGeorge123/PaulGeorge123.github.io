@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Thymeleaf | gyh-blog</title>
+  <title>MySQL(1) | gyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Thymeleaf">
+  <meta name="description" content="MySQL 1.0（初识MySQL）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thymeleaf">
-<meta property="og:url" content="http://yoursite.com/2020/05/16/Thymeleaf/index.html">
+<meta property="og:title" content="MySQL(1)">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/MySQL-1/index.html">
 <meta property="og:site_name" content="gyh-blog">
-<meta property="og:description" content="Thymeleaf">
+<meta property="og:description" content="MySQL 1.0（初识MySQL）">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-16T03:32:52.000Z">
-<meta property="article:modified_time" content="2020-05-23T05:06:54.841Z">
+<meta property="article:published_time" content="2020-05-23T04:53:32.000Z">
+<meta property="article:modified_time" content="2020-05-23T04:54:21.830Z">
 <meta property="article:author" content="Mr Guo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
@@ -160,14 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Thymeleaf" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Thymeleaf
+      MySQL(1)
     </h1>
   
 
@@ -180,8 +180,8 @@
 
 
 
-<a href="/2020/05/16/Thymeleaf/" class="archive-article-date">
-  	<time datetime="2020-05-16T03:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
+<a href="/2020/05/23/MySQL-1/" class="archive-article-date">
+  	<time datetime="2020-05-23T04:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
 </a>
         <!-- 需要添加的位置 -->
         <!-- 开始添加字数统计-->
@@ -191,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">716字</span>
+        <span class="post-count">886字</span>
       </span>
     </span>
 
@@ -212,99 +212,186 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><a id="more"></a>
+        <h2 id="MySQL-1-0（初识MySQL）"><a href="#MySQL-1-0（初识MySQL）" class="headerlink" title="MySQL 1.0（初识MySQL）"></a>MySQL 1.0（初识MySQL）</h2><a id="more"></a>
 
-<h4 id="Thymeleaf概述"><a href="#Thymeleaf概述" class="headerlink" title="Thymeleaf概述"></a>Thymeleaf概述</h4><p><strong>使用Thymeleaf首先需要引入命名空间</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>  <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h4><ul>
-<li><strong>引用web静态资源<br>Thymeleaf通过”@{}”来引用web静态资源，例如：</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;bootstrap/js/boostrap.min.js&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h4><p><strong>数据库 （DB， DataBase）</strong></p>
+<h4 id="数据库分类"><a href="#数据库分类" class="headerlink" title="数据库分类"></a>数据库分类</h4><p><strong>关系型数据库:(SQL)</strong></p>
 <ul>
-<li><strong>访问model模型中的数据，例如访问一个user对象的name属性</strong></li>
+<li>MySQL，Oracle，DB2</li>
+<li>通过表和表之间，行和行之间的关系进行数据存储</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<p><strong>非关系型数据库:(NoSQL)</strong></p>
 <ul>
-<li><strong>数据迭代<br>例如迭代一个userlist集合</strong></li>
+<li>Redis，MongoDB</li>
+<li>菲关系型数据库，对象存储，通过对象的自身属性来决定</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user : $&#123;userlist&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>tyrone<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>DBMS（数据库管理系统）</strong></p>
+<ul>
+<li>数据库管理软件</li>
+</ul>
+<h4 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h4><p><strong>MySQL 数据量不区分大小写</strong></p>
+<p>1、创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 数据库名;</span><br></pre></td></tr></table></figure>
+
+<p>2、删除数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure>
+<p>3、选择数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span>  数据库名;</span><br></pre></td></tr></table></figure>
+
+<p>4、查看数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASE</span>; 		<span class="comment">--查看所有数据库</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="数据库列的类型"><a href="#数据库列的类型" class="headerlink" title="数据库列的类型"></a>数据库列的类型</h5><blockquote>
+<p>数值    （常用）</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int			标准的整数		4个字节</span><br></pre></td></tr></table></figure>
+
+
 
 <blockquote>
-<p>使用th:each做循环迭代，并使用${对象.属性}来访问具体的值</p>
+<p>字符串    （常用）</p>
 </blockquote>
-<p><strong>进阶</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user,userStat:$&#123;userlist&#125;"</span> <span class="attr">th:class</span>=<span class="string">"$&#123;userStat.odd&#125;?'odd':'even'"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.id&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.username&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.petname&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char			字符串固定大小		0~255</span><br><span class="line">varchar			可变字符串		 0~65535   		常用变量String</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>判断是否为空</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:if</span>=<span class="string">"$&#123;messages.empty&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"3"</span>&gt;</span>No messages<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>在Javascript中访问model模型数据</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> user = [[$&#123;user&#125;]]</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(user.name + <span class="string">"\t"</span> + user.age);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>通过添加th:inline=”javascript”到script标签来访问model模型数据<br>通过”[[${}]]”这种格式来获取具体的值</p>
+<p>日期    （常用）        java.utile.Date</p>
 </blockquote>
-<h4 id="具体"><a href="#具体" class="headerlink" title="具体"></a>具体</h4><p><strong>表达式</strong></p>
-<p>*<em>简单表达式 *</em></p>
-<ul>
-<li>可用值表达式(后台设置): ${…}</li>
-<li>所有可用值表达式: *{…}</li>
-</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date		YYYY-MM-DD		日期</span><br><span class="line">time		HH:mm:ss		时间格式</span><br><span class="line">datetime	YYYY-MM-DD HH:mm:ss		最常用的时间格式</span><br></pre></td></tr></table></figure>
+
+
+
 <blockquote>
-<p>比如*{name} 从可用值中查找name，如果有上下文，比如上层是object，则查object中的name属性。</p>
+<p>null    </p>
 </blockquote>
-<ul>
-<li>消息表达式: #{…} </li>
-</ul>
+<h4 id="字段属性"><a href="#字段属性" class="headerlink" title="字段属性"></a>字段属性</h4><p><strong>Unsigned</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">无符号的整数</span><br><span class="line">声明该列不能声明为负数</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>zerofill</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0填充的</span><br><span class="line">不足的位数用0来填充		int(3)   005</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>自增</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">自增，+1（默认）</span><br><span class="line">可以自定义设计主键的起始值和步长</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>NULL  not  null</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果不给他赋值，就会报错！</span><br><span class="line">sex，默认值为如果不指定其列值，则会有默认值！</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>创建数据库表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name (column_name column_type);</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除数据库表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name ;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数据库关联"><a href="#数据库关联" class="headerlink" title="数据库关联"></a>数据库关联</h4><p><strong>外键</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">为表添加外键的语法：</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> <span class="keyword">constraint</span> 外键名称 </span><br><span class="line"><span class="keyword">foreign</span> <span class="keyword">key</span> (外键字段名称) <span class="keyword">references</span> 外表表名(主键字段名称)</span><br></pre></td></tr></table></figure>
+
+
+
 <blockquote>
-<p>国际化时使用，也可以使用内置的对象，比如date格式化数据</p>
+<p>删除有外键的表的时候，必须要先删除<strong>从表</strong>，再删除<strong>主表</strong></p>
 </blockquote>
-<ul>
-<li>链接表达式: @{…}<br>用来配合link src href使用的语法</li>
-<li>片段表达式: ~{…}<br>用来引入公共部分代码片段，并进行传值操作使用的语法。</li>
-</ul>
-<p>*<em>替换：|The name is ${name}| *</em></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">th:href</span>=<span class="string">"@&#123;|/name/$&#123;test.size()&#125;|&#125;"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span> </span><br><span class="line">//渲染后的结果 </span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/name/3"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h4><p><strong>1、插入数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name ( field1, field2,...fieldN )</span><br><span class="line"><span class="keyword">VALUES</span> ( value1, value2,...valueN )</span><br></pre></td></tr></table></figure>
+<p><strong>2、删除数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> </span><br><span class="line"><span class="keyword">FROM</span> table_name </span><br><span class="line">[<span class="keyword">WHERE</span> Clause]</span><br></pre></td></tr></table></figure>
 
-<p><strong>布尔操作</strong></p>
-<ul>
-<li>一元 :  and   or</li>
-<li>二元 :  !  ,  not</li>
-</ul>
-<p><strong>比较</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">比较：&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span><br><span class="line">等于：== , != ( eq , ne )</span><br></pre></td></tr></table></figure>
+<p><strong>3、更新数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> table_name </span><br><span class="line"><span class="keyword">SET</span> field1=<span class="keyword">new</span>-value1, field2=<span class="keyword">new</span>-value2</span><br><span class="line">[<span class="keyword">WHERE</span> Clause]</span><br></pre></td></tr></table></figure>
+<p><strong>4、查询数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name,column_name</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line">[<span class="keyword">WHERE</span> Clause]</span><br></pre></td></tr></table></figure>
 
-<p><strong>条件</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">If-then: (<span class="keyword">if</span>) ? (then)</span><br><span class="line">If-then-<span class="keyword">else</span>: (<span class="keyword">if</span>) ? (then) : (<span class="keyword">else</span>)</span><br><span class="line">Default: (value) ?: (defaultvalue)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查询 - 别名 =&gt;  AS </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="string">'姓名:'</span>,<span class="keyword">name</span>) <span class="keyword">AS</span> 别名</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br></pre></td></tr></table></figure>
 
-<p><strong>常用操作</strong></p>
-<ul>
-<li>日期格式化</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(content.createDate,'yyyy-MM-dd HH:mm:ss')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>下拉选择</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"subId"</span> <span class="attr">id</span>=<span class="string">"subId"</span> <span class="attr">lay-verify</span>=<span class="string">""</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>请选择<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:each</span>=<span class="string">"channelsub:$&#123;subchannels&#125;"</span> <span class="attr">th:selected</span>=<span class="string">"$&#123;channelsub.id == subId&#125;"</span>    <span class="attr">th:value</span>=<span class="string">"$&#123;channelsub.id&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;channelsub.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: 如果数据是字符型或者日期，必须使用单引号或者双引号</p>
+</blockquote>
+<p><strong>去重</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="js取值"><a href="#js取值" class="headerlink" title="js取值"></a>js取值</h4><p><strong>有时候需要传递参数到js中</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>  &gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> size= [[$&#123;test.size()&#125;]];</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.info(size)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Like子句</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> field1, field2,...fieldN </span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> field1 <span class="keyword">LIKE</span> <span class="string">'value1'</span> [<span class="keyword">AND</span>/ <span class="keyword">OR</span>] filed2 = <span class="string">'value2'</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="css取值"><a href="#css取值" class="headerlink" title="css取值"></a>css取值</h4><p><strong>首先需要后台设置classname、align的值</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">th:inline</span>=<span class="string">"css"</span>&gt;</span></span><br><span class="line"><span class="css">    .<span class="selector-attr">[[$&#123;classname&#125;]</span>] &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span>: <span class="selector-attr">[[$&#123;align&#125;]</span>];</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>MySQL 排序</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> field1, field2,...fieldN </span><br><span class="line"><span class="keyword">FROM</span> table_name1, table_name2...</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> field1 [<span class="keyword">ASC</span> /<span class="keyword">DESC</span>]		=&gt;[默认 <span class="keyword">ASC</span>]</span><br></pre></td></tr></table></figure>
 
+
+
+<p><strong>GROUP BY 语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name, <span class="keyword">function</span>(column_name)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name <span class="keyword">operator</span> <span class="keyword">value</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> column_name;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>MySQL WHERE 子句</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">操作符</th>
+<th align="left">描述</th>
+<th align="left">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">=</td>
+<td align="left">等号，检测两个值是否相等，如果相等返回true</td>
+<td align="left">(A = B) 返回false。</td>
+</tr>
+<tr>
+<td align="left">&lt;&gt;, !=</td>
+<td align="left">不等于，检测两个值是否相等，如果不相等返回true</td>
+<td align="left">(A != B) 返回 true。</td>
+</tr>
+<tr>
+<td align="left">&gt;</td>
+<td align="left">大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td>
+<td align="left">(A &gt; B) 返回false。</td>
+</tr>
+<tr>
+<td align="left">&lt;</td>
+<td align="left">小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td>
+<td align="left">(A &lt; B) 返回 true。</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td>
+<td align="left">(A &gt;= B) 返回false。</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">小于等于号，检测左边的值是否小于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td>
+<td align="left">(A &lt;= B) 返回 true。</td>
+</tr>
+</tbody></table>
+<h4 id="分页和排序"><a href="#分页和排序" class="headerlink" title="分页和排序"></a>分页和排序</h4><p><strong>排序 ： 升序 ASC   降序DESC</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--ORDER BY</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>分页</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--分页，每页显示的数据（几条）</span></span><br><span class="line"><span class="comment">--语法: limit 当前页，页面大小</span></span><br><span class="line"></span><br><span class="line">LIMIT 1,5   1:起始    5:条数</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>语法:  limit（查询起始下标，pageSize）</p>
+</blockquote>
 
       
 
@@ -395,7 +482,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/16/Thymeleaf/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/23/MySQL-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -409,18 +496,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/17/%E9%9A%8F%E5%BF%83%E6%97%A5%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/23/MySQL-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          随心日记
+          MySQL(2)
         
       </div>
     </a>
   
   
-    <a href="/2020/05/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/05/23/jQuery/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery</div>
       <i class="icon-circle-right"></i>
     </a>
   

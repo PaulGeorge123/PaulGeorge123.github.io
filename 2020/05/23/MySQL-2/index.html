@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Thymeleaf | gyh-blog</title>
+  <title>MySQL(2) | gyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Thymeleaf">
+  <meta name="description" content="MySQL 2.0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thymeleaf">
-<meta property="og:url" content="http://yoursite.com/2020/05/16/Thymeleaf/index.html">
+<meta property="og:title" content="MySQL(2)">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/MySQL-2/index.html">
 <meta property="og:site_name" content="gyh-blog">
-<meta property="og:description" content="Thymeleaf">
+<meta property="og:description" content="MySQL 2.0">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-16T03:32:52.000Z">
-<meta property="article:modified_time" content="2020-05-23T05:06:54.841Z">
+<meta property="article:published_time" content="2020-05-23T04:53:38.000Z">
+<meta property="article:modified_time" content="2020-05-23T04:55:12.868Z">
 <meta property="article:author" content="Mr Guo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
@@ -160,14 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Thymeleaf" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Thymeleaf
+      MySQL(2)
     </h1>
   
 
@@ -180,8 +180,8 @@
 
 
 
-<a href="/2020/05/16/Thymeleaf/" class="archive-article-date">
-  	<time datetime="2020-05-16T03:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
+<a href="/2020/05/23/MySQL-2/" class="archive-article-date">
+  	<time datetime="2020-05-23T04:53:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
 </a>
         <!-- 需要添加的位置 -->
         <!-- 开始添加字数统计-->
@@ -191,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">716字</span>
+        <span class="post-count">837字</span>
       </span>
     </span>
 
@@ -212,100 +212,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><a id="more"></a>
+        <h2 id="MySQL-2-0"><a href="#MySQL-2-0" class="headerlink" title="MySQL 2.0"></a>MySQL 2.0</h2><a id="more"></a>
 
-<h4 id="Thymeleaf概述"><a href="#Thymeleaf概述" class="headerlink" title="Thymeleaf概述"></a>Thymeleaf概述</h4><p><strong>使用Thymeleaf首先需要引入命名空间</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>  <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="select-完整语句"><a href="#select-完整语句" class="headerlink" title="select 完整语句"></a>select 完整语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">写的顺序: <span class="keyword">select</span> ... </span><br><span class="line">		from... </span><br><span class="line">		where.... </span><br><span class="line">		<span class="keyword">group</span> by... </span><br><span class="line">		having... </span><br><span class="line">		<span class="keyword">order</span> by..</span><br><span class="line">		</span><br><span class="line">执行顺序: from...</span><br><span class="line">		where...</span><br><span class="line">		<span class="keyword">group</span> by...</span><br><span class="line">		having.... </span><br><span class="line">		<span class="keyword">select</span> ... </span><br><span class="line">		<span class="keyword">order</span> by...</span><br></pre></td></tr></table></figure>
 
-<h4 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h4><ul>
-<li><strong>引用web静态资源<br>Thymeleaf通过”@{}”来引用web静态资源，例如：</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;bootstrap/js/boostrap.min.js&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+
+<h4 id="组函数"><a href="#组函数" class="headerlink" title="组函数"></a>组函数</h4><p><strong>常用的组函数</strong></p>
 <ul>
-<li><strong>访问model模型中的数据，例如访问一个user对象的name属性</strong></li>
+<li>AVG</li>
+<li>COUNT</li>
+<li>MAX</li>
+<li>MIN</li>
+<li>SUM</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>数据迭代<br>例如迭代一个userlist集合</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user : $&#123;userlist&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>tyrone<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>组函数的语法:（Group By）</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">column</span>,]group_function(<span class="keyword">column</span>),...</span><br><span class="line"><span class="keyword">FORM</span> 		<span class="keyword">table</span></span><br><span class="line">[<span class="keyword">WHERE</span> condition]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span>	<span class="keyword">column</span>]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span>	<span class="keyword">column</span>]</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>使用th:each做循环迭代，并使用${对象.属性}来访问具体的值</p>
+<p>注意: 组函数不能在WHERE子句中使用</p>
+<p>在组函数中可以使用 Distinct 关键字用于去重</p>
 </blockquote>
-<p><strong>进阶</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user,userStat:$&#123;userlist&#125;"</span> <span class="attr">th:class</span>=<span class="string">"$&#123;userStat.odd&#125;?'odd':'even'"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.id&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.username&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.petname&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<p><strong>过滤分组：HAVING 子句</strong></p>
 <ul>
-<li><strong>判断是否为空</strong></li>
+<li>使用 HAVING 过滤分组</li>
+<li>1、行已使用被分组</li>
+<li>2、使用了组函数</li>
+<li>3、满足 HAVING 子句中条件的分组将被显示</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:if</span>=<span class="string">"$&#123;messages.empty&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"3"</span>&gt;</span>No messages<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>在Javascript中访问model模型数据</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> user = [[$&#123;user&#125;]]</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(user.name + <span class="string">"\t"</span> + user.age);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">column</span>,]group_function(<span class="keyword">column</span>),...</span><br><span class="line"><span class="keyword">FORM</span> 		<span class="keyword">table</span></span><br><span class="line">[<span class="keyword">WHERE</span> condition]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span>	group_by_expression]</span><br><span class="line">[<span class="keyword">HAVING</span> group_condition]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span>	<span class="keyword">column</span>];</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>通过添加th:inline=”javascript”到script标签来访问model模型数据<br>通过”[[${}]]”这种格式来获取具体的值</p>
+<p>注意: 组函数不能嵌套使用</p>
 </blockquote>
-<h4 id="具体"><a href="#具体" class="headerlink" title="具体"></a>具体</h4><p><strong>表达式</strong></p>
-<p>*<em>简单表达式 *</em></p>
-<ul>
-<li>可用值表达式(后台设置): ${…}</li>
-<li>所有可用值表达式: *{…}</li>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><ul>
+<li>为了给主要查询提供数据而先执行的查询称之为子查询<ul>
+<li>子查询要包含在括号内</li>
+<li>将子查询放在比较条件的右侧</li>
 </ul>
+</li>
+<li>单行子查询<ul>
+<li>= / &gt; / &gt;= / &lt; / &lt;= / &lt;&gt; / !=</li>
+</ul>
+</li>
+<li>多行子查询<ul>
+<li>IN / ANY /ALL</li>
+</ul>
+</li>
+</ul>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p><strong>4个特性</strong></p>
+<ul>
+<li>A 原子性：事务必须是一个自动工作的单元，要么全部执行，要么全部不执行。</li>
+<li>C 一致性：事务把数据库从一个一致状态带入到另一个一致状态，事务结束的时候，所有的内部数据都是正确的。</li>
+<li>I 隔离性：并发多个事务时，一个事务的执行不受其他事务的影响。</li>
+<li>D 持久性：事务提交之后，数据是永久性的，不可再回滚，不受关机等事件的影响。</li>
+</ul>
+<p><strong>事务在如下情况终止：</strong></p>
+<ol>
+<li>遇到<strong>rollback</strong> 或<strong>commit</strong>命令</li>
+<li>遇到DDL或者DCL语句.</li>
+<li>系统发生错误，崩溃或者退出。</li>
+</ol>
+<h4 id="序列的使用"><a href="#序列的使用" class="headerlink" title="序列的使用"></a>序列的使用</h4><ul>
+<li>MySQL 序列是以升序生成的一组整数：1，2，3，…，宇宇生成主要识别的唯一数字，即主键。</li>
+<li>可以在列上设置AUTO_INCREMENT属性，这通常是主键列。</li>
+</ul>
+<h4 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h4><ul>
+<li>UUID代表通用唯一表示符。UUID是基于 “RFC 4122” 通用唯一标识符定义的。</li>
+<li>UUID被设计为在空间和时间全球独一无二的数组。预期两个UUID值是不同的。</li>
+<li>在MySQL中，UUID值是一个128位的数字，表示为以下格式的十五进制数字的utf-8字符串：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>要生成UUID值，需要使用 UUID() 函数</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UUID()</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>比如*{name} 从可用值中查找name，如果有上下文，比如上层是object，则查object中的name属性。</p>
+<p>注意: 如果是有效的字符串格式UUID，IS_UUID()函数将返回 1 。如果参数不是有效的字符串格式UUID，则IS_UUID函数返回 0，如果参数为 NULL ，则IS_UUID() 函数返回 NULL。</p>
 </blockquote>
-<ul>
-<li>消息表达式: #{…} </li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> BIN_TO_UUID(<span class="keyword">id</span>) <span class="keyword">id</span>, <span class="keyword">name</span></span><br><span class="line"><span class="keyword">FROM</span> customers;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SQL-约束"><a href="#SQL-约束" class="headerlink" title="SQL 约束"></a>SQL 约束</h4><ul>
+<li>NOT NULL                =&gt;  <strong>约束强制列不接受 NULL 值</strong></li>
+<li>UNIQUE                    =&gt;  <strong>约束唯一标识数据库表中的每条记录</strong></li>
+<li>PRIMARY KEY           =&gt;  <strong>约束唯一标识数据库表中的每条记录(主键必须包含唯一的值、主键列不能包含 NULL 值)</strong></li>
+<li>FOREIGN KEY           =&gt;  <strong>一个表中的 FOREIGN KEY 指向另一个表中的 PRIMARY KEY</strong></li>
+<li>CHECK                       =&gt;  <strong>CHECK 约束用于限制列中的值的范围</strong></li>
+<li>DEFAULT                   =&gt;  <strong>DEFAULT 约束用于向列中插入默认值（如果没有规定其他的值，那么会将默认值添加到所有的新记录）</strong></li>
 </ul>
-<blockquote>
-<p>国际化时使用，也可以使用内置的对象，比如date格式化数据</p>
-</blockquote>
-<ul>
-<li>链接表达式: @{…}<br>用来配合link src href使用的语法</li>
-<li>片段表达式: ~{…}<br>用来引入公共部分代码片段，并进行传值操作使用的语法。</li>
+<h4 id="客户端连接设置字符集"><a href="#客户端连接设置字符集" class="headerlink" title="客户端连接设置字符集"></a>客户端连接设置字符集</h4><ul>
+<li>MySQL连接器允许设置字符集：</li>
 </ul>
-<p>*<em>替换：|The name is ${name}| *</em></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">th:href</span>=<span class="string">"@&#123;|/name/$&#123;test.size()&#125;|&#125;"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span> </span><br><span class="line">//渲染后的结果 </span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/name/3"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf-8&amp;useSSL=true</span><br></pre></td></tr></table></figure>
 
-<p><strong>布尔操作</strong></p>
-<ul>
-<li>一元 :  and   or</li>
-<li>二元 :  !  ,  not</li>
-</ul>
-<p><strong>比较</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">比较：&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span><br><span class="line">等于：== , != ( eq , ne )</span><br></pre></td></tr></table></figure>
-
-<p><strong>条件</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">If-then: (<span class="keyword">if</span>) ? (then)</span><br><span class="line">If-then-<span class="keyword">else</span>: (<span class="keyword">if</span>) ? (then) : (<span class="keyword">else</span>)</span><br><span class="line">Default: (value) ?: (defaultvalue)</span><br></pre></td></tr></table></figure>
-
-<p><strong>常用操作</strong></p>
-<ul>
-<li>日期格式化</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(content.createDate,'yyyy-MM-dd HH:mm:ss')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>下拉选择</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"subId"</span> <span class="attr">id</span>=<span class="string">"subId"</span> <span class="attr">lay-verify</span>=<span class="string">""</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>请选择<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:each</span>=<span class="string">"channelsub:$&#123;subchannels&#125;"</span> <span class="attr">th:selected</span>=<span class="string">"$&#123;channelsub.id == subId&#125;"</span>    <span class="attr">th:value</span>=<span class="string">"$&#123;channelsub.id&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;channelsub.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="js取值"><a href="#js取值" class="headerlink" title="js取值"></a>js取值</h4><p><strong>有时候需要传递参数到js中</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>  &gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> size= [[$&#123;test.size()&#125;]];</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.info(size)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="css取值"><a href="#css取值" class="headerlink" title="css取值"></a>css取值</h4><p><strong>首先需要后台设置classname、align的值</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">th:inline</span>=<span class="string">"css"</span>&gt;</span></span><br><span class="line"><span class="css">    .<span class="selector-attr">[[$&#123;classname&#125;]</span>] &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span>: <span class="selector-attr">[[$&#123;align&#125;]</span>];</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
+<p><strong>复制表结构</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dept_copy</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> department</span><br><span class="line"><span class="keyword">WHERE</span> <span class="number">1</span>=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -395,7 +400,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/16/Thymeleaf/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/23/MySQL-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -409,18 +414,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/17/%E9%9A%8F%E5%BF%83%E6%97%A5%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/23/AJAX/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          随心日记
+          AJAX
         
       </div>
     </a>
   
   
-    <a href="/2020/05/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/05/23/MySQL-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL(1)</div>
       <i class="icon-circle-right"></i>
     </a>
   
