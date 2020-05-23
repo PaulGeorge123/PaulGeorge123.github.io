@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Thymeleaf | gyh-blog</title>
+  <title>CSS | gyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Thymeleaf">
+  <meta name="description" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thymeleaf">
-<meta property="og:url" content="http://yoursite.com/2020/05/16/Thymeleaf/index.html">
+<meta property="og:title" content="CSS">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/CSS/index.html">
 <meta property="og:site_name" content="gyh-blog">
-<meta property="og:description" content="Thymeleaf">
+<meta property="og:description" content="CSS">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-16T03:32:52.000Z">
-<meta property="article:modified_time" content="2020-05-16T11:04:04.276Z">
+<meta property="article:published_time" content="2020-05-23T04:23:21.000Z">
+<meta property="article:modified_time" content="2020-05-23T04:24:09.138Z">
 <meta property="article:author" content="Mr Guo">
-<meta property="article:tag" content="学习Thymeleaf">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="gyh-blog" type="application/atom+xml">
@@ -160,14 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Thymeleaf" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CSS" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Thymeleaf
+      CSS
     </h1>
   
 
@@ -180,8 +180,8 @@
 
 
 
-<a href="/2020/05/16/Thymeleaf/" class="archive-article-date">
-  	<time datetime="2020-05-16T03:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
+<a href="/2020/05/23/CSS/" class="archive-article-date">
+  	<time datetime="2020-05-23T04:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
 </a>
         <!-- 需要添加的位置 -->
         <!-- 开始添加字数统计-->
@@ -191,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">716字</span>
+        <span class="post-count">518字</span>
       </span>
     </span>
 
@@ -200,7 +200,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -212,100 +212,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><a id="more"></a>
+        <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><a id="more"></a>
 
-<h4 id="Thymeleaf概述"><a href="#Thymeleaf概述" class="headerlink" title="Thymeleaf概述"></a>Thymeleaf概述</h4><p><strong>使用Thymeleaf首先需要引入命名空间</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>  <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="css引入样式"><a href="#css引入样式" class="headerlink" title="css引入样式"></a>css引入样式</h4><p>1.内联</p>
+<figure class="highlight"><figcaption><span>1.内联</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color: red"&gt;我是标题&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h4><ul>
-<li><strong>引用web静态资源<br>Thymeleaf通过”@{}”来引用web静态资源，例如：</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">"@&#123;bootstrap/js/boostrap.min.js&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.内部</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">	<span class="selector-tag">h1</span>&#123;</span><br><span class="line">		<span class="attribute">color</span>: green;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>访问model模型中的数据，例如访问一个user对象的name属性</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>数据迭代<br>例如迭代一个userlist集合</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user : $&#123;userlist&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>tyrone<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.外联</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">	<span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!<span class="selector-tag">--</span> 链接式 <span class="selector-tag">--</span>&gt;</span><br><span class="line">&lt;link rel="stylesheet" href="css/style.css"&gt;</span><br><span class="line"></span><br><span class="line">&lt;!<span class="selector-tag">--</span> 导入式 <span class="selector-tag">--</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">	<span class="keyword">@import</span> url(<span class="string">"css/style.css"</span>);</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>使用th:each做循环迭代，并使用${对象.属性}来访问具体的值</p>
+<p>优先级：行内样式&gt;内部样式&gt;外部样式</p>
 </blockquote>
-<p><strong>进阶</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user,userStat:$&#123;userlist&#125;"</span> <span class="attr">th:class</span>=<span class="string">"$&#123;userStat.odd&#125;?'odd':'even'"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.id&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.username&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.petname&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>判断是否为空</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:if</span>=<span class="string">"$&#123;messages.empty&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"3"</span>&gt;</span>No messages<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>在Javascript中访问model模型数据</strong></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> user = [[$&#123;user&#125;]]</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(user.name + <span class="string">"\t"</span> + user.age);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>类选择器：class=” “</p>
+<p>Id选择器： id=” “ 全局唯一</p>
+<p>标签选择器：a{}</p>
 <blockquote>
-<p>通过添加th:inline=”javascript”到script标签来访问model模型数据<br>通过”[[${}]]”这种格式来获取具体的值</p>
+<p>优先级： id&gt;class&gt;标签</p>
 </blockquote>
-<h4 id="具体"><a href="#具体" class="headerlink" title="具体"></a>具体</h4><p><strong>表达式</strong></p>
-<p>*<em>简单表达式 *</em></p>
-<ul>
-<li>可用值表达式(后台设置): ${…}</li>
-<li>所有可用值表达式: *{…}</li>
-</ul>
-<blockquote>
-<p>比如*{name} 从可用值中查找name，如果有上下文，比如上层是object，则查object中的name属性。</p>
-</blockquote>
-<ul>
-<li>消息表达式: #{…} </li>
-</ul>
-<blockquote>
-<p>国际化时使用，也可以使用内置的对象，比如date格式化数据</p>
-</blockquote>
-<ul>
-<li>链接表达式: @{…}<br>用来配合link src href使用的语法</li>
-<li>片段表达式: ~{…}<br>用来引入公共部分代码片段，并进行传值操作使用的语法。</li>
-</ul>
-<p>*<em>替换：|The name is ${name}| *</em></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">th:href</span>=<span class="string">"@&#123;|/name/$&#123;test.size()&#125;|&#125;"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span> </span><br><span class="line">//渲染后的结果 </span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/name/3"</span>&gt;</span>链接地址：<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>布尔操作</strong></p>
-<ul>
-<li>一元 :  and   or</li>
-<li>二元 :  !  ,  not</li>
-</ul>
-<p><strong>比较</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">比较：&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span><br><span class="line">等于：== , != ( eq , ne )</span><br></pre></td></tr></table></figure>
-
-<p><strong>条件</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">If-then: (<span class="keyword">if</span>) ? (then)</span><br><span class="line">If-then-<span class="keyword">else</span>: (<span class="keyword">if</span>) ? (then) : (<span class="keyword">else</span>)</span><br><span class="line">Default: (value) ?: (defaultvalue)</span><br></pre></td></tr></table></figure>
-
-<p><strong>常用操作</strong></p>
-<ul>
-<li>日期格式化</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(content.createDate,'yyyy-MM-dd HH:mm:ss')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>下拉选择</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"subId"</span> <span class="attr">id</span>=<span class="string">"subId"</span> <span class="attr">lay-verify</span>=<span class="string">""</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>请选择<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:each</span>=<span class="string">"channelsub:$&#123;subchannels&#125;"</span> <span class="attr">th:selected</span>=<span class="string">"$&#123;channelsub.id == subId&#125;"</span>    <span class="attr">th:value</span>=<span class="string">"$&#123;channelsub.id&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;channelsub.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="选择器-1"><a href="#选择器-1" class="headerlink" title="选择器"></a>选择器</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*类选择器*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	属性名 = 属性值</span></span><br><span class="line"><span class="comment">	=绝对等于</span></span><br><span class="line"><span class="comment">	*=包含</span></span><br><span class="line"><span class="comment">	^=以这个开头</span></span><br><span class="line"><span class="comment">	$=以这个结尾</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*class中有item的元素*/</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[class=<span class="string">"item"</span>]</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: antiquewhite;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*选中href中以www开头的元素*/</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href^=www]</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: antiquewhite;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;a href="www.baidu.com" class="item"&gt;超链接&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="js取值"><a href="#js取值" class="headerlink" title="js取值"></a>js取值</h4><p><strong>有时候需要传递参数到js中</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>  &gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> size= [[$&#123;test.size()&#125;]];</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.info(size)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CSS字体属性"><a href="#CSS字体属性" class="headerlink" title="CSS字体属性"></a>CSS字体属性</h4><table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/cssref/pr-font-font.html" target="_blank" rel="noopener">font</a></td>
+<td align="left">在一个声明中设置所有的字体属性</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/cssref/pr-font-font-family.html" target="_blank" rel="noopener">font-family</a></td>
+<td align="left">指定文本的字体系列</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/cssref/pr-font-font-size.html" target="_blank" rel="noopener">font-size</a></td>
+<td align="left">指定文本的字体大小</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/cssref/pr-font-font-style.html" target="_blank" rel="noopener">font-style</a></td>
+<td align="left">指定文本的字体样式</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/cssref/pr-font-font-variant.html" target="_blank" rel="noopener">font-variant</a></td>
+<td align="left">以小型大写字体或者正常字体显示文本。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/cssref/pr-font-weight.html" target="_blank" rel="noopener">font-weight</a></td>
+<td align="left">指定字体的粗细。</td>
+</tr>
+</tbody></table>
+<h4 id="CSS伪类"><a href="#CSS伪类" class="headerlink" title="CSS伪类"></a>CSS伪类</h4><h5 id="选择器-伪类名-属性-属性值"><a href="#选择器-伪类名-属性-属性值" class="headerlink" title="选择器 : 伪类名 { 属性 : 属性值 }"></a>选择器 : 伪类名 { 属性 : 属性值 }</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"> 	<span class="comment">/*取消超链接下划线*/</span></span><br><span class="line">    <span class="selector-tag">a</span> &#123; <span class="attribute">text-decoration</span>:none;&#125;</span><br><span class="line">    <span class="comment">/*超链接样式*/</span></span><br><span class="line">    <span class="selector-tag">a</span><span class="selector-pseudo">:link</span>    &#123; <span class="attribute">color</span>: blue;&#125;</span><br><span class="line">    <span class="comment">/*点击过的样式*/</span></span><br><span class="line">    <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123; <span class="attribute">color</span>: purple;&#125;</span><br><span class="line">    <span class="comment">/*悬停时的样式*/</span></span><br><span class="line">    <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>   &#123; <span class="attribute">color</span>: red;&#125;</span><br><span class="line">    <span class="comment">/*点击时的样式*/</span></span><br><span class="line">    <span class="selector-tag">a</span><span class="selector-pseudo">:active</span>  &#123; <span class="attribute">color</span>: yellow;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="css取值"><a href="#css取值" class="headerlink" title="css取值"></a>css取值</h4><p><strong>首先需要后台设置classname、align的值</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">th:inline</span>=<span class="string">"css"</span>&gt;</span></span><br><span class="line"><span class="css">    .<span class="selector-attr">[[$&#123;classname&#125;]</span>] &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span>: <span class="selector-attr">[[$&#123;align&#125;]</span>];</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span>没有href的a标签,字体没有修饰，鼠标放上去也没反应<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span> href为#的a标签，默认蓝色，带下划线，鼠标放上去变成手 <span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.a.com"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> &gt;</span>href为网址的a标签，效果同上<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
+
+<h5 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*悬停时的样式*/</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attribute">opacity</span>:<span class="number">0.4</span>;</span><br><span class="line">  <span class="comment">/* filter:alpha(opacity=40); */</span> <span class="comment">/* IE8 及其更早版本 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="selector-tag">Opacity</span>属性值从0<span class="selector-class">.0</span> <span class="selector-tag">-</span> 1<span class="selector-class">.0</span>。值越小，使得元素更加透明。</span><br></pre></td></tr></table></figure>
       
 
       
@@ -339,7 +314,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">学习Thymeleaf</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
@@ -395,7 +370,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/16/Thymeleaf/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/23/CSS/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -409,18 +384,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/17/%E9%9A%8F%E5%BF%83%E6%97%A5%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/23/JavaScript-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          随心日记
+          JavaScript(1)
         
       </div>
     </a>
   
   
-    <a href="/2020/05/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/05/23/HTML/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML</div>
       <i class="icon-circle-right"></i>
     </a>
   
