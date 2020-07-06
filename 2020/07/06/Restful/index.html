@@ -6,23 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | gyh-blog</title>
+  <title>Restful | gyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="专注于Web,分享生活,分享知识">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gyh-blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Restful">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Restful">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/Restful/index.html">
 <meta property="og:site_name" content="gyh-blog">
-<meta property="og:description" content="专注于Web,分享生活,分享知识">
+<meta property="og:description" content="Restful">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/Curry/AppData/Roaming/Typora/typora-user-images/image-20200607145138470.png">
+<meta property="article:published_time" content="2020-07-06T11:41:13.000Z">
+<meta property="article:modified_time" content="2020-07-06T11:44:13.045Z">
 <meta property="article:author" content="Mr Guo">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="CSS">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="JQuery">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/Curry/AppData/Roaming/Typora/typora-user-images/image-20200607145138470.png">
   
     <link rel="alternative" href="/atom.xml" title="gyh-blog" type="application/atom+xml">
   
@@ -164,38 +163,237 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-Restful" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Restful
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 
 
 <a href="/2020/07/06/Restful/" class="archive-article-date">
   	<time datetime="2020-07-06T11:41:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/Restful/">Restful</a>
-    </h1>
-  
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">778字</span>
+      </span>
+    </span>
 
-        <div class="article-info info-on-right">
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
           
+        <!-- 添加完成 -->
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Restful"><a href="#Restful" class="headerlink" title="Restful"></a>Restful</h2><a id="more"></a>
+
+<h3 id="几个注解"><a href="#几个注解" class="headerlink" title="几个注解"></a>几个注解</h3><p><strong>在讲述使用之前，想要理解SpringMVC的几个常用注解：</strong></p>
+<p><strong>@Controller：修饰class，用来创建处理http请求的对象</strong><br><strong>@RestController：Spring4之后加入的注解，原来在@Controller中返回json需要@ResponseBody来配合，如果直接用@RestController替代@Controller就不需要再配置@ResponseBody，默认返回json格式。</strong><br><strong>@RequestMapping：配置url映射</strong><br><strong>@PostMapping: 这个是@RequestMapping+POST方法的简写</strong><br><strong>@RequestHeader: 请求Header参数</strong><br><strong>@PathVariable: URL路径参数，比如/user/{id}中的id参数</strong><br><strong>@RequestParam: URL请求参数，比如/user?id=1中的id参数</strong><br><strong>@RequestBody: 请求Body参数</strong></p>
+<img src="C:\Users\Curry\AppData\Roaming\Typora\typora-user-images\image-20200607145138470.png" alt="image-20200607145138470" style="zoom: 50%;" />
+
+
+
+<blockquote>
+<p>常用响应状态码（在RESTful 中有重要应用）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>响应状态码</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>OK //客户端请求成功</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request //客户端请求有语法错误，不能被服务器所理解</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unanthorized //服务器收到请求，但是服务器拒绝提供服务</td>
+</tr>
+<tr>
+<td>404</td>
+<td>404 Not Found //请求资源不存在</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Serval Error //服务器发生不可预期的错误</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Server Unavailable // 服务器当前不能处理客户端的请求</td>
+</tr>
+</tbody></table>
+<h3 id="RESTful-API设计示例"><a href="#RESTful-API设计示例" class="headerlink" title="RESTful API设计示例"></a>RESTful API设计示例</h3><table>
+<thead>
+<tr>
+<th align="left">模块</th>
+<th align="left">功能</th>
+<th align="left">URL</th>
+<th align="left">HTTP请求方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">用户</td>
+<td align="left">用户注册</td>
+<td align="left"><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fapi.demo.com%2F1.0%2Fusers%2Fregister" target="_blank" rel="noopener">http://api.demo.com/1.0/users/register</a></td>
+<td align="left">POST</td>
+</tr>
+<tr>
+<td align="left">用户</td>
+<td align="left">用户登录</td>
+<td align="left"><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fapi.demo.com%2F1.0%2Fusers%2Flogin" target="_blank" rel="noopener">http://api.demo.com/1.0/users/login</a></td>
+<td align="left">POST</td>
+</tr>
+<tr>
+<td align="left">文章</td>
+<td align="left">发表文章</td>
+<td align="left"><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fapi.demo.com%2F1.0%2Farticles" target="_blank" rel="noopener">http://api.demo.com/1.0/articles</a></td>
+<td align="left">POST</td>
+</tr>
+<tr>
+<td align="left">文章</td>
+<td align="left">查看文章</td>
+<td align="left"><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fapi.demo.com%2F1.0%2Farticles%2F%3Aid" target="_blank" rel="noopener">http://api.demo.com/1.0/articles/:id</a></td>
+<td align="left">GET</td>
+</tr>
+<tr>
+<td align="left">文章</td>
+<td align="left">修改文章</td>
+<td align="left"><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fapi.demo.com%2F1.0%2Farticles%2F%3Aid" target="_blank" rel="noopener">http://api.demo.com/1.0/articles/:id</a></td>
+<td align="left">PUT</td>
+</tr>
+<tr>
+<td align="left">文章</td>
+<td align="left">删除文章</td>
+<td align="left"><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fapi.demo.com%2F1.0%2Faritcles%2F%3Aid" target="_blank" rel="noopener">http://api.demo.com/1.0/aritcles/:id</a></td>
+<td align="left">DELETE</td>
+</tr>
+</tbody></table>
+<h3 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h3><h3 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h3><p><strong>通过标准HTTP方法对资源CRUD：</strong></p>
+<p><strong>GET：查询</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /zoos</span><br><span class="line">GET /zoos/<span class="number">1</span></span><br><span class="line">GET /zoos/<span class="number">1</span>/employees</span><br></pre></td></tr></table></figure>
+
+<p><strong>POST：创建单个资源。POST一般向“资源集合”型uri发起</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST /animals  <span class="comment">//新增动物</span></span><br><span class="line">POST /zoos/<span class="number">1</span>/employees <span class="comment">//为id为1的动物园雇佣员工</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>PUT：更新单个资源（全量），客户端提供完整的更新后的资源。与之对应的是 PATCH，PATCH 负责部分更新，客户端提供要更新的那些字段。PUT/PATCH一般向“单个资源”型uri发起</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PUT /animals/<span class="number">1</span></span><br><span class="line">PUT /zoos/<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>DELETE：删除</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELETE /zoos/<span class="number">1</span>/employees/<span class="number">2</span></span><br><span class="line">DELETE /zoos/<span class="number">1</span>/employees/<span class="number">2</span>;<span class="number">4</span>;<span class="number">5</span></span><br><span class="line">DELETE /zoos/<span class="number">1</span>/animals  <span class="comment">//删除id为1的动物园内的所有动物</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="API设计"><a href="#API设计" class="headerlink" title="API设计"></a>API设计</h2><p>RESTful API具体设计如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">请求类型</th>
+<th align="left">URL</th>
+<th align="left">功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">/users</td>
+<td align="left">查询用户列表</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">/users</td>
+<td align="left">创建一个用户</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/users/{id}</td>
+<td align="left">根据id查询用户</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">/users/{id}</td>
+<td align="left">根据id更新用户</td>
+</tr>
+<tr>
+<td align="left">DELTE</td>
+<td align="left">/users/{id}</td>
+<td align="left">更加id删除用户</td>
+</tr>
+</tbody></table>
+<p><strong>1.POST</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//POST方式</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//请求参数</span></span><br><span class="line">    <span class="keyword">var</span> list = &#123;&#125;;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: <span class="string">"POST"</span>,</span><br><span class="line">        <span class="comment">//accepts: "application/json",</span></span><br><span class="line">        contentType: <span class="string">"application/json"</span>,</span><br><span class="line">        url: <span class="string">""</span>,</span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(list),</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//。。。</span></span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(e.status);</span><br><span class="line">            <span class="built_in">console</span>.log(e.responseText);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.GET方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//GET方式</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//请求参数</span></span><br><span class="line">    <span class="keyword">var</span> list = &#123;&#125;;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: <span class="string">"GET"</span>,</span><br><span class="line">        <span class="comment">//自动添加时间戳，避免缓存。</span></span><br><span class="line">        cache: <span class="literal">false</span>,</span><br><span class="line">        url: <span class="string">""</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $.each(data, <span class="function"><span class="keyword">function</span> (<span class="params">key, item</span>) </span>&#123;</span><br><span class="line">                <span class="comment">//数据处理</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.PUT方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PUT方式</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//请求参数</span></span><br><span class="line">    <span class="keyword">var</span> item = &#123;&#125;;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: <span class="string">"PUT"</span>,</span><br><span class="line">        url: uri + <span class="string">"/"</span> + $(<span class="string">"#edit-id"</span>).val(),</span><br><span class="line">        <span class="comment">//accepts: "application/json",</span></span><br><span class="line">        contentType: <span class="string">"application/json"</span>,</span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(item),</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//。。。</span></span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(e.status);</span><br><span class="line">            <span class="built_in">console</span>.log(e.responseText);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.Delete方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: uri + <span class="string">"/"</span> + id,</span><br><span class="line">        type: <span class="string">"DELETE"</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            getData();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -207,391 +405,118 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/06/Restful/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/09/SpringBoot-MyBatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot+MyBatis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-<a href="/2020/06/09/SpringBoot-MyBatis/" class="archive-article-date">
-  	<time datetime="2020-06-09T10:12:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/09/SpringBoot-MyBatis/">SpringBoot+MyBatis</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Restful"><span class="toc-number">1.</span> <span class="toc-text">Restful</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#几个注解"><span class="toc-number">1.1.</span> <span class="toc-text">几个注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RESTful-API设计示例"><span class="toc-number">1.2.</span> <span class="toc-text">RESTful API设计示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request"><span class="toc-number">1.3.</span> <span class="toc-text">Request</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP方法"><span class="toc-number">1.4.</span> <span class="toc-text">HTTP方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API设计"><span class="toc-number">2.</span> <span class="toc-text">API设计</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+        
+    </div>
+</aside>
 
 
-<a href="/2020/05/23/JSON/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/JSON/">JSON</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/AJAX/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/AJAX/">AJAX</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/MySQL-2/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:53:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/MySQL-2/">MySQL(2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/MySQL-1/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/MySQL-1/">MySQL(1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/jQuery/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:51:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/jQuery/">jQuery</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/JavaScript-3/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:26:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/JavaScript-3/">JavaScript(3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/JavaScript-2/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/JavaScript-2/">JavaScript(2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-
-<a href="/2020/05/23/JavaScript-1/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:24:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/JavaScript-1/">JavaScript(1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -626,8 +551,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
