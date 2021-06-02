@@ -20,26 +20,20 @@
     var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="RabbitMQRabbitMQ几种典型模式  单模式Simple 工作模式Work 发布订阅模式Publish&#x2F;Subscribe 路由模式Routing 通配符模式Topics 远程调用模式RPC  模式1：简单模式（Simple &#x2F; HelloWorld 单生产单消费） 简单的发送与接收，没有特别的处理。">
+  <meta name="description" content="面试题Java 基础1. JDK 和 JRE 有什么区别？  JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。 JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。  具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ">
-<meta property="og:url" content="https://codeyg.top/2020/10/14/RabbitMQ/index.html">
+<meta property="og:title" content="面试题ing">
+<meta property="og:url" content="https://codeyg.top/2020/05/17/%E9%9D%A2%E8%AF%95%E9%A2%98ing/index.html">
 <meta property="og:site_name" content="不会飞的宇航员">
-<meta property="og:description" content="RabbitMQRabbitMQ几种典型模式  单模式Simple 工作模式Work 发布订阅模式Publish&#x2F;Subscribe 路由模式Routing 通配符模式Topics 远程调用模式RPC  模式1：简单模式（Simple &#x2F; HelloWorld 单生产单消费） 简单的发送与接收，没有特别的处理。">
+<meta property="og:description" content="面试题Java 基础1. JDK 和 JRE 有什么区别？  JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。 JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。  具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png">
-<meta property="article:published_time" content="2020-10-14T14:29:58.000Z">
-<meta property="article:modified_time" content="2021-05-28T15:01:47.102Z">
+<meta property="article:published_time" content="2020-05-17T03:58:58.000Z">
+<meta property="article:modified_time" content="2021-06-02T16:14:34.871Z">
 <meta property="article:author" content="白日梦想家">
-<meta property="article:tag" content="消息队列">
+<meta property="article:tag" content="面试心得（Java基础）">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png">
 
-<link rel="canonical" href="https://codeyg.top/2020/10/14/RabbitMQ/">
+<link rel="canonical" href="https://codeyg.top/2020/05/17/%E9%9D%A2%E8%AF%95%E9%A2%98ing/">
 
 
 <script id="page-configurations">
@@ -52,7 +46,7 @@
   };
 </script>
 
-  <title>RabbitMQ | 不会飞的宇航员</title>
+  <title>面试题ing | 不会飞的宇航员</title>
   
 
 
@@ -173,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2020/10/14/RabbitMQ/">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2020/05/17/%E9%9D%A2%E8%AF%95%E9%A2%98ing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
@@ -186,10 +180,14 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          RabbitMQ
+          面试题ing
         </h1>
 
         <div class="post-meta">
+		  
+		    <i class="fa fa-thumb-tack"></i>
+		    <font color=7D26CD>置顶</font>
+		    <span class="post-meta-divider">|</span>
 		  
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -197,14 +195,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-10-14 22:29:58" itemprop="dateCreated datePublished" datetime="2020-10-14T22:29:58+08:00">2020-10-14</time>
+              <time title="创建时间：2020-05-17 11:58:58" itemprop="dateCreated datePublished" datetime="2020-05-17T11:58:58+08:00">2020-05-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-28 23:01:47" itemprop="dateModified" datetime="2021-05-28T23:01:47+08:00">2021-05-28</time>
+                <time title="修改时间：2021-06-03 00:14:34" itemprop="dateModified" datetime="2021-06-03T00:14:34+08:00">2021-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/PaulGeorge123.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+                  <a href="/PaulGeorge123.github.io/categories/%E5%A5%8B%E6%96%97%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">奋斗篇</span></a>
                 </span>
             </span>
 
@@ -222,14 +220,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>741</span>
+              <span>2.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -241,32 +239,101 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><p><strong>RabbitMQ几种典型模式</strong></p>
+        <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="Java-基础"><a href="#Java-基础" class="headerlink" title="Java 基础"></a>Java 基础</h3><p><strong>1. JDK 和 JRE 有什么区别？</strong></p>
 <ul>
-<li><strong>单模式Simple</strong></li>
-<li><strong>工作模式Work</strong></li>
-<li><strong>发布订阅模式Publish/Subscribe</strong></li>
-<li><strong>路由模式Routing</strong></li>
-<li><strong>通配符模式Topics</strong></li>
-<li><strong>远程调用模式RPC</strong></li>
+<li>JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。</li>
+<li>JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。</li>
 </ul>
-<p><strong>模式1：简单模式（Simple / HelloWorld 单生产单消费）</strong></p>
-<p>简单的发送与接收，没有特别的处理。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png" alt=""></p>
+<p>具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac，还包含了很多 java 程序调试和分析的工具。简单来说：如果你需要运行 java 程序，只需安装 JRE 就可以了，如果你需要编写 java 程序，需要安装 JDK。</p>
 <hr>
-<a id="more"></a>
+<p><strong>2. == 和 equals 的区别是什么？</strong></p>
+<p><strong>== 解读</strong></p>
+<p>对于基本类型和引用类型 == 的作用效果是不同的，如下所示：</p>
+<ul>
+<li>基本类型：比较的是值是否相同；</li>
+<li>引用类型：比较的是引用是否相同；</li>
+</ul>
+<p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String x = <span class="string">"string"</span>;</span><br><span class="line">String y = <span class="string">"string"</span>;</span><br><span class="line">String z = <span class="keyword">new</span> String(<span class="string">"string"</span>);</span><br><span class="line">System.out.println(x==y); <span class="comment">// true</span></span><br><span class="line">System.out.println(x==z); <span class="comment">// false</span></span><br><span class="line">System.out.println(x.equals(y)); <span class="comment">// true</span></span><br><span class="line">System.out.println(x.equals(z)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>模式2：工作模式（Work单发送多接收，拿到消息即销毁）</strong><br>一个生产者端，多个消费者端。示例中为了保证消息发送的可靠性，不丢失消息，使消息持久化了。同时为了防止接收端在处理消息时down掉，只有在消息处理完成后才发送消息确认。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png" alt=""></p>
+<blockquote>
+<p>代码解读：因为 x 和 y 指向的是同一个引用，所以 == 也是 true，而 new String()方法则重写开辟了内存空间，所以 == 结果为 false，而 equals 比较的一直是值，所以结果都为 true。</p>
+</blockquote>
+<p><strong>equals 解读</strong></p>
+<p><strong>总结</strong> ：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。</p>
 <hr>
-<p><strong>模式3：发布、订阅模式(Publish/Subscribe)</strong><br>使用场景：发布、订阅模式，生产者端发送消息，多个消费者同时接收所有的消息。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png" alt=""></p>
+<p><strong>3. 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？</strong></p>
+<p>不对，两个对象的 hashCode()相同，equals()不一定 true。</p>
 <hr>
-<p><strong>模式4：路由模式（Routing）</strong><br>生产者按routing key发送消息，不同的消费者端按不同的routing key接收消息。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png" alt=""></p>
+<p><strong>4. final 在 java 中有什么作用？</strong></p>
+<ul>
+<li>final 修饰的类叫最终类，该类不能被继承。</li>
+<li>final 修饰的方法不能被重写。</li>
+<li>final 修饰的变量叫常量，常量必须初始化，初始化之后值就不能被修改。</li>
+</ul>
 <hr>
-<p><strong>模式5：通配符（或主题）模式（Topics ，按topic发送接收)</strong><br>生产者端不只按固定的routing key发送消息，而是按字符串“匹配”发送，消费者端同样如此。<br>与之前的路由模式相比，它将信息的传输类型的key更加细化，以“key1.key2.keyN…”的模式来指定信息传输的key的大类型和大类型下面的小类型，让消费者端可以更加精细的确认自己想要获取的信息类型。而在消费者端，不用精确的指定具体到哪一个大类型下的小类型的key，而是可以使用类似正则表达式(但与正则表达式规则完全不同)的通配符在指定一定范围或符合某一个字符串匹配规则的key，来获取想要的信息。“通配符交换机”（Topic Exchange）将路由键和某模式进行匹配。此时队列需要绑定在一个模式上。符号“#”匹配一个或多个词，符号“*”仅匹配一个词。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png" alt=""></p>
+<p><strong>5. java 中的 Math.round(-1.5) 等于多少？</strong></p>
+<p>等于 -1，因为在数轴上取值时，中间值（0.5）向右取整，所以正 0.5 是往上取整，负 0.5 是直接舍弃。</p>
+<hr>
+<p><strong>6. String 属于基础的数据类型吗？</strong></p>
+<p>String 不属于基础类型，基础类型有 8 种：byte、boolean、char、short、int、float、long、double，而 String 属于对象。</p>
+<hr>
+<p><strong>7. java 中操作字符串都有哪些类？它们之间有什么区别？</strong></p>
+<p>操作字符串的类有：String、StringBuffer、StringBuilder。</p>
+<hr>
+<p><strong>8. String str=”i”与 String str=new String(“i”)一样吗？</strong></p>
+<p>不一样，因为内存的分配方式不一样。String str=”i”的方式，java 虚拟机会将其分配到常量池中；而 String str=new String(“i”) 则会被分到堆内存中。</p>
+<hr>
+<p><strong>9. 如何将字符串反转？</strong></p>
+<p>使用 StringBuilder 或者 stringBuffer 的 reverse() 方法。</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// StringBuffer reverse</span></span><br><span class="line">StringBuffer stringBuffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">stringBuffer.append(<span class="string">"abcdefg"</span>);</span><br><span class="line">System.out.println(stringBuffer.reverse()); <span class="comment">// gfedcba</span></span><br><span class="line"><span class="comment">// StringBuilder reverse</span></span><br><span class="line">StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">stringBuilder.append(<span class="string">"abcdefg"</span>);</span><br><span class="line">System.out.println(stringBuilder.reverse()); <span class="comment">// gfedcba</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>10. String 类的常用方法都有那些？</strong></p>
+<ul>
+<li>indexOf()：返回指定字符的索引。</li>
+<li>charAt()：返回指定索引处的字符。</li>
+<li>replace()：字符串替换。</li>
+<li>trim()：去除字符串两端空白。</li>
+<li>split()：分割字符串，返回一个分割后的字符串数组。</li>
+<li>getBytes()：返回字符串的 byte 类型数组。</li>
+<li>length()：返回字符串长度。</li>
+<li>toLowerCase()：将字符串转成小写字母。</li>
+<li>toUpperCase()：将字符串转成大写字符。</li>
+<li>substring()：截取字符串。</li>
+<li>equals()：字符串比较。</li>
+</ul>
+<hr>
+<p><strong>11. 普通类和抽象类有哪些区别？</strong></p>
+<ul>
+<li>普通类不能包含抽象方法，抽象类可以包含抽象方法。</li>
+<li>抽象类不能直接实例化，普通类可以直接实例化。</li>
+</ul>
+<hr>
+<p><strong>12. 抽象类能使用 final 修饰吗？</strong></p>
+<p>不能，定义抽象类就是让其他类继承的，如果定义为 final 该类就不能被继承，这样彼此就会产生矛盾，所以 final 不能修饰抽象类，如下图所示，编辑器也会提示错误信息：</p>
+<hr>
+<p><strong>13. 接口和抽象类有什么区别？</strong></p>
+<ul>
+<li>实现：抽象类的子类使用 extends 来继承；接口必须使用 implements 来实现接口。</li>
+<li>构造函数：抽象类可以有构造函数；接口不能有。</li>
+<li>main 方法：抽象类可以有 main 方法，并且我们能运行它；接口不能有 main 方法。</li>
+<li>实现数量：类可以实现很多个接口；但是只能继承一个抽象类。</li>
+<li>访问修饰符：接口中的方法默认使用 public 修饰；抽象类中的方法可以是任意访问修饰符。</li>
+</ul>
+<hr>
+<p><strong>14. java 中 IO 流分为几种？</strong></p>
+<p>按功能来分：输入流（input）、输出流（output）。</p>
+<p>按类型来分：字节流和字符流。</p>
+<p>字节流和字符流的区别是：字节流按 8 位传输以字节为单位输入输出数据，字符流按 16 位传输以字符为单位输入输出数据。</p>
+<hr>
+<p><strong>15. BIO、NIO、AIO 有什么区别？</strong></p>
+<ul>
+<li>BIO：Block IO 同步阻塞式 IO，就是我们平常使用的传统 IO，它的特点是模式简单使用方便，并发处理能力低。</li>
+<li>NIO：New IO 同步非阻塞 IO，是传统 IO 的升级，客户端和服务器端通过 Channel（通道）通讯，实现了多路复用。</li>
+<li>AIO：Asynchronous IO 是 NIO 的升级，也叫 NIO2，实现了异步非堵塞 IO ，异步 IO 的操作基于事件和回调机制。</li>
+</ul>
 
     </div>
 
@@ -287,8 +354,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/PaulGeorge123.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">
-			  <i class="fa fa-tag"></i> 消息队列</a>
+              <a href="/PaulGeorge123.github.io/tags/%E9%9D%A2%E8%AF%95%E5%BF%83%E5%BE%97%EF%BC%88Java%E5%9F%BA%E7%A1%80%EF%BC%89/" rel="tag">
+			  <i class="fa fa-tag"></i> 面试心得（Java基础）</a>
           </div>
 
         
@@ -297,12 +364,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2020/08/09/Android-Utila/" rel="prev" title="Adroid Util">
-      <i class="fa fa-chevron-left"></i> Adroid Util
+    <a href="/PaulGeorge123.github.io/2020/05/16/Thymeleaf/" rel="prev" title="Thymeleaf">
+      <i class="fa fa-chevron-left"></i> Thymeleaf
     </a></div>
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2020/10/14/Kafka/" rel="next" title="Kafka">
-      Kafka <i class="fa fa-chevron-right"></i>
+    <a href="/PaulGeorge123.github.io/2020/05/17/%E9%9A%8F%E5%BF%83%E6%97%A5%E8%AE%B0/" rel="next" title="随心日记">
+      随心日记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -363,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.</span> <span class="nav-text">RabbitMQ</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题"><span class="nav-number">1.</span> <span class="nav-text">面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-基础"><span class="nav-number">1.1.</span> <span class="nav-text">Java 基础</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
