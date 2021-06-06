@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="Android Knowledge(Start)JDK JDK是java语言的软件开发工具包，它包含了java的运行环境，工具集合，基础类库等内容  Android SDK 是谷歌提供的 Android 开发包，在开发Android 项目的时候 我们需要引入Android SDK 来使用Android 的相关API">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="e:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809163923064.png">
-<meta property="og:image" content="e:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809164747094.png">
-<meta property="og:image" content="e:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809164302505.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809163923164.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809164747194.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809164302555.png">
 <meta property="article:published_time" content="2020-08-09T13:20:18.000Z">
-<meta property="article:modified_time" content="2021-05-28T14:42:08.778Z">
+<meta property="article:modified_time" content="2021-06-06T16:14:55.450Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="e:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809163923064.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809163923164.png">
 
 <link rel="canonical" href="https://codeyg.top/2020/08/09/Android-Knowledge/">
 
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">32</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-28 22:42:08" itemprop="dateModified" datetime="2021-05-28T22:42:08+08:00">2021-05-28</time>
+                <time title="修改时间：2021-06-07 00:14:55" itemprop="dateModified" datetime="2021-06-07T00:14:55+08:00">2021-06-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,14 +220,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -247,71 +247,70 @@
 <hr>
 <a id="more"></a>
 
-<p><strong>分析你的第一个Android程序 根目录</strong></p>
-<p><img src="E:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809163923064.png" alt="image-20200809163923064"></p>
-<p><strong>1 . gradle和.idea</strong></p>
-<p><strong>这两个目录下放置的都是Android Studio自动生成的一些文件，我们无须关心，也不要去手动编辑。</strong></p>
-<p><strong>2 . app</strong></p>
-<p><strong>项目中的代码、资源等内容几乎都是放置在这个目录下的，我们后面的开发工作也基本都是在这个目录下进行的，待会儿还会对这个目录单独展开进行讲解。</strong></p>
-<p><img src="E:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809164747094.png" alt="image-20200809164747094"></p>
-<p><strong>3 . build</strong></p>
-<p><strong>这个目录你也不需要过多关心，它主要包含了一些在编译时自动生成的文件。</strong></p>
-<p><strong>4 . gradle 类似php的composer</strong></p>
-<p><strong>这个目录下包含了gradle wrapper的配置文件，使用gradle wrapper的方式不需要提前将gradle下载好，而是会自动根据本地的缓存情况决定是否需要联网下载gradle。Android Studio默认没有启用gradle wrapper的方式，如果需要打开，可以点击Android Studio导航栏→File→Settings→Build, Execution, Deployment→Gradle，进行配置更改。</strong></p>
-<p><strong>5 . .gitignore</strong></p>
-<p><strong>这个文件是用来将指定的目录或文件排除在版本控制之外的，关于版本控制我们将在第5章中开始正式的学习。</strong></p>
-<p><strong>6 . build.gradle</strong></p>
-<p><strong>这是项目全局的gradle构建脚本，通常这个文件中的内容是不需要修改的。稍后我们将会详细分析gradle构建脚本中的具体内容。</strong></p>
-<p><img src="E:%5CBolgs%5Chexo_blog%5Chexo%5Csource%5Cimg%5Cimage-20200809164302505.png" alt="image-20200809164302505"></p>
-<p><strong>7 . gradle.properties</strong></p>
-<p><strong>这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。</strong></p>
-<p><strong>8 . gradlew和gradlew.bat</strong></p>
-<p><strong>这两个文件是用来在命令行界面中执行gradle命令的，其中gradlew是在Linux或Mac系统中使用的，gradlew.bat是在Windows系统中使用的。</strong></p>
-<p><strong>9 . HelloWorld.iml</strong></p>
-<p><strong>iml文件是所有IntelliJ IDEA项目都会自动生成的一个文件（Android Studio是基于IntelliJ IDEA开发的），用于标识这是一个IntelliJ IDEA项目，我们不需要修改这个文件中的任何内容。</strong></p>
-<p><strong>10 . local.properties</strong></p>
-<p><strong>这个文件用于指定本机中的Android SDK路径，通常内容都是自动生成的，我们并不需要修改。除非你本机中的Android SDK位置发生了变化，那么就将这个文件中的路径改成新的位置即可。</strong></p>
-<p><strong>11 . settings.gradle</strong></p>
-<p><strong>这个文件用于指定项目中所有引入的模块。由于HelloWorld项目中就只有一个app模块，因此该文件中也就只引入了app这一个模块。通常情况下模块的引入都是自动完成的，需要我们手动去修改这个文件的场景可能比较少。</strong></p>
+<p>分析你的第一个Android程序 根目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809163923164.png" alt=""></p>
+<p>1 . gradle和.idea</p>
+<p>这两个目录下放置的都是Android Studio自动生成的一些文件，我们无须关心，也不要去手动编辑。</p>
+<p>2 . app</p>
+<p>项目中的代码、资源等内容几乎都是放置在这个目录下的，我们后面的开发工作也基本都是在这个目录下进行的，待会儿还会对这个目录单独展开进行讲解。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809164747194.png" alt=""></p>
+<p>3 . build</p>
+<p>这个目录你也不需要过多关心，它主要包含了一些在编译时自动生成的文件。</p>
+<p>4 . gradle 类似php的composer</p>
+<p>这个目录下包含了gradle wrapper的配置文件，使用gradle wrapper的方式不需要提前将gradle下载好，而是会自动根据本地的缓存情况决定是否需要联网下载gradle。Android Studio默认没有启用gradle wrapper的方式，如果需要打开，可以点击Android Studio导航栏→File→Settings→Build, Execution, Deployment→Gradle，进行配置更改。</p>
+<p>5 . .gitignore</p>
+<p>这个文件是用来将指定的目录或文件排除在版本控制之外的，关于版本控制我们将在第5章中开始正式的学习。</p>
+<p>6 . build.gradle</p>
+<p>这是项目全局的gradle构建脚本，通常这个文件中的内容是不需要修改的。稍后我们将会详细分析gradle构建脚本中的具体内容。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809164302555.png" alt=""></p>
+<p>7 . gradle.properties</p>
+<p>这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。</p>
+<p>8 . gradlew和gradlew.bat</p>
+<p>这两个文件是用来在命令行界面中执行gradle命令的，其中gradlew是在Linux或Mac系统中使用的，gradlew.bat是在Windows系统中使用的。</p>
+<p>9 . HelloWorld.iml</p>
+<p>iml文件是所有IntelliJ IDEA项目都会自动生成的一个文件（Android Studio是基于IntelliJ IDEA开发的），用于标识这是一个IntelliJ IDEA项目，我们不需要修改这个文件中的任何内容。</p>
+<p>10 . local.properties</p>
+<p>这个文件用于指定本机中的Android SDK路径，通常内容都是自动生成的，我们并不需要修改。除非你本机中的Android SDK位置发生了变化，那么就将这个文件中的路径改成新的位置即可。</p>
+<p>11 . settings.gradle</p>
+<p>这个文件用于指定项目中所有引入的模块。由于HelloWorld项目中就只有一个app模块，因此该文件中也就只引入了app这一个模块。通常情况下模块的引入都是自动完成的，需要我们手动去修改这个文件的场景可能比较少。</p>
 <hr>
-<p><strong>app目录</strong></p>
-<p><strong>1 . build</strong></p>
-<p><strong>这个目录和外层的build目录类似，主要也是包含了一些在编译时自动生成的文件，不过它里面的内容会更多更杂，我们不需要过多关心。</strong></p>
-<p><strong>2 . libs</strong></p>
-<p><strong>如果你的项目中使用到了第三方jar包，就需要把这些jar包都放在libs目录下，放在这个目录下的jar包都会被自动添加到构建路径里去。</strong></p>
-<p><strong>3 . androidTest</strong></p>
-<p><strong>此处是用来编写Android Test测试用例的，可以对项目进行一些自动化测试。</strong></p>
-<p><strong>4 . java</strong></p>
-<p><strong>毫无疑问，java目录是放置我们所有Java代码的地方，展开该目录，你将看到我们刚才创建的HelloWorldActivity文件就在里面。</strong></p>
-<p><strong>5 . res</strong></p>
-<p><strong>这个目录下的内容就有点多了。简单点说，就是你在项目中使用到的所有图片、布局、字符串等资源都要存放在这个目录下。当然这个目录下还有很多子目录，</strong></p>
-<p><strong>图片放在drawable目录下，</strong></p>
-<p><strong>布局放在layout目录下，</strong></p>
-<p><strong>字符串放在values目录下，</strong></p>
-<p><strong>所以你不用担心会把整个res目录弄得乱糟糟的。</strong></p>
-<p><strong>6 . AndroidManifest.xml</strong></p>
-<p><strong>这是你整个Android项目的配置文件，你在程序中定义的所有四大组件都需要在这个文件里注册，另外还可以在这个文件中给应用程序添加权限声明。由于这个文件以后会经常用到，我们用到的时候再做详细说明。</strong></p>
+<p>app目录</p>
+<p>1 . build</p>
+<p>这个目录和外层的build目录类似，主要也是包含了一些在编译时自动生成的文件，不过它里面的内容会更多更杂，我们不需要过多关心。</p>
+<p>2 . libs</p>
+<p>如果你的项目中使用到了第三方jar包，就需要把这些jar包都放在libs目录下，放在这个目录下的jar包都会被自动添加到构建路径里去。</p>
+<p>3 . androidTest</p>
+<p>此处是用来编写Android Test测试用例的，可以对项目进行一些自动化测试。</p>
+<p>4 . java</p>
+<p>毫无疑问，java目录是放置我们所有Java代码的地方，展开该目录，你将看到我们刚才创建的HelloWorldActivity文件就在里面。</p>
+<p>5 . res</p>
+<p>这个目录下的内容就有点多了。简单点说，就是你在项目中使用到的所有图片、布局、字符串等资源都要存放在这个目录下。当然这个目录下还有很多子目录，</p>
+<p>图片放在drawable目录下，</p>
+<p>布局放在layout目录下，</p>
+<p>字符串放在values目录下，</p>
+<p>所以你不用担心会把整个res目录弄得乱糟糟的。</p>
+<p>6 . AndroidManifest.xml</p>
+<p>这是你整个Android项目的配置文件，你在程序中定义的所有四大组件都需要在这个文件里注册，另外还可以在这个文件中给应用程序添加权限声明。由于这个文件以后会经常用到，我们用到的时候再做详细说明。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">package</span>=<span class="string">"com.ase"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:roundIcon</span>=<span class="string">"@mipmap/ic_launcher_round"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>7 . test</strong></p>
-<p><strong>此处是用来编写Unit Test测试用例的，是对项目进行自动化测试的另一种方式。</strong></p>
-<p><strong>8 . .gitignore</strong></p>
-<p><strong>这个文件用于将app模块内的指定的目录或文件排除在版本控制之外，作用和外层的.gitignore文件类似。</strong></p>
-<p><strong>9 . app.iml</strong></p>
-<p><strong>IntelliJ IDEA项目自动生成的文件，我们不需要关心或修改这个文件中的内容。</strong></p>
-<p><strong>10 . build.gradle</strong></p>
-<p><strong>这是app模块的gradle构建脚本，这个文件中会指定很多项目构建相关的配置，我们稍后将会详细分析gradle构建脚本中的具体内容。</strong></p>
+<p>7 . test</p>
+<p>此处是用来编写Unit Test测试用例的，是对项目进行自动化测试的另一种方式。</p>
+<p>8 . .gitignore</p>
+<p>这个文件用于将app模块内的指定的目录或文件排除在版本控制之外，作用和外层的.gitignore文件类似。</p>
+<p>9 . app.iml</p>
+<p>IntelliJ IDEA项目自动生成的文件，我们不需要关心或修改这个文件中的内容。</p>
+<p>10 . build.gradle</p>
+<p>这是app模块的gradle构建脚本，这个文件中会指定很多项目构建相关的配置，我们稍后将会详细分析gradle构建脚本中的具体内容。</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">30</span></span><br><span class="line">    buildToolsVersion <span class="string">"30.0.1"</span></span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.ase"</span></span><br><span class="line">        minSdkVersion <span class="number">17</span></span><br><span class="line">        targetSdkVersion <span class="number">30</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(<span class="string">dir:</span> <span class="string">"libs"</span>, <span class="string">include:</span> [<span class="string">"*.jar"</span>])</span><br><span class="line">    implementation <span class="string">'androidx.appcompat:appcompat:1.1.0'</span></span><br><span class="line">    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.1'</span></span><br><span class="line">    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.2.0'</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>第一行应用了一个插件，一般有两种值可选：<code>com.android.application</code>表示这是一个应用程序模块，<code>com.android.library</code>表示这是一个库模块。应用程序模块和库模块的最大区别在于，一个是可以直接运行的，一个只能作为代码库依附于别的应用程序模块来运行。</strong></p>
-<p><strong>接下来是一个大的android闭包，在这个闭包中我们可以配置项目构建的各种属性。其中，</strong></p>
-<p><strong><code>compileSdkVersion</code></strong></p>
-<p><strong>用于指定项目的编译版本，这里指定成30表示使用Android 7.0系统的<code>SDK</code>编译。</strong></p>
-<p><strong><code>buildToolsVersion</code></strong></p>
-<p><strong>用于指定项目构建工具的版本，目前最新的版本就是30.0.1，</strong></p>
-<p><strong>如果有更新的版本时，Android Studio会进行提示。</strong></p>
-<p><strong>然后我们看到，这里在android闭包中又嵌套了一个<code>defaultConfig</code>闭包，<code>defaultConfig</code>闭包中可以对项目的更多细节进行配置。其中，<code>applicationId</code>用于指定项目的包名，前面我们在创建项目的时候其实已经指定过包名了，如果你想在后面对其进行修改，那么就是在这里修改的。<code>minSdkVersion</code>用于指定项目最低兼容的Android系统版本，这里指定成15表示最低兼容到Android 4.0系统。<code>targetSdkVersion</code>指定的值表示你在该目标版本上已经做过了充分的测试，系统将会为你的应用程序启用一些最新的功能和特性。比如说Android 6.0系统中引入了运行时权限这个功能，如果你将<code>targetSdkVersion</code>指定成23或者更高，那么系统就会为你的程序启用运行时权限功能，而如果你将<code>targetSdkVersion</code>指定成22，那么就说明你的程序最高只在Android 5.1系统上做过充分的测试，Android 6.0系统中引入的新功能自然就不会启用了。剩下的两个属性都比较简单，<code>versionCode</code>用于指定项目的版本号，<code>versionName</code>用于指定项目的版本名，这两个属性在生成安装文件的时候非常重要，我们在后面都会学到。</strong></p>
-<p><strong>这样整个android闭包中的内容就都分析完了，接下来还剩一个dependencies闭包。这个闭包的功能非常强大，它可以指定当前项目所有的依赖关系。通常Android Studio项目一共有3种依赖方式：本地依赖、库依赖和远程依赖。本地依赖可以对本地的Jar包或目录添加依赖关系，库依赖可以对项目中的库模块添加依赖关系，远程依赖则可以对<code>jcenter</code>库上的开源项目添加依赖关系。观察一下dependencies闭包中的配置，第一行的implementation<code>fileTree</code>就是一个本地依赖声明，它表示将libs目录下所有.jar后缀的文件都添加到项目的构建路径当中。而第二行的implementation则是远程依赖声明，<code>com.android.support:appcompat-v7:24.2.1</code>就是一个标准的远程依赖库格式，其中<code>com.android.support</code>是域名部分，用于和其他公司的库做区分；<code>appcompat-v7</code>是组名称，用于和同一个公司中不同的库做区分；24.2.1是版本号，用于和同一个库不同的版本做区分。加上这句声明后，<code>Gradle</code>在构建项目时会首先检查一下本地是否已经有这个库的缓存，如果没有的话则会去自动联网下载，然后再添加到项目的构建路径当中。至于库依赖声明这里没有用到，它的基本格式是compile project后面加上要依赖的库名称，比如说有一个库模块的名字叫helper，那么添加这个库的依赖关系只需要加入compile project(‘:helper’)这句声明即可。另外剩下的一句<code>testCompile</code>是用于声明测试用例库的，这个我们暂时用不到，先忽略它就可以了。</strong></p>
+<p>第一行应用了一个插件，一般有两种值可选：<code>com.android.application</code>表示这是一个应用程序模块，<code>com.android.library</code>表示这是一个库模块。应用程序模块和库模块的最大区别在于，一个是可以直接运行的，一个只能作为代码库依附于别的应用程序模块来运行。</p>
+<p>接下来是一个大的android闭包，在这个闭包中我们可以配置项目构建的各种属性。其中，</p>
+<p><code>compileSdkVersion</code></p>
+<p>用于指定项目的编译版本，这里指定成30表示使用Android 7.0系统的<code>SDK</code>编译。</p>
+<p><code>buildToolsVersion</code></p>
+<p>用于指定项目构建工具的版本，目前最新的版本就是30.0.1，</p>
+<p>如果有更新的版本时，Android Studio会进行提示。</p>
+<p>然后我们看到，这里在android闭包中又嵌套了一个<code>defaultConfig</code>闭包，<code>defaultConfig</code>闭包中可以对项目的更多细节进行配置。</p>
 
     </div>
 
@@ -424,7 +423,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
