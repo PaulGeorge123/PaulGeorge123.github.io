@@ -125,17 +125,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">23</span></a>
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">25</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">12</span></a>
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">38</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">41</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -165,6 +165,353 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/09/%E6%8E%92%E5%BA%8F--%E5%A0%86%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/PaulGeorge123.github.io/2021/06/09/%E6%8E%92%E5%BA%8F--%E5%A0%86%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">每日一练--堆排序</a>
+        </h2>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-09 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-09T21:58:58+08:00">2021-06-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-10 02:06:41" itemprop="dateModified" datetime="2021-06-10T02:06:41+08:00">2021-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="堆排序（Heap-Sort）"><a href="#堆排序（Heap-Sort）" class="headerlink" title="堆排序（Heap Sort）"></a>堆排序（Heap Sort）</h2><blockquote>
+<p>每天一篇排序算法（Java版本）</p>
+</blockquote>
+<p><strong>十种常见的排序算法：冒泡排序、选择排序、插入排序、归并排序、快速排序、希尔排序、堆排序、计数排序、桶排序、基数排序。</strong></p>
+<p><strong>本篇着重介绍一下堆排序：</strong></p>
+<hr>
+<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p><strong>堆排序：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(nlogn)</code><ul>
+<li>初始化建堆：<code>O(n)</code></li>
+<li>排序重建堆: <code>nlog(n)</code></li>
+</ul>
+</li>
+<li>空间复杂度：<code>O(1)</code></li>
+<li>稳定性：<font color=#FF0000>不稳定</font></li>
+</ul>
+<h4 id="排序思想"><a href="#排序思想" class="headerlink" title="排序思想"></a>排序思想</h4><p>堆是一种特殊的完全二叉树（complete binary tree）。完全二叉树的一个“优秀”的性质是，除了最底层之外，每一层都是满的，这使得堆可以利用数组来表示，每一个结点对应数组中的一个元素。利用大顶堆(小顶堆)堆顶记录的是最大关键字(最小关键字)这一特性，使得每次从无序中选择最大记录(最小记录)变得简单。</p>
+<p><a href="https://www.runoob.com/wp-content/uploads/2019/03/heapSort.gif" target="_blank" rel="noopener">堆排序动图演示1</a></p>
+<p><a href="https://www.runoob.com/wp-content/uploads/2019/03/Sorting_heapsort_anim.gif" target="_blank" rel="noopener">堆排序动图演示2</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/PaulGeorge123.github.io/2021/06/09/%E6%8E%92%E5%BA%8F--%E5%A0%86%E6%8E%92%E5%BA%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/08/%E6%8E%92%E5%BA%8F--%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/PaulGeorge123.github.io/2021/06/08/%E6%8E%92%E5%BA%8F--%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">每日一练--选择排序</a>
+        </h2>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-08 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-08T21:58:58+08:00">2021-06-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-09 02:12:12" itemprop="dateModified" datetime="2021-06-09T02:12:12+08:00">2021-06-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="选择排序（Selection-Sort）"><a href="#选择排序（Selection-Sort）" class="headerlink" title="选择排序（Selection Sort）"></a>选择排序（Selection Sort）</h2><blockquote>
+<p>每天一篇排序算法（Java版本）</p>
+</blockquote>
+<p><strong>十种常见的排序算法：冒泡排序、选择排序、插入排序、归并排序、快速排序、希尔排序、堆排序、计数排序、桶排序、基数排序。</strong></p>
+<p><strong>本篇着重介绍一下选择排序：</strong></p>
+<hr>
+<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p><strong>选择排序：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(n²)</code></li>
+<li>空间复杂度：<code>O(1)</code></li>
+<li>稳定性：<font color=#FF0000>不稳定</font></li>
+</ul>
+<h4 id="排序思想"><a href="#排序思想" class="headerlink" title="排序思想"></a>排序思想</h4><p>选择排序是一种简单直观的排序算法，它也是一种交换排序算法，和冒泡排序有一定的相似度，可以认为选择排序是冒泡排序的一种改进。</p>
+<p><a href="https://www.runoob.com/wp-content/uploads/2019/03/selectionSort.gif" target="_blank" rel="noopener">选择排序动图演示</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/PaulGeorge123.github.io/2021/06/08/%E6%8E%92%E5%BA%8F--%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/07/%E6%8E%92%E5%BA%8F--%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/PaulGeorge123.github.io/2021/06/07/%E6%8E%92%E5%BA%8F--%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">每日一练--希尔排序</a>
+        </h2>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-07 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-07T21:58:58+08:00">2021-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-09 02:12:20" itemprop="dateModified" datetime="2021-06-09T02:12:20+08:00">2021-06-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h2><blockquote>
+<p>每天一篇排序算法（Java版本）</p>
+</blockquote>
+<p><strong>十种常见的排序算法：冒泡排序、选择排序、插入排序、归并排序、快速排序、希尔排序、堆排序、计数排序、桶排序、基数排序。</strong></p>
+<p><strong>本篇着重介绍一下希尔排序：</strong></p>
+<hr>
+<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p><strong>希尔排序：</strong></p>
+<ul>
+<li>时间复杂度：当增量（<strong>gap</strong> ）为1时，希尔排序退化成了直接插入排序，此时的时间复杂度为<code>O(N²)</code>，而Hibbard增量的希尔排序的时间复杂度为<code>O(N3/2)</code>。</li>
+<li>空间复杂度：<code>O(1)</code></li>
+<li>稳定性：<font color=#FF0000>不稳定</font></li>
+</ul>
+<h4 id="排序思想"><a href="#排序思想" class="headerlink" title="排序思想"></a>排序思想</h4><p>插入排序是效率低下是因为其移动元素每次只能移动一位，当排序元素的规模较大时，需要将元素一位一位地从一端移动到另一端。希尔排序正是基于此原理来优化、提高插入排序的效率。通过指定步长step，将原数组分为step个互相独立子数组，然后通过插入排序对这些子数组分别进行排序(即分组排序)，这时我们称其为<strong>step有序数组</strong>。当step最终为<strong>1</strong>做最后一次step有序时，就是我们平常所熟悉的插入排序了，由于该数组已经多次被较大的step进行分组排序了，此时只需要较少次数的元素移动就可以实现整个数组全局有序。</p>
+<p><a href="https://pic4.zhimg.com/v2-3c7ddb59df2d21b287e42a7b908409cb_b.webp" target="_blank" rel="noopener">希尔排序动图演示</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/PaulGeorge123.github.io/2021/06/07/%E6%8E%92%E5%BA%8F--%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+  
+
       
   
   
@@ -393,344 +740,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/04/%E6%8E%92%E5%BA%8F--%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
-      <meta itemprop="name" content="白日梦想家">
-      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇航员不会飞">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/PaulGeorge123.github.io/2021/06/04/%E6%8E%92%E5%BA%8F--%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">每日一练--冒泡排序</a>
-        </h2>
-
-        <div class="post-meta">
-		  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-04 22:58:58" itemprop="dateCreated datePublished" datetime="2021-06-04T22:58:58+08:00">2021-06-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-09 02:12:32" itemprop="dateModified" datetime="2021-06-09T02:12:32+08:00">2021-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/PaulGeorge123.github.io/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h2><blockquote>
-<p>每天一篇排序算法（Java版）</p>
-</blockquote>
-<p><strong>十种常见的排序算法：冒泡排序、选择排序、插入排序、归并排序、快速排序、希尔排序、堆排序、计数排序、桶排序、基数排序。</strong></p>
-<p><strong>本篇着重介绍一下冒泡排序：</strong></p>
-<hr>
-<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p><strong>快速排序：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(n²)</code></li>
-<li>空间复杂度：<code>O(1)</code></li>
-<li>稳定性：<font color=#008000>稳定</font></li>
-</ul>
-<h4 id="排序思想"><a href="#排序思想" class="headerlink" title="排序思想"></a>排序思想</h4><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。可以理解为<strong>每次都能够将最大的数字找到</strong>。</p>
-<p><a href="https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif" target="_blank" rel="noopener">冒泡排序动图演示</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/PaulGeorge123.github.io/2021/06/04/%E6%8E%92%E5%BA%8F--%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-	  
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/05/29/%E9%9D%A2%E8%AF%95%E9%A2%98ing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
-      <meta itemprop="name" content="白日梦想家">
-      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇航员不会飞">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/PaulGeorge123.github.io/2021/05/29/%E9%9D%A2%E8%AF%95%E9%A2%98ing/" class="post-title-link" itemprop="url">面试题（Java基础）</a>
-        </h2>
-
-        <div class="post-meta">
-		  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-29 11:58:58" itemprop="dateCreated datePublished" datetime="2021-05-29T11:58:58+08:00">2021-05-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-09 02:45:28" itemprop="dateModified" datetime="2021-06-09T02:45:28+08:00">2021-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/PaulGeorge123.github.io/categories/%E5%A5%8B%E6%96%97%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">奋斗篇</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="Java-基础"><a href="#Java-基础" class="headerlink" title="Java 基础"></a>Java 基础</h3><p><strong>1. JDK 和 JRE 有什么区别？</strong></p>
-<ul>
-<li>JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。</li>
-<li>JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。</li>
-</ul>
-<p>具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac，还包含了很多 java 程序调试和分析的工具。简单来说：如果你需要运行 java 程序，只需安装 JRE 就可以了，如果你需要编写 java 程序，需要安装 JDK。</p>
-<hr>
-<p><strong>2. == 和 equals 的区别是什么？</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/PaulGeorge123.github.io/2021/05/29/%E9%9D%A2%E8%AF%95%E9%A2%98ing/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-	  
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/05/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
-      <meta itemprop="name" content="白日梦想家">
-      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇航员不会飞">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/PaulGeorge123.github.io/2021/05/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">每日一练--单例模式</a>
-        </h2>
-
-        <div class="post-meta">
-		  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-12 11:58:58" itemprop="dateCreated datePublished" datetime="2021-05-12T11:58:58+08:00">2021-05-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-09 02:13:11" itemprop="dateModified" datetime="2021-06-09T02:13:11+08:00">2021-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/PaulGeorge123.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><blockquote>
-<p>每天一篇重点设计模式（Java版）</p>
-</blockquote>
-<p><strong>总体来说设计模式分为三大类：</strong></p>
-<p><strong>创建型模式（5种）</strong>：<font color=#008000>工厂方法模式</font>、<font color=#008000>抽象工厂模式</font>、<font color=#008000>单例模式</font>、建造者模式、原型模式</p>
-<p><strong>结构型模式（7种）</strong>：<font color=#0000FF>适配器模式</font>、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式</p>
-<p><strong>行为型模式（17种）</strong>：<font color=#FF8C00>观察者模式</font>、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</p>
-<p><strong>本篇着重介绍一下单例模式：</strong></p>
-<hr>
-<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p><strong>设计模式的六大原则</strong></p>
-<p>开闭原则、单一原则、 里式替换、依赖倒置、接口隔离、迪米特法则</p>
-<hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/PaulGeorge123.github.io/2021/05/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-	  
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/PaulGeorge123.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/PaulGeorge123.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/PaulGeorge123.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/PaulGeorge123.github.io/page/8/">8</a><a class="extend next" rel="next" href="/PaulGeorge123.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/PaulGeorge123.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/PaulGeorge123.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/PaulGeorge123.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/PaulGeorge123.github.io/page/9/">9</a><a class="extend next" rel="next" href="/PaulGeorge123.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -798,20 +811,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/PaulGeorge123.github.io/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/PaulGeorge123.github.io/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
