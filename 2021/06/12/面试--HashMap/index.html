@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/PaulGeorge123.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/PaulGeorge123.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/PaulGeorge123.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/PaulGeorge123.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/PaulGeorge123.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/PaulGeorge123.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="HashMap 每天一篇Java小知识  本篇着重介绍一下 HashMap：  写在前面众所周知，HashMap 是一个用于存储 Key-Value 键值对的集合，每一个键值对也叫做 Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是 HashMap 的主干。 画个重点： Hash的公式 —&gt;  index &#x3D; HashCode（Key） &amp; （Length">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日一面--HashMap">
+<meta property="og:url" content="https://codeyg.top/2021/06/12/%E9%9D%A2%E8%AF%95--HashMap/index.html">
+<meta property="og:site_name" content="宇航员不会飞">
+<meta property="og:description" content="HashMap 每天一篇Java小知识  本篇着重介绍一下 HashMap：  写在前面众所周知，HashMap 是一个用于存储 Key-Value 键值对的集合，每一个键值对也叫做 Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是 HashMap 的主干。 画个重点： Hash的公式 —&gt;  index &#x3D; HashCode（Key） &amp; （Length">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614000934162.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-10-29.609Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T17-26-02.319Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T17-26-37.073Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-02-40.117Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/carbon_node6-14.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-29-38.438Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-30-05.405Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-41-18.300Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-47-33.913Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-49-53.769Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T19-42-46.501Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614031720500.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614031914998.png">
+<meta property="article:published_time" content="2021-06-12T13:58:58.000Z">
+<meta property="article:modified_time" content="2021-06-13T19:54:59.793Z">
+<meta property="article:author" content="白日梦想家">
+<meta property="article:tag" content="进阶">
+<meta property="article:tag" content="HashMap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614000934162.png">
+
+<link rel="canonical" href="https://codeyg.top/2021/06/12/%E9%9D%A2%E8%AF%95--HashMap/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每日一面--HashMap | 宇航员不会飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/PaulGeorge123.github.io/atom.xml" title="宇航员不会飞" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/PaulGeorge123.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇航员不会飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">里面的人想出去，外面的人想进来</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/PaulGeorge123.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">43</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/PaulGeorge123.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于作者</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/PaulGeorge123" class="github-corner" title="欢迎来到我的GitHub" aria-label="欢迎来到我的GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/12/%E9%9D%A2%E8%AF%95--HashMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每日一面--HashMap
+        </h1>
+
+        <div class="post-meta">
+		  
+		    <i class="fa fa-thumb-tack"></i>
+		    <font color=7D26CD>置顶</font>
+		    <span class="post-meta-divider">|</span>
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-12 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-12T21:58:58+08:00">2021-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-14 03:54:59" itemprop="dateModified" datetime="2021-06-14T03:54:59+08:00">2021-06-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><blockquote>
+<p>每天一篇Java小知识</p>
+</blockquote>
+<p><strong>本篇着重介绍一下 HashMap：</strong></p>
+<hr>
+<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>众所周知，HashMap 是一个用于存储 <strong>Key-Value</strong> 键值对的集合，每一个键值对也叫做 <strong>Entry</strong>。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是 HashMap 的主干。</p>
+<p><strong>画个重点：</strong></p>
+<p><font color=#008000><strong>Hash的公式 —&gt;  index = HashCode（Key） &amp; （Length - 1）</strong></font></p>
+<p><strong>HashMap 的数据结构两种：数组 + 链表</strong></p>
+<ul>
+<li>数组：查询速度快，可以根据索引查询；但插入和删除比较困难；</li>
+<li>链表：查询速度慢，需要遍历整个链表，但插入和删除操作比较容易;</li>
+<li>HashMap 是数组和链表组成的，数据结构中又叫“链表散列”;</li>
+</ul>
+<a id="more"></a>
+
+
+
+<h4 id="HashMap特点"><a href="#HashMap特点" class="headerlink" title="HashMap特点"></a>HashMap特点</h4><ol>
+<li>快速存储 ：比如当我们对 hashmap 进行 get 和 put 的时候速度非常快</li>
+<li>快速查找（时间复杂度o(1)）当我们通过key去get一个 value 的时候时间复杂度非常的低，<strong>效率非常高</strong></li>
+<li>可伸缩：(1) 数组扩容，边长；(2) 单线列表如果长度超过 <strong>8</strong> 的话会变成红黑树</li>
+</ol>
+<h4 id="HashMap的扩容原理"><a href="#HashMap的扩容原理" class="headerlink" title="HashMap的扩容原理"></a>HashMap的扩容原理</h4><p>HashMap 数组每一个元素的初始值都是 Null；</p>
+<p>对于 HashMap，我们最常使用的是两个方法：<strong>Get</strong> 和 <strong>Put</strong> （获取和添加）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614000934162.png" alt=""></p>
+<h5 id="1-Put方法的原理"><a href="#1-Put方法的原理" class="headerlink" title="1.Put方法的原理"></a>1.Put方法的原理</h5><p>调用 Put 方法的时候发生了什么呢？</p>
+<p>比如调用 hashMap.put(“apple”, 0) ，插入一个 Key 为 “apple” 的元素。这时候我们需要利用一个哈希函数来确定Entry的插入位置（index）：</p>
+<p><strong>index = Hash（“apple”）</strong></p>
+<p>假定最后计算出的index是2，那么结果如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-10-29.609Z.png" alt=""></p>
+<p>但是，因为HashMap的长度是有限的，当插入的 Entry 越来越多时，再完美的Hash函数也难免会出现 <strong>index冲突</strong>的情况。比如下面这样：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T17-26-02.319Z.png" alt=""></p>
+<p>HashMap数组的每一个元素不止是一个 <strong>Entry 对象</strong>，也是一个链表的<strong>头节点</strong>。每一个Entry对象通过 <strong>Next指针</strong>指向它的下一个 <strong>Entry节点</strong>。当新来的 Entry 映射到冲突的数组位置时，只需要插入到对应的链表即可：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T17-26-37.073Z.png" alt=""></p>
+<blockquote>
+<p>当前采用的是 jdk 7 默认方法，也就是头插法</p>
+</blockquote>
+<h5 id="2-Get方法的原理"><a href="#2-Get方法的原理" class="headerlink" title="2.Get方法的原理"></a>2.Get方法的原理</h5><p><font color=#008000>使用Get方法根据Key来查找Value的时候，发生了什么呢？</font></p>
+<p>首先会把输入的Key做一次Hash映射，得到对应的 index：</p>
+<p><strong>index = Hash（“apple”）</strong>  <strong>=&gt;</strong>   <strong>index = 2</strong></p>
+<p>由于刚才所说的 Hash 冲突，同一个位置有可能匹配到多个 Entry，这时候就需要顺着对应链表的头节点，一个一个向下来查找。假设我们要查找的 Key 是 <strong>“apple”</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-02-40.117Z.png" alt=""></p>
+<ul>
+<li><p>第一步，我们查看的是头节点 Entry6，<strong>Entry6 ** 的 Key 是 **banana</strong>，显然不是我们要找的结果。</p>
+</li>
+<li><p>第二步，我们查看的是 Next 节点 Entry1，<strong>Entry1</strong> 的 Key 是 <strong>apple</strong>，正是我们要找的结果。</p>
+</li>
+<li><p>之所以把 Entry6 放在头节点，是因为 HashMap 的发明者认为，<strong>后插入的 Entry 被查找的可能性更大</strong>。</p>
+</li>
+</ul>
+<hr>
+<h5 id="HashMap-尾插法"><a href="#HashMap-尾插法" class="headerlink" title="HashMap 尾插法"></a>HashMap 尾插法</h5><p>上面提到过 hashmap 添加采用的是 jdk 7 默认方法（头插法），那一定时有原因的呀！</p>
+<p>当来到 jdk 8 的时候改成尾插法了，why？</p>
+<p><font color=#008000>来看看Node的源码</font></p>
+<p>每一个节点都会保存自身的 <strong>hash</strong>、<strong>key</strong>、<strong>value</strong> 以及下个<strong>Next</strong>（节点）</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/carbon_node6-14.png" style="zoom: 50%;" />
+
+
+
+<p><strong>java8之前是头插法</strong>，就是说新来的值会取代原有的值，原有的值就顺推到链表中去，就像上面的例子一样，因为写这个代码的作者认为后来的值被查找的可能性更大一点，提升查找的效率。</p>
+<p>但是，<strong>在java8之后，都是所用尾部插入了。</strong></p>
+<p><font color=#008000>为啥改为尾部插入呢？</font></p>
+<p>答：数组容量是有限的，数据多次插入的，到达一定的数量就会进行扩容，也就是resize。</p>
+<p><font color=#008000>什么时候resize呢？</font></p>
+<p>答：</p>
+<ol>
+<li>有两个因素：</li>
+</ol>
+<ul>
+<li>Capacity：HashMap当前长度 【list.length()】</li>
+<li>LoadFactor：负载因子，默认值0.75f 【3/4】</li>
+</ul>
+<blockquote>
+<p>比如当前的容量大小为100，当你存进第76个的时候，判断发现需要进行resize了，那就进行扩容</p>
+</blockquote>
+<ol start="2">
+<li>分为两步：</li>
+</ol>
+<ul>
+<li>扩容：创建一个新的Entry空数组，长度是原数组的2倍。</li>
+<li>ReHash：遍历原Entry数组，把所有的Entry重新Hash到新数组。</li>
+</ul>
+<p><font color=#008000>为什么不直接复制过去？</font></p>
+<p>答：是因为长度扩大以后，Hash的规则也随之改变。</p>
+<p>（原来长度（Length）是8你位运算出来的值是2 ，新的长度是16你位运算出来的值明显不一样了）</p>
+<blockquote>
+<p>Hash的公式 —&gt;  index = HashCode（Key） &amp; （Length - 1）</p>
+</blockquote>
+<p>扩容前：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-29-38.438Z.png" alt=""></p>
+<p>扩容后： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-30-05.405Z.png" alt=""></p>
+<p>现在我们要在容量为2的容器里面<strong>用不同线程</strong>插入 A，B，C</p>
+<p>我们可以看到链表的指向 A =&gt; B =&gt; C</p>
+<p><strong>Tip：A的下一个指针是指向B的</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-41-18.300Z.png" style="zoom:80%;" />
+
+<p>因为resize的赋值方式，也就是使用了<strong>单链表的头插入方式，同一位置上新元素总会被放在链表的头部位置</strong>，在旧数组中同一条Entry链上的元素，通过重新计算索引位置后，有可能被放到了新数组的不同位置上。</p>
+<p>所以：可能会出现 B 的下一个指针指向了 A</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-47-33.913Z.png" style="zoom:80%;" />
+
+<p>一旦几个线程都调整完成，就可能出现<strong>环形链表</strong>！</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T18-49-53.769Z.png" style="zoom:80%;" />
+
+<p>这个时候去取值,会出现 <strong>Infinite Loop</strong></p>
+<hr>
+<p>来到 jdk 8 链表有红黑树代码已经多了很多if else的逻辑判断了，红黑树的引入巧妙的将原本 O(n) 的时间复杂度降低到了 O(logn)。</p>
+<p>好处：如果<strong>使用尾插</strong>，在扩容时会保持链表元素原本的顺序，就不会出现链表成环的问题了。</p>
+<p>就是说原本是 A =&gt; B ，在扩容后那个链表还是 A =&gt; B </p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-13T19-42-46.501Z.png" style="zoom: 80%;" />
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li><p>Java 7 在多线程操作 HashMap 时可能引起死循环，原因是扩容转移后前后链表顺序倒置，在转移过程中修改了原来链表中节点的引用关系。</p>
+</li>
+<li><p>Java 8 在同样的前提下并不会引起死循环，原因是扩容转移后前后链表顺序不变，保持之前节点的引用关系。</p>
+</li>
+</ul>
+<p>即使如此 Java 8 也是不建议把 HashMap 用在多线程中。</p>
+<p>因为无法保证上一秒 put 的值，下一秒 get 的时候还是原值，所以线程安全还是无法保证。</p>
+<hr>
+<h5 id="提问"><a href="#提问" class="headerlink" title="提问"></a>提问</h5><p><font color=#008000>HashMap的默认初始化长度是多少？</font></p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614031720500.png" alt=""></p>
+<p>走，源码中找答案去</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20210614031914998.png" alt=""></p>
+<p><strong>在 JDK1.8 的 236 行有 1&lt;&lt;4 就是 16</strong> （逻辑左移 4 位）</p>
+<p>现在回过头来再看一下，重写 equals 方法的时候需要重写 hashCode 方法</p>
+<ul>
+<li>如果两个对象的 hash 值相同，那么这两个对象并不一定是相同；</li>
+<li>如果两个对象的相同，那么这两个对象的 hash 值一定是相同；</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束，感谢您的阅读-------------</div>
+    
+</div>
+
+	  
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/PaulGeorge123.github.io/tags/%E8%BF%9B%E9%98%B6/" rel="tag">
+			  <i class="fa fa-tag"></i> 进阶</a>
+              <a href="/PaulGeorge123.github.io/tags/HashMap/" rel="tag">
+			  <i class="fa fa-tag"></i> HashMap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/PaulGeorge123.github.io/2021/06/11/%E6%8E%92%E5%BA%8F--%E6%A1%B6%E6%8E%92%E5%BA%8F/" rel="prev" title="每日一练--桶排序">
+      <i class="fa fa-chevron-left"></i> 每日一练--桶排序
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/PaulGeorge123.github.io/2021/06/12/%E6%8E%92%E5%BA%8F--%E6%80%BB%E7%BB%93/" rel="next" title="排序总结">
+      排序总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在前面"><span class="nav-number">1.0.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap特点"><span class="nav-number">1.0.2.</span> <span class="nav-text">HashMap特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap的扩容原理"><span class="nav-number">1.0.3.</span> <span class="nav-text">HashMap的扩容原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Put方法的原理"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1.Put方法的原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Get方法的原理"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2.Get方法的原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap-尾插法"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">HashMap 尾插法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提问"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">提问</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="白日梦想家"
+      src="/PaulGeorge123.github.io/images/author.jpg">
+  <p class="site-author-name" itemprop="name">白日梦想家</p>
+  <div class="site-description" itemprop="description">很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/PaulGeorge123.github.io/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/PaulGeorge123.github.io/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/PaulGeorge123.github.io/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PaulGeorge123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PaulGeorge123" rel="noopener" target="_blank"><i class="github-square fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白日梦想家</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/PaulGeorge123.github.io/lib/anime.min.js"></script>
+  <script src="/PaulGeorge123.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/PaulGeorge123.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/PaulGeorge123.github.io/js/utils.js"></script>
+
+<script src="/PaulGeorge123.github.io/js/motion.js"></script>
+
+
+<script src="/PaulGeorge123.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/PaulGeorge123.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
