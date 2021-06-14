@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="单例模式 每天一篇重点设计模式（Java版）  总体来说设计模式分为三大类： 创建型模式（5种）：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式 结构型模式（7种）：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式 行为型模式（17种）：观察者模式、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式">
+  <meta name="description" content="每天一篇重点设计模式（Java版）  总体来说设计模式分为三大类： 创建型模式（5种）：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式 结构型模式（7种）：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式 行为型模式（17种）：观察者模式、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。 本篇">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一练--单例模式">
 <meta property="og:url" content="https://codeyg.top/2021/05/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="单例模式 每天一篇重点设计模式（Java版）  总体来说设计模式分为三大类： 创建型模式（5种）：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式 结构型模式（7种）：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式 行为型模式（17种）：观察者模式、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式">
+<meta property="og:description" content="每天一篇重点设计模式（Java版）  总体来说设计模式分为三大类： 创建型模式（5种）：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式 结构型模式（7种）：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式 行为型模式（17种）：观察者模式、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。 本篇">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-12T03:58:58.000Z">
-<meta property="article:modified_time" content="2021-06-08T18:13:11.669Z">
+<meta property="article:modified_time" content="2021-06-14T17:25:36.225Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="创建者模式">
@@ -128,12 +128,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">15</span></a>
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">43</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">44</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-09 02:13:11" itemprop="dateModified" datetime="2021-06-09T02:13:11+08:00">2021-06-09</time>
+                <time title="修改时间：2021-06-15 01:25:36" itemprop="dateModified" datetime="2021-06-15T01:25:36+08:00">2021-06-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><blockquote>
+        <blockquote>
 <p>每天一篇重点设计模式（Java版）</p>
 </blockquote>
 <p><strong>总体来说设计模式分为三大类：</strong></p>
@@ -267,7 +267,7 @@
 <hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 五种单例模式：</span></span><br><span class="line"><span class="comment"> * 1、懒汉式</span></span><br><span class="line"><span class="comment"> * 2、饿汉式</span></span><br><span class="line"><span class="comment"> * 3、双重检查模式 (DCL)</span></span><br><span class="line"><span class="comment"> * 4、静态内部类</span></span><br><span class="line"><span class="comment"> * 5、枚举类</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="单例模式的几种实现方式"><a href="#单例模式的几种实现方式" class="headerlink" title="单例模式的几种实现方式"></a>单例模式的几种实现方式</h3><h4 id="1、懒汉式，线程不安全"><a href="#1、懒汉式，线程不安全" class="headerlink" title="1、懒汉式，线程不安全"></a>1、懒汉式，线程不安全</h4><p><strong>是否 Lazy 初始化：</strong>是</p>
+<h4 id="单例模式的几种实现方式"><a href="#单例模式的几种实现方式" class="headerlink" title="单例模式的几种实现方式"></a>单例模式的几种实现方式</h4><h5 id="1、懒汉式，线程不安全"><a href="#1、懒汉式，线程不安全" class="headerlink" title="1、懒汉式，线程不安全"></a>1、懒汉式，线程不安全</h5><p><strong>是否 Lazy 初始化：</strong>是</p>
 <p><strong>是否多线程安全：</strong>否</p>
 <p><strong>实现难度：</strong>易</p>
 <p><strong>描述：</strong>这种方式是最基本的实现方式，这种实现最大的问题就是不支持多线程。因为没有加锁 synchronized，所以严格意义上它并不算单例模式。<br>这种方式 lazy loading 很明显，不要求线程安全，在多线程不能正常工作。</p>
@@ -280,7 +280,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      	 <span class="comment">// 懒汉式</span></span><br><span class="line">    	 Singleton1 instance1 = Singleton1.getInstance();</span><br><span class="line">   		 System.out.println(instance1);   </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="2、饿汉式"><a href="#2、饿汉式" class="headerlink" title="2、饿汉式"></a>2、饿汉式</h4><p><strong>是否 Lazy 初始化：</strong>否</p>
+<h5 id="2、饿汉式"><a href="#2、饿汉式" class="headerlink" title="2、饿汉式"></a>2、饿汉式</h5><p><strong>是否 Lazy 初始化：</strong>否</p>
 <p><strong>是否多线程安全：</strong>是</p>
 <p><strong>实现难度：</strong>易</p>
 <p><strong>描述：</strong>这种方式比较常用，但容易产生垃圾对象。<br> 优点：没有加锁，执行效率会提高。<br> 缺点：类加载时就初始化，浪费内存。<br> 它基于 classloader 机制避免了多线程的同步问题，不过，instance 在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用 getInstance 方法， 但是也不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化 instance 显然没有达到 lazy loading 的效果。</p>
@@ -293,7 +293,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 饿汉式</span></span><br><span class="line">       Singleton2 instance2 = Singleton2.getInstance();</span><br><span class="line">       System.out.println(instance2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="3、双检锁-双重校验锁（DCL）"><a href="#3、双检锁-双重校验锁（DCL）" class="headerlink" title="3、双检锁/双重校验锁（DCL）"></a>3、双检锁/双重校验锁（DCL）</h4><p><strong>是否 Lazy 初始化：</strong>是</p>
+<h5 id="3、双检锁-双重校验锁（DCL）"><a href="#3、双检锁-双重校验锁（DCL）" class="headerlink" title="3、双检锁/双重校验锁（DCL）"></a>3、双检锁/双重校验锁（DCL）</h5><p><strong>是否 Lazy 初始化：</strong>是</p>
 <p><strong>是否多线程安全：</strong>是</p>
 <p><strong>实现难度：</strong>较复杂</p>
 <p><strong>描述：</strong>这种方式采用双锁机制，安全且在多线程情况下能保持高性能。</p>
@@ -306,7 +306,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 双重检查模式 (DCL)</span></span><br><span class="line">        Singleton3 instance3 = Singleton3.getInstance();</span><br><span class="line">        System.out.println(instance3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="4、静态内部类"><a href="#4、静态内部类" class="headerlink" title="4、静态内部类"></a>4、静态内部类</h4><p><strong>是否 Lazy 初始化：</strong>是</p>
+<h5 id="4、静态内部类"><a href="#4、静态内部类" class="headerlink" title="4、静态内部类"></a>4、静态内部类</h5><p><strong>是否 Lazy 初始化：</strong>是</p>
 <p><strong>是否多线程安全：</strong>是</p>
 <p><strong>实现难度：</strong>一般</p>
 <p><strong>步骤 1</strong></p>
@@ -318,7 +318,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 静态内部类</span></span><br><span class="line">        Singleton4 instance4 = Singleton4.getInstance();</span><br><span class="line">        System.out.println(instance4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="5、枚举"><a href="#5、枚举" class="headerlink" title="5、枚举"></a>5、枚举</h4><p><strong>是否 Lazy 初始化：</strong>否</p>
+<h5 id="5、枚举"><a href="#5、枚举" class="headerlink" title="5、枚举"></a>5、枚举</h5><p><strong>是否 Lazy 初始化：</strong>否</p>
 <p><strong>是否多线程安全：</strong>是</p>
 <p><strong>实现难度：</strong>易</p>
 <p><strong>步骤 1</strong></p>
@@ -329,7 +329,6 @@
 <p>从 singleton5类获取唯一的对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 枚举</span></span><br><span class="line">        Singleton5 instance5 = Singleton5.INSTANCE;</span><br><span class="line">        System.out.println(instance5);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
     </div>
 
     
@@ -427,7 +426,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在前面"><span class="nav-number">1.0.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.0.2.</span> <span class="nav-text">介绍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式的几种实现方式"><span class="nav-number">1.1.</span> <span class="nav-text">单例模式的几种实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、懒汉式，线程不安全"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、懒汉式，线程不安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、饿汉式"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、饿汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、双检锁-双重校验锁（DCL）"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、双检锁&#x2F;双重校验锁（DCL）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、静态内部类"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、静态内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、枚举"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、枚举</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.1.6.</span> <span class="nav-text"></span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单例模式的几种实现方式"><span class="nav-number">3.</span> <span class="nav-text">单例模式的几种实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、懒汉式，线程不安全"><span class="nav-number">3.1.</span> <span class="nav-text">1、懒汉式，线程不安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、饿汉式"><span class="nav-number">3.2.</span> <span class="nav-text">2、饿汉式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、双检锁-双重校验锁（DCL）"><span class="nav-number">3.3.</span> <span class="nav-text">3、双检锁&#x2F;双重校验锁（DCL）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、静态内部类"><span class="nav-number">3.4.</span> <span class="nav-text">4、静态内部类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、枚举"><span class="nav-number">3.5.</span> <span class="nav-text">5、枚举</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,14 +442,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/PaulGeorge123.github.io/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/PaulGeorge123.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/PaulGeorge123.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/PaulGeorge123.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/PaulGeorge123.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/PaulGeorge123.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/PaulGeorge123.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="每天一篇 Java 小知识  本篇着重介绍一下 HashMap为什么用红黑树：  写在前面上文说到，HashMap的扩容原理。 JDK1.7 使用的是 数组 + 单链表 的数据结构。 JDK1.8 及之后时，使用的是数组+链表+红黑树的数据结构。 当阈值是默认阈值 0.75，链表的深度大于等于 8，数组容量大于等于 64 时，扩容的时候会把链表转成红黑树，时间复杂度从 O(n) 变成 O(log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日一面--HashMap红黑树">
+<meta property="og:url" content="https://codeyg.top/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/index.html">
+<meta property="og:site_name" content="宇航员不会飞">
+<meta property="og:description" content="每天一篇 Java 小知识  本篇着重介绍一下 HashMap为什么用红黑树：  写在前面上文说到，HashMap的扩容原理。 JDK1.7 使用的是 数组 + 单链表 的数据结构。 JDK1.8 及之后时，使用的是数组+链表+红黑树的数据结构。 当阈值是默认阈值 0.75，链表的深度大于等于 8，数组容量大于等于 64 时，扩容的时候会把链表转成红黑树，时间复杂度从 O(n) 变成 O(log">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-35-38.517Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-36-27.077Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T12-57-32.630Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-03-36.302Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-13-21.964Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-15-54.465Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-37-06.560Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T14-44-46.777Z.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-41-28.142Z.png">
+<meta property="article:published_time" content="2021-06-13T13:58:58.000Z">
+<meta property="article:modified_time" content="2021-06-14T17:06:03.757Z">
+<meta property="article:author" content="白日梦想家">
+<meta property="article:tag" content="进阶">
+<meta property="article:tag" content="HashMap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
+
+<link rel="canonical" href="https://codeyg.top/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每日一面--HashMap红黑树 | 宇航员不会飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/PaulGeorge123.github.io/atom.xml" title="宇航员不会飞" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/PaulGeorge123.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇航员不会飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">里面的人想出去，外面的人想进来</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/PaulGeorge123.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/PaulGeorge123.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于作者</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/PaulGeorge123" class="github-corner" title="欢迎来到我的GitHub" aria-label="欢迎来到我的GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每日一面--HashMap红黑树
+        </h1>
+
+        <div class="post-meta">
+		  
+		    <i class="fa fa-thumb-tack"></i>
+		    <font color=7D26CD>置顶</font>
+		    <span class="post-meta-divider">|</span>
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-13 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-13T21:58:58+08:00">2021-06-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-15 01:06:03" itemprop="dateModified" datetime="2021-06-15T01:06:03+08:00">2021-06-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">面试篇</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>每天一篇 Java 小知识</p>
+</blockquote>
+<p><strong>本篇着重介绍一下 HashMap为什么用红黑树：</strong></p>
+<hr>
+<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>上文说到，HashMap的扩容原理。</p>
+<p>JDK1.7 使用的是 <strong>数组 + 单链表</strong> 的数据结构。</p>
+<p>JDK1.8 及之后时，使用的是数组+链表+红黑树的数据结构。</p>
+<p>当阈值是默认阈值 <strong>0.75</strong>，链表的深度大于等于 <strong>8</strong>，数组容量大于等于 <strong>64</strong> 时，扩容的时候会把链表转成红黑树，时间复杂度从 <strong>O(n)</strong> 变成 <strong>O(logN)</strong>；当红黑树的节点深度小于等于 <strong>6</strong> 时，红黑树会转为<strong>链表结构</strong>。</p>
+<p><strong><font color=#008000>在Java8中为什么要使用红黑树来实现的HashMap？</font></strong></p>
+<p>答：好处就是避免在最极端的情况下冲突链表变得很长很长，在查询的时候，效率会非常慢。（单向链表）</p>
+<a id="more"></a>
+
+
+
+<h4 id="什么是红黑树呢？"><a href="#什么是红黑树呢？" class="headerlink" title="什么是红黑树呢？"></a>什么是红黑树呢？</h4><p>别急，先来回顾一下什么是二叉树！</p>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><p>简单地理解，满足以下两个条件的树就是二叉树：</p>
+<ol>
+<li>本身是有序树；</li>
+<li>树中包含的各个节点的度不能超过 2，即只能是 0、1 或者 2；</li>
+</ol>
+<blockquote>
+<p>二叉树还可以继续分类，衍生出<strong>满二叉树</strong>和<strong>完全二叉树</strong>。</p>
+</blockquote>
+<h4 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h4><p>如果二叉树中除了叶子结点，每个结点的度都为 2，则此二叉树称为<strong>满二叉树</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png" alt=""></p>
+<h4 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h4><p>如果二叉树中除去最后一层节点为满二叉树，且最后一层的结点依次从左到右分布，则此二叉树被称为<strong>完全二叉树</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-35-38.517Z.png" alt=""></p>
+<center>完全二叉树</center>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-36-27.077Z.png" alt=""></p>
+<center>非完全二叉树</center>
+
+<hr>
+<p>好了说完二叉树相关的知识后，还没有引入红黑树，因为在不断优化的过程中还是需要慢慢来，回顾一下平衡二叉树（AVL Tree）。</p>
+<h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h4><p>二叉树具有以下性质：左子树的键值小于根的键值，右子树的键值大于根的键值。</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T12-57-32.630Z.png" style="zoom:67%;" />
+
+<p>对二叉树的节点进行查找发现深度为 1 的节点的查找次数为 1，深度为2的查找次数为 2，深度为n的节点的查找次数为n，因此其平均查找次数为  (1+2+2+3+3+3) / 6 = 2.3 次</p>
+<p>当然上面是理想的情况，因为二叉查找树可以任意地构造，同样是 2,3,5,6,7,8 这六个数字，也可以按照下图的方式来构造。</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-03-36.302Z.png" style="zoom:67%;" />
+
+<p>但是这棵二叉树的查询效率就低了。因此若想二叉树的查询效率尽可能高，需要这棵二叉树是平衡的，从而引出新的定义——平衡二叉树，或称 AVL 树。</p>
+<h4 id="平衡二叉树（AVL-Tree）"><a href="#平衡二叉树（AVL-Tree）" class="headerlink" title="平衡二叉树（AVL Tree）"></a>平衡二叉树（AVL Tree）</h4><p>平衡二叉树（AVL树）在符合二叉查找树的条件下，还满足任何节点的两个子树的高度最大差为1。</p>
+<p>AVL树，它的任何节点的两个子树的高度差&lt;=1；</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-13-21.964Z.png" style="zoom: 67%;" />
+
+<center>AVL树</center>
+
+<p>不是AVL树，其根节点的左子树高度为3，而右子树高度为1；</p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-15-54.465Z.png" style="zoom:67%;" />
+
+<center>非AVL树</center>
+
+
+
+<p>至此，引出红黑树(弱平衡二叉树)</p>
+<h4 id="红黑树-弱平衡二叉树"><a href="#红黑树-弱平衡二叉树" class="headerlink" title="红黑树(弱平衡二叉树)"></a>红黑树(弱平衡二叉树)</h4><p>红黑树也属于平衡二叉树，但在每个节点增加一个存储位表示节点的颜色，非红即黑。</p>
+<p>红黑树的英文是“Red-Black Tree”，简称R-B Tree。它是一种不严格的平衡二叉查找树，我前面说了，它的定义是不严格符合平衡二叉查找树的定义的。</p>
+<p>顾名思义，红黑树中的节点，一类被标记为黑色，一类被标记为红色除此之外，一棵红黑树还需要满足这样几个要求：</p>
+<ul>
+<li>性质1：每个节点要么是黑色，要么是红色。</li>
+<li>性质2：根节点是黑色。</li>
+<li>性质3：每个叶子节点（NIL）是黑色。</li>
+<li>性质4：每个红色结点的两个子结点一定都是黑色。</li>
+<li><strong>性质5：任意一结点到每个叶子结点的路径都包含数量相同的黑结点。</strong></li>
+</ul>
+<p>从性质5又可以推出：<strong>如果一个结点存在黑子结点，那么该结点肯定有两个子结点</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-37-06.560Z.png" style="zoom:80%;" />
+
+
+
+<hr>
+<h4 id="B树（Balance-Tree）"><a href="#B树（Balance-Tree）" class="headerlink" title="B树（Balance-Tree）"></a>B树（Balance-Tree）</h4><p><strong>B树是一颗多路平衡查找树</strong></p>
+<p>它类似普通的平衡二叉树，不同的一点是B 树允许每个节点有更多的子节点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T14-44-46.777Z.png" alt=""></p>
+<p>B 树有如下特点:</p>
+<ol>
+<li>所有键值分布在整颗树中（索引值和具体data都在每个节点里）；</li>
+<li>任何一个关键字出现且只出现在一个结点中；</li>
+<li>搜索有可能在非叶子结点结束（最好情况 O(1) 就能找到数据）；</li>
+<li>在关键字全集内做一次查找,性能逼近二分查找；</li>
+</ol>
+<p><strong>B 树是专门为外部存储器设计的</strong>。如磁盘，它对于读取和写入大块数据有良好的性能，所以一般被用在文件系统及数据库中。</p>
+<p><strong>B 树允许每个节点有更多的子节点即可（多叉树）</strong>。子节点数量一般在上千，具体数量依赖外部存储器的特性。</p>
+<h4 id="B-树（-Balance-Tree）"><a href="#B-树（-Balance-Tree）" class="headerlink" title="B+树（ Balance+Tree）"></a>B+树（ Balance+Tree）</h4><p><strong>B+Tree是在B Tree基础上的一种优化</strong>，使其更适合实现外存储索引结构，InnoDB存储引擎就是用B+Tree实现其索引结构。</p>
+<p>B+Tree相对于B Tree有几点不同：</p>
+<ol>
+<li>非叶子节点只存储键值信息；</li>
+<li>所有叶子节点之间都有一个链指针；</li>
+<li><strong>数据记录都存放在叶子节点中</strong>；（查询时间复杂度固定为 log n）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-41-28.142Z.png" alt=""></p>
+<p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种<strong>链式环结构</strong>。</p>
+<p>咋一看 B+ 树好像查询要比 B 树慢一些（同样的数据，查询【IO】次数变多了），但是是事实如此吗？</p>
+<p>根据空间局部性原理：如果一个存储器的某个位置被访问，那么将它附近的位置也会被访问。</p>
+<p>B+ 树可以很好的利用局部性原理，若我们访问节点 key为 80，则 key 为 79、83、87的节点将来也可能被访问，<strong>磁盘预读原理</strong>就会提前把这些数据都读进内存，使得范围查询和排序都很快，从而减少了磁盘 IO 的次数。</p>
+<p>由于B树的节点都存了 key 和 data ，而 B+ 树只有叶子节点存 data，非叶子节点都只是索引值，没有实际的数据，这就时 B+ 树在一次IO里面，能读出的索引值更多。从而减少查询时候需要的IO次数！</p>
+<p>B+ 树优势：</p>
+<ol>
+<li>B+ 树叶节点两两相连可大大增加区间访问性；</li>
+<li>B+ 树更适合外部存储。由于内节点无 data 域，每个节点能索引的范围更大更精确；</li>
+</ol>
+<h4 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h4><p><strong><font color=#008000>MySQL 为什么使用 B Tree（B+Tree）存储？</font></strong></p>
+<p>这就是下篇博客要着重介绍的东西咯~</p>
+<p>我好像发现通过一个 hashmap 能够牵扯出一连串的知识啊！</p>
+<p>这可能就是它的知识体系吧，正如我们在面试的过程中，面试官通过一个”点“，问着问着就问出来一个“面”。</p>
+
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束，感谢您的阅读-------------</div>
+    
+</div>
+
+	  
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/PaulGeorge123.github.io/tags/%E8%BF%9B%E9%98%B6/" rel="tag">
+			  <i class="fa fa-tag"></i> 进阶</a>
+              <a href="/PaulGeorge123.github.io/tags/HashMap/" rel="tag">
+			  <i class="fa fa-tag"></i> HashMap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/PaulGeorge123.github.io/2021/06/12/%E6%8E%92%E5%BA%8F--%E6%80%BB%E7%BB%93/" rel="prev" title="排序总结（Sort Algorithm）">
+      <i class="fa fa-chevron-left"></i> 排序总结（Sort Algorithm）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/PaulGeorge123.github.io/2021/06/13/JVM%E7%B3%BB%E5%88%97--Java%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" rel="next" title="【JVM系列】-- Java的类加载机制">
+      【JVM系列】-- Java的类加载机制 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是红黑树呢？"><span class="nav-number">2.</span> <span class="nav-text">什么是红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉树"><span class="nav-number">3.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#满二叉树"><span class="nav-number">4.</span> <span class="nav-text">满二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完全二叉树"><span class="nav-number">5.</span> <span class="nav-text">完全二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉查找树"><span class="nav-number">6.</span> <span class="nav-text">二叉查找树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平衡二叉树（AVL-Tree）"><span class="nav-number">7.</span> <span class="nav-text">平衡二叉树（AVL Tree）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#红黑树-弱平衡二叉树"><span class="nav-number">8.</span> <span class="nav-text">红黑树(弱平衡二叉树)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B树（Balance-Tree）"><span class="nav-number">9.</span> <span class="nav-text">B树（Balance-Tree）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-树（-Balance-Tree）"><span class="nav-number">10.</span> <span class="nav-text">B+树（ Balance+Tree）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拓展："><span class="nav-number">11.</span> <span class="nav-text">拓展：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="白日梦想家"
+      src="/PaulGeorge123.github.io/images/author.jpg">
+  <p class="site-author-name" itemprop="name">白日梦想家</p>
+  <div class="site-description" itemprop="description">很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/PaulGeorge123.github.io/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/PaulGeorge123.github.io/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/PaulGeorge123.github.io/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PaulGeorge123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PaulGeorge123" rel="noopener" target="_blank"><i class="github-square fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白日梦想家</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/PaulGeorge123.github.io/lib/anime.min.js"></script>
+  <script src="/PaulGeorge123.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/PaulGeorge123.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/PaulGeorge123.github.io/js/utils.js"></script>
+
+<script src="/PaulGeorge123.github.io/js/motion.js"></script>
+
+
+<script src="/PaulGeorge123.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/PaulGeorge123.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Example一、mapper接口中的方法解析mapper接口中的函数及方法 123456789101112	        	方法	                                         	  功能说明int countByExample(UserExample example) thorws SQLException	       按条件计数int deleteByP">
+  <meta name="description" content="一、mapper接口中的方法解析mapper接口中的函数及方法 123456789101112	        	方法	                                         	  功能说明int countByExample(UserExample example) thorws SQLException	       按条件计数int deleteByPrimaryK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Example">
 <meta property="og:url" content="https://codeyg.top/2020/05/23/Example%20mybatis/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="Example一、mapper接口中的方法解析mapper接口中的函数及方法 123456789101112	        	方法	                                         	  功能说明int countByExample(UserExample example) thorws SQLException	       按条件计数int deleteByP">
+<meta property="og:description" content="一、mapper接口中的方法解析mapper接口中的函数及方法 123456789101112	        	方法	                                         	  功能说明int countByExample(UserExample example) thorws SQLException	       按条件计数int deleteByPrimaryK">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-23T04:23:21.000Z">
-<meta property="article:modified_time" content="2021-05-28T14:53:48.382Z">
+<meta property="article:modified_time" content="2021-06-14T17:19:05.909Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="逆向工程（MyBatis）">
 <meta name="twitter:card" content="summary">
@@ -127,12 +127,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">15</span></a>
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">43</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">44</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-28 22:53:48" itemprop="dateModified" datetime="2021-05-28T22:53:48+08:00">2021-05-28</time>
+                <time title="修改时间：2021-06-15 01:19:05" itemprop="dateModified" datetime="2021-06-15T01:19:05+08:00">2021-06-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,11 +235,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><h3 id="一、mapper接口中的方法解析"><a href="#一、mapper接口中的方法解析" class="headerlink" title="一、mapper接口中的方法解析"></a>一、mapper接口中的方法解析</h3><p><strong>mapper接口中的函数及方法</strong></p>
+        <h4 id="一、mapper接口中的方法解析"><a href="#一、mapper接口中的方法解析" class="headerlink" title="一、mapper接口中的方法解析"></a>一、mapper接口中的方法解析</h4><p><strong>mapper接口中的函数及方法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">	        	方法	                                         	  功能说明</span><br><span class="line">int countByExample(UserExample example) thorws SQLException	       按条件计数</span><br><span class="line">int deleteByPrimaryKey(Integer id) thorws SQLException			   按主键删除</span><br><span class="line">int deleteByExample(UserExample example) thorws SQLException	   按条件查询</span><br><span class="line">String&#x2F;Integer insert(User record) thorws SQLException			 插入数据（返回值为ID）</span><br><span class="line">User selectByPrimaryKey(Integer id) thorws SQLException		       按主键查询</span><br><span class="line">ListselectByExample(UserExample example) thorws SQLException	   按条件查询</span><br><span class="line">ListselectByExampleWithBLOGs(UserExample example) thorws SQLException   按条件查询（包括BLOB字段）。</span><br><span class="line">int updateByPrimaryKey(User record) thorws SQLException		    	按主键更新</span><br><span class="line">int updateByPrimaryKeySelective(User record) thorws SQLException	按主键更新值不为null的字段</span><br><span class="line">int updateByExample(User record, UserExample example) thorws SQLException	按条件更新</span><br><span class="line">int updateByExampleSelective(User record, UserExample example) thorws SQLException	按条件更新值不为null的字段</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
-<h3 id="二、example实例解析"><a href="#二、example实例解析" class="headerlink" title="二、example实例解析"></a>二、example实例解析</h3><p><strong>mybatis的逆向工程中会生成实例及实例对应的example，example用于添加条件，相当where后面的部分</strong><br>xxxExample example = new xxxExample();<br>Criteria criteria = new Example().createCriteria();</p>
+<h4 id="二、example实例解析"><a href="#二、example实例解析" class="headerlink" title="二、example实例解析"></a>二、example实例解析</h4><p><strong>mybatis的逆向工程中会生成实例及实例对应的example，example用于添加条件，相当where后面的部分</strong><br>xxxExample example = new xxxExample();<br>Criteria criteria = new Example().createCriteria();</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">			方法												说明</span><br><span class="line">example.setOrderByClause(“字段名 ASC”);	 			添加升序排列条件，DESC为降序</span><br><span class="line">example.setDistinct(false)					去除重复，boolean型，true为选择不重复的记录。</span><br><span class="line">criteria.andXxxIsNull							 添加字段xxx为null的条件</span><br><span class="line">criteria.andXxxIsNotNull						 添加字段xxx不为null的条件</span><br><span class="line">criteria.andXxxEqualTo(value)					 添加xxx字段等于value条件</span><br><span class="line">criteria.andXxxNotEqualTo(value)				 添加xxx字段不等于value条件</span><br><span class="line">criteria.andXxxGreaterThan(value)				 添加xxx字段大于value条件</span><br><span class="line">criteria.andXxxGreaterThanOrEqualTo(value)		 添加xxx字段大于等于value条件</span><br><span class="line">criteria.andXxxLessThan(value)					 添加xxx字段小于value条件</span><br><span class="line">criteria.andXxxLessThanOrEqualTo(value)			 添加xxx字段小于等于value条件</span><br><span class="line">criteria.andXxxIn(List&lt;？&gt;)						添加xxx字段值在List&lt;？&gt;条件</span><br><span class="line">criteria.andXxxNotIn(List&lt;？&gt;)					添加xxx字段值不在List&lt;？&gt;条件</span><br><span class="line">criteria.andXxxLike(“%”+value+”%”)				 添加xxx字段值为value的模糊查询条件</span><br><span class="line">criteria.andXxxNotLike(“%”+value+”%”)			 添加xxx字段值不为value的模糊查询条件</span><br><span class="line">criteria.andXxxBetween(value1,value2)			 添加xxx字段值在value1和value2之间条件</span><br><span class="line">criteria.andXxxNotBetween(value1,value2)		 添加xxx字段值不在value1和value2之间条件</span><br></pre></td></tr></table></figure>
 <p><strong>1.查询</strong><br>        ① selectByPrimaryKey()</p>
 <p>User user = XxxMapper.selectByPrimaryKey(100); //相当于select * from user where id = 100</p>
@@ -307,8 +307,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2020/05/23/GitHelp/" rel="prev" title="Git">
-      <i class="fa fa-chevron-left"></i> Git
+    <a href="/PaulGeorge123.github.io/2020/05/23/HTML/" rel="prev" title="HTML">
+      <i class="fa fa-chevron-left"></i> HTML
     </a></div>
       <div class="post-nav-item">
     <a href="/PaulGeorge123.github.io/2020/05/23/CSS/" rel="next" title="CSS">
@@ -373,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">1.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、mapper接口中的方法解析"><span class="nav-number">1.1.</span> <span class="nav-text">一、mapper接口中的方法解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、example实例解析"><span class="nav-number">1.2.</span> <span class="nav-text">二、example实例解析</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、mapper接口中的方法解析"><span class="nav-number">1.</span> <span class="nav-text">一、mapper接口中的方法解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、example实例解析"><span class="nav-number">2.</span> <span class="nav-text">二、example实例解析</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -389,14 +389,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/PaulGeorge123.github.io/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
