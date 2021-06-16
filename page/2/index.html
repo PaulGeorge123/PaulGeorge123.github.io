@@ -125,17 +125,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">30</span></a>
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">15</span></a>
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">16</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">47</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">48</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -165,6 +165,111 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/13/JVM%E7%B3%BB%E5%88%97--Java%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/PaulGeorge123.github.io/2021/06/13/JVM%E7%B3%BB%E5%88%97--Java%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">【JVM系列】-- Java的类加载机制</a>
+        </h2>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-13 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-13T21:58:58+08:00">2021-06-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-15 01:08:29" itemprop="dateModified" datetime="2021-06-15T01:08:29+08:00">2021-06-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="什么是JVM？"><a href="#什么是JVM？" class="headerlink" title="什么是JVM？"></a>什么是JVM？</h4><p><strong>百度词条：</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机)，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。</span><br><span class="line"></span><br><span class="line">引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java语言使用Java虚拟机屏蔽了与具体平台相关的信息，使得Java语言编译程序只需生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。</span><br></pre></td></tr></table></figure>
+
+<p><strong>本篇着重介绍一下Java的类加载机制：</strong></p>
+<hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/PaulGeorge123.github.io/2021/06/13/JVM%E7%B3%BB%E5%88%97--Java%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+  
+
       
   
   
@@ -619,120 +724,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/08/%E6%8E%92%E5%BA%8F--%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
-      <meta itemprop="name" content="白日梦想家">
-      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇航员不会飞">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/PaulGeorge123.github.io/2021/06/08/%E6%8E%92%E5%BA%8F--%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">每日一练--选择排序（Selection Sort）</a>
-        </h2>
-
-        <div class="post-meta">
-		  
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-08 21:58:58" itemprop="dateCreated datePublished" datetime="2021-06-08T21:58:58+08:00">2021-06-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-15 01:12:57" itemprop="dateModified" datetime="2021-06-15T01:12:57+08:00">2021-06-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/PaulGeorge123.github.io/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>每天一篇排序算法（Java版本）</p>
-</blockquote>
-<p><strong>十种常见的排序算法：冒泡排序、选择排序、插入排序、归并排序、快速排序、希尔排序、堆排序、计数排序、桶排序、基数排序。</strong></p>
-<p><strong>本篇着重介绍一下选择排序：</strong></p>
-<hr>
-<h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p><strong>选择排序：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(n²)</code></li>
-<li>空间复杂度：<code>O(1)</code></li>
-<li>稳定性：<font color=#FF0000>不稳定</font></li>
-</ul>
-<h4 id="排序思想"><a href="#排序思想" class="headerlink" title="排序思想"></a>排序思想</h4><p>选择排序是一种简单直观的排序算法，它也是一种交换排序算法，和冒泡排序有一定的相似度，可以认为选择排序是冒泡排序的一种改进。</p>
-<p><a href="https://www.runoob.com/wp-content/uploads/2019/03/selectionSort.gif" target="_blank" rel="noopener">选择排序动图演示</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/PaulGeorge123.github.io/2021/06/08/%E6%8E%92%E5%BA%8F--%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-	<div>
-	  
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -804,20 +795,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/PaulGeorge123.github.io/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/PaulGeorge123.github.io/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
