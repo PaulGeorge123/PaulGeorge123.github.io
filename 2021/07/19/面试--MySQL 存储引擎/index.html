@@ -24,20 +24,20 @@
   <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 MySQL 存储引擎   写在前面 本文依照数据库 5.7 来描述滴~ 明确一点： 数据库实例（instance）才是真正用于操作数据库文件的。 MySQL 是一个单进程、多线程架构的数据库； 在集群的情况下，一个数据库对应对个数据库实例。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一面--MySQL 存储引擎">
-<meta property="og:url" content="https://codeyg.top/2021/07/21/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
+<meta property="og:url" content="https://codeyg.top/2021/07/19/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 MySQL 存储引擎   写在前面 本文依照数据库 5.7 来描述滴~ 明确一点： 数据库实例（instance）才是真正用于操作数据库文件的。 MySQL 是一个单进程、多线程架构的数据库； 在集群的情况下，一个数据库对应对个数据库实例。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_00-12-04.png">
-<meta property="article:published_time" content="2021-07-21T13:58:58.000Z">
-<meta property="article:modified_time" content="2021-07-20T18:14:30.782Z">
+<meta property="article:published_time" content="2021-07-19T13:58:58.000Z">
+<meta property="article:modified_time" content="2021-07-21T00:46:16.316Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="MySQL 存储引擎">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_00-12-04.png">
 
-<link rel="canonical" href="https://codeyg.top/2021/07/21/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
+<link rel="canonical" href="https://codeyg.top/2021/07/19/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
 
 
 <script id="page-configurations">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">60</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">63</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/07/21/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/07/19/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
@@ -222,10 +222,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-07-21 21:58:58 / 修改时间：02:14:30" itemprop="dateCreated datePublished" datetime="2021-07-21T21:58:58+08:00">2021-07-21</time>
+              <time title="创建时间：2021-07-19 21:58:58" itemprop="dateCreated datePublished" datetime="2021-07-19T21:58:58+08:00">2021-07-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-21 08:46:16" itemprop="dateModified" datetime="2021-07-21T08:46:16+08:00">2021-07-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -490,7 +496,10 @@
     <a href="/PaulGeorge123.github.io/2021/07/17/jdk8%E6%96%B0%E7%89%B9%E6%80%A7--stream/" rel="prev" title="jdk8新特性--stream">
       <i class="fa fa-chevron-left"></i> jdk8新特性--stream
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/PaulGeorge123.github.io/2021/07/21/%E9%9D%A2%E8%AF%95--Redis%205%E7%A7%8D%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" rel="next" title="每日一面--Redis 五种数据结构详解">
+      每日一面--Redis 五种数据结构详解 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -566,7 +575,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
