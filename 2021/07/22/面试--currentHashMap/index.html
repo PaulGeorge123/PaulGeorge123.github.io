@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/PaulGeorge123.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/PaulGeorge123.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/PaulGeorge123.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/PaulGeorge123.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/PaulGeorge123.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/PaulGeorge123.github.io/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下  CurrentHashMap   写在前面 使用 HashMap 如何保证线程安全？ 答：1、使用锁（Synchronize） ​        2、使用 CurrentHashMap 详细的说一下 CurrentHashMap 吧 好嘞~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日一面--CurrentHashMap">
+<meta property="og:url" content="https://codeyg.top/2021/07/22/%E9%9D%A2%E8%AF%95--currentHashMap/index.html">
+<meta property="og:site_name" content="宇航员不会飞">
+<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下  CurrentHashMap   写在前面 使用 HashMap 如何保证线程安全？ 答：1、使用锁（Synchronize） ​        2、使用 CurrentHashMap 详细的说一下 CurrentHashMap 吧 好嘞~">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_09-35-56.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_10-10-25.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_10-21-53.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_10-50-44.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_11-41-51.png">
+<meta property="article:published_time" content="2021-07-22T02:58:58.000Z">
+<meta property="article:modified_time" content="2021-07-22T04:20:44.865Z">
+<meta property="article:author" content="白日梦想家">
+<meta property="article:tag" content="进阶">
+<meta property="article:tag" content="currentHashMap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_09-35-56.png">
+
+<link rel="canonical" href="https://codeyg.top/2021/07/22/%E9%9D%A2%E8%AF%95--currentHashMap/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每日一面--CurrentHashMap | 宇航员不会飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/PaulGeorge123.github.io/atom.xml" title="宇航员不会飞" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/PaulGeorge123.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇航员不会飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">里面的人想出去，外面的人想进来</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/PaulGeorge123.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">40</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/PaulGeorge123.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/PaulGeorge123.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于作者</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/PaulGeorge123" class="github-corner" title="欢迎来到我的GitHub" aria-label="欢迎来到我的GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/07/22/%E9%9D%A2%E8%AF%95--currentHashMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每日一面--CurrentHashMap
+        </h1>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-22 10:58:58 / 修改时间：12:20:44" itemprop="dateCreated datePublished" datetime="2021-07-22T10:58:58+08:00">2021-07-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/PaulGeorge123.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">面试篇</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>每天一篇面试小知识</p>
+</blockquote>
+<p><strong>本篇着重介绍一下  CurrentHashMap</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_09-35-56.png" alt=""></p>
+<p><strong>写在前面</strong></p>
+<p><font color=#008000>使用 HashMap 如何保证线程安全？</font></p>
+<p>答：1、使用锁（Synchronize）</p>
+<p>​        2、使用 CurrentHashMap</p>
+<p><font color=#008000>详细的说一下 CurrentHashMap 吧</font></p>
+<p>好嘞~</p>
+<a id="more"></a>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_10-10-25.png" alt=""></p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h4><p>哈希表就是一种以 键-值(key-indexed) 存储数据的结构，我们只要输入待查找的值即key，即可查找到其对应的值。</p>
+<p>哈希的思路很简单，如果所有的键都是整数，那么就可以使用一个简单的无序数组来实现：将键作为索引，值即为其对应的值，这样就可以快速访问任意键的值。这是对于简单的键的情况，我们将其扩展到可以处理更加复杂的类型的键。</p>
+<h4 id="2-链式哈希表"><a href="#2-链式哈希表" class="headerlink" title="2.链式哈希表"></a>2.链式哈希表</h4><p>链式哈希表从根本上说是由一组链表构成。每个链表都可以看做是一个“桶”，我们将所有的元素通过散列的方式放到具体的不同的桶中。</p>
+<p>插入元素时，首先将其键传入一个哈希函数（该过程称为哈希键），函数通过散列的方式告知元素属于哪个“桶”，然后在相应的链表头插入元素。查找或删除元素时，用同们的方式先找到元素的“桶”，然后遍历相应的链表，直到发现我们想要的元素。因为每个“桶”都是一个链表，所以链式哈希表并不限制包含元素的个数。然而，如果表变得太大，它的性能将会降低。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_10-21-53.png" alt=""></p>
+<center>哈希表的链表式结构</center>
+
+<p><strong>3.应用场景</strong></p>
+<p>缓存技术（比如redis、memcached）的核心其实就是在内存中维护一张巨大的哈希表，还有HashMap、CurrentHashMap… … </p>
+<h3 id="ConcurrentHashMap与HashMap等的区别"><a href="#ConcurrentHashMap与HashMap等的区别" class="headerlink" title="ConcurrentHashMap与HashMap等的区别"></a>ConcurrentHashMap与HashMap等的区别</h3><h4 id="1-HashMap"><a href="#1-HashMap" class="headerlink" title="1.HashMap"></a>1.HashMap</h4><p>HashMap 是线程不安全的，在多线程环境下，使用 HasHmap 进行 put 操作会引起死循环，导致 CPU 利用率接近 100%，<strong>所以在并发情况下不能使用 HashMap。</strong></p>
+<h4 id="2-HashTable"><a href="#2-HashTable" class="headerlink" title="2.HashTable"></a>2.HashTable</h4><p>HashTable和HashMap的实现原理几乎一样，差别无非是</p>
+<ul>
+<li><p>HashTable 不允许 key 和 value 为 null</p>
+</li>
+<li><p>HashTable 是线程安全的</p>
+</li>
+</ul>
+<p>但是HashTable线程安全的策略实现代价却太大了，简单粗暴，get/put 所有相关操作都是s ynchronized 的，这相当于<strong>给整个哈希表加了一把大锁。</strong></p>
+<p>多线程访问时候，只要有一个线程访问或操作该对象，那其他线程只能阻塞，相当于将所有的操作串行化，在竞争激烈的并发场景中性能就会非常差。</p>
+<h4 id="3-ConcurrentHashMap"><a href="#3-ConcurrentHashMap" class="headerlink" title="3.ConcurrentHashMap"></a>3.ConcurrentHashMap</h4><p>ConcurrentHashMap 是为了解决 HashMap 在并发环境下不安全而诞生的。其大量的利用了 volatile，final，CAS 等 lock-free 技术来减少锁竞争对于性能的影响。</p>
+<p><strong>ConcurrentHashMap 避免了对全局加锁改成了局部加锁操作</strong></p>
+<h3 id="JDK1-7-版本的-CurrentHashMap-的实现原理"><a href="#JDK1-7-版本的-CurrentHashMap-的实现原理" class="headerlink" title="JDK1.7 版本的 CurrentHashMap 的实现原理"></a>JDK1.7 版本的 CurrentHashMap 的实现原理</h3><p>在JDK1.7中ConcurrentHashMap采用了<strong>数组+Segment+分段锁</strong>的方式实现。</p>
+<h4 id="1-Segment-分段锁"><a href="#1-Segment-分段锁" class="headerlink" title="1.Segment(分段锁)"></a>1.Segment(分段锁)</h4><p>ConcurrentHashMap 中的<strong>分段锁称为 Segment</strong>，它即类似于 HashMap 的结构，即内部拥有一个 Entry 数组，数组中的每个元素又是一个链表,同时又是一个 ReentrantLock（Segment继承了ReentrantLock）。</p>
+<h4 id="2-内部结构"><a href="#2-内部结构" class="headerlink" title="2.内部结构"></a>2.内部结构</h4><p>ConcurrentHashMap 使用分段锁技术，将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问，能够实现真正的并发访问。如下图是ConcurrentHashMap的内部结构图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_10-50-44.png" alt=""></p>
+<p>Segment 默认是<strong>16</strong>，按理说最多同时支持<strong>16</strong>个线程并发读写，但是是操作不同的 Segment，初始化时也可以指定 Segment 数量，每一个 Segment 都会有一把锁，保证线程安全。</p>
+<h4 id="该结构的优劣势"><a href="#该结构的优劣势" class="headerlink" title="该结构的优劣势"></a>该结构的优劣势</h4><p><strong>坏处</strong>：是这一种结构的带来的副作用是 Hash 的过程要比普通的 HashMap 要长。</p>
+<p><strong>好处</strong>：是写操作的时候可以只对元素所在的 Segment 进行加锁即可，不会影响到其他的 Segment，在最理想的情况下，ConcurrentHashMap 可以最高同时支持 Segment 数量大小的写操作(刚好这些写操作都非常平均地分布在所有的Segment上)。</p>
+<h3 id="JDK1-8-版本的-CurrentHashMap-的实现原理"><a href="#JDK1-8-版本的-CurrentHashMap-的实现原理" class="headerlink" title="JDK1.8 版本的 CurrentHashMap 的实现原理"></a>JDK1.8 版本的 CurrentHashMap 的实现原理</h3><h4 id="1-Node"><a href="#1-Node" class="headerlink" title="1.Node"></a>1.Node</h4><p><strong>Node</strong>：保存 key，value 及 key 的 hash 值的数据结构。其中 value 和 next 都用 volatile 修饰，保证并发的可见性。</p>
+<h4 id="2-Table"><a href="#2-Table" class="headerlink" title="2.Table"></a>2.Table</h4><p><strong>Table</strong>：默认为null，初始化发生在第一次插入操作，默认大小为16的数组，用来存储 Node 节点数据，扩容时大小总是 2 的幂次方。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    <span class="keyword">volatile</span> V val;</span><br><span class="line">    <span class="keyword">volatile</span> Node&lt;K,V&gt; next;</span><br><span class="line">    ... ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-实现方式"><a href="#2-实现方式" class="headerlink" title="2.实现方式"></a>2.实现方式</h4><p>JDK1.8 的 currentHashMap参考了 1.8HashMap 的实现方式,采用了<strong>数组+链表+红黑树</strong>的实现方式。其中大量的使用CAS操作。CAS (compare and swap)</p>
+<p>JDK8 中彻底放弃了 Segment 转而采用的是 Node，其设计思想也不再是  JDK1.7 中的分段锁思想。</p>
+<p>红黑树是一种性能非常好的二叉查找树，其查找性能为 <strong>O(logN)</strong>，早期完全采用链表结构时 Map 的查找时间复杂度为 <strong>O(N)</strong>。</p>
+<h4 id="3-原理图"><a href="#3-原理图" class="headerlink" title="3.原理图"></a>3.原理图</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_11-41-51.png" alt=""></p>
+<center>JDK8 中 currentHashMap 原理图</center>
+
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h4><p><strong>JDK1.7版本</strong>：ReentrantLock + Segment + HashEntry，</p>
+<p><strong>JDK1.8版本</strong>：Synchronized + CAS + Node + 红黑树</p>
+<h4 id="原理对比（1-8-于-1-7）"><a href="#原理对比（1-8-于-1-7）" class="headerlink" title="原理对比（1.8 于 1.7）"></a>原理对比（1.8 于 1.7）</h4><p><strong>1.数据结构：</strong>取消了 Segment 分段锁的数据结构，取而代之的是数组+链表+红黑树的结构。</p>
+<p><strong>2.保证线程安全机制：</strong>JDK1.7 采用 segment 的分段锁机制实现线程安全，其中 segment 继承自 ReentrantLock。JDK1.8 采用 CAS + Synchronized 保证线程安全。</p>
+<p><strong>3.锁的粒度：</strong>原来是对需要进行数据操作的 Segment 加锁，现调整为对每个数组元素加锁（Node）。</p>
+<p><strong>4.链表转化为红黑树：</strong>定位结点的hash算法简化会带来弊端,Hash冲突加剧,因此在链表节点数量大于8时，会将链表转化为红黑树进行存储。</p>
+<p><strong>5.查询时间复杂度：</strong>从原来的遍历链表 O(n)，变成遍历红黑树 O(logN)。</p>
+
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束，感谢您的阅读-------------</div>
+    
+</div>
+
+	  
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/PaulGeorge123.github.io/tags/%E8%BF%9B%E9%98%B6/" rel="tag">
+			  <i class="fa fa-tag"></i> 进阶</a>
+              <a href="/PaulGeorge123.github.io/tags/currentHashMap/" rel="tag">
+			  <i class="fa fa-tag"></i> currentHashMap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/PaulGeorge123.github.io/2021/07/22/%E9%9D%A2%E8%AF%95--Redis%E5%92%8CMySQL%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" rel="prev" title="每日一面--Redis和MySQL数据一致性问题">
+      <i class="fa fa-chevron-left"></i> 每日一面--Redis和MySQL数据一致性问题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希表"><span class="nav-number">1.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-链式哈希表"><span class="nav-number">1.2.</span> <span class="nav-text">2.链式哈希表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap与HashMap等的区别"><span class="nav-number">2.</span> <span class="nav-text">ConcurrentHashMap与HashMap等的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HashMap"><span class="nav-number">2.1.</span> <span class="nav-text">1.HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HashTable"><span class="nav-number">2.2.</span> <span class="nav-text">2.HashTable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-ConcurrentHashMap"><span class="nav-number">2.3.</span> <span class="nav-text">3.ConcurrentHashMap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-7-版本的-CurrentHashMap-的实现原理"><span class="nav-number">3.</span> <span class="nav-text">JDK1.7 版本的 CurrentHashMap 的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Segment-分段锁"><span class="nav-number">3.1.</span> <span class="nav-text">1.Segment(分段锁)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内部结构"><span class="nav-number">3.2.</span> <span class="nav-text">2.内部结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#该结构的优劣势"><span class="nav-number">3.3.</span> <span class="nav-text">该结构的优劣势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-8-版本的-CurrentHashMap-的实现原理"><span class="nav-number">4.</span> <span class="nav-text">JDK1.8 版本的 CurrentHashMap 的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Node"><span class="nav-number">4.1.</span> <span class="nav-text">1.Node</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Table"><span class="nav-number">4.2.</span> <span class="nav-text">2.Table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-实现方式"><span class="nav-number">4.3.</span> <span class="nav-text">2.实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-原理图"><span class="nav-number">4.4.</span> <span class="nav-text">3.原理图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#版本对比"><span class="nav-number">5.1.</span> <span class="nav-text">版本对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原理对比（1-8-于-1-7）"><span class="nav-number">5.2.</span> <span class="nav-text">原理对比（1.8 于 1.7）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="白日梦想家"
+      src="/PaulGeorge123.github.io/images/author.jpg">
+  <p class="site-author-name" itemprop="name">白日梦想家</p>
+  <div class="site-description" itemprop="description">很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/PaulGeorge123.github.io/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/PaulGeorge123.github.io/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/PaulGeorge123.github.io/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PaulGeorge123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PaulGeorge123" rel="noopener" target="_blank"><i class="github-square fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白日梦想家</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/PaulGeorge123.github.io/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/PaulGeorge123.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/PaulGeorge123.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/PaulGeorge123.github.io/js/utils.js"></script>
+
+<script src="/PaulGeorge123.github.io/js/motion.js"></script>
+
+
+<script src="/PaulGeorge123.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/PaulGeorge123.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/PaulGeorge123.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
