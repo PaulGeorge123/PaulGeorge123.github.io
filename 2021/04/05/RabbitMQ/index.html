@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitmq.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-26_15-45-17.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png">
 <meta property="article:published_time" content="2021-04-05T14:29:58.000Z">
-<meta property="article:modified_time" content="2021-06-14T17:14:46.247Z">
+<meta property="article:modified_time" content="2021-07-26T09:34:40.285Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="消息队列">
 <meta name="twitter:card" content="summary">
@@ -233,7 +233,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-15 01:14:46" itemprop="dateModified" datetime="2021-06-15T01:14:46+08:00">2021-06-15</time>
+                <time title="修改时间：2021-07-26 17:34:40" itemprop="dateModified" datetime="2021-07-26T17:34:40+08:00">2021-07-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,14 +251,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>941</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -276,18 +276,83 @@
 
 <a id="more"></a>
 
-<h3 id="一、什么是消息队列"><a href="#一、什么是消息队列" class="headerlink" title="一、什么是消息队列"></a>一、什么是消息队列</h3><p><strong>消息</strong>指的是两个应用间传递的数据。数据的类型有很多种形式，可能只包含文本字符串，也可能包含嵌入对象。</p>
+<h2 id="一、RabbitMQ-消息队列"><a href="#一、RabbitMQ-消息队列" class="headerlink" title="一、RabbitMQ 消息队列"></a>一、RabbitMQ 消息队列</h2><p><strong>消息</strong>指的是两个应用间传递的数据。数据的类型有很多种形式，可能只包含文本字符串，也可能包含嵌入对象。</p>
 <p><strong>“消息队列(Message Queue)”是在消息的传输过程中保存消息的容器</strong>。在消息队列中，通常有生产者和消费者两个角色。生产者只负责发送数据到消息队列，谁从消息队列中取出数据处理，他不管。消费者只负责从消息队列中取出数据处理，他不管这是谁发送的数据。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitmq.png" style="zoom:67%;" />
-
-<h3 id="二、为什么使用消息队列"><a href="#二、为什么使用消息队列" class="headerlink" title="二、为什么使用消息队列"></a>二、为什么使用消息队列</h3><p>主要有三个作用：</p>
+<h3 id="1、AMQP"><a href="#1、AMQP" class="headerlink" title="1、AMQP"></a>1、AMQP</h3><p><strong>Publisher</strong></p>
+<p>消息的生产者。也是一个向交换器Exchange发送消息的客户端应用程序。</p>
+<p><strong>Consumer</strong></p>
+<p>消息的消费者。表示一个从消息队列中取得消息的客户端应用程序。</p>
+<p><strong>Server/Broker</strong></p>
+<p>又称Broker，接受客户端的连接，实现AMQP实体服务。</p>
+<p><strong>Virtual host</strong></p>
+<p>虚拟地址，用于进行逻辑隔离，最上层的消息路由。</p>
+<p>表示一批交换器，消息队列和相关对象。一个Virtual Host里面可以有若干个Exchange和Queue，同一个Virtual Host里面不能有相同名称的Exchange和Queue。</p>
+<p>虚拟主机是共享相同的身份认证和加密环境的独立服务器域，每个vhost本质上就是一个mini版本的RabbitMQ服务器，拥有自己的队列、交换器、绑定和权限机制。vhost是AMQP概念的基础，必须在链接时指定，RabbitMQ默认的vhost是“/”。</p>
+<p><strong>Message</strong></p>
+<p>消息，服务器和应用程序之间传送的数据。消息是不具名的，由Properties和Body组成（消息头和消息体）。Properties可以对消息进行修饰，比如消息的优先级、延迟等高级特性；Body这就是消息体内容。</p>
+<p><strong>Exchange</strong></p>
+<p>交换机，接收生产者发送的消息，根据路由键转发消息到绑定的队列。</p>
+<p>三种常见的交换机类型：</p>
+<p>1、direct（发布与订阅，完全匹配）</p>
+<p>2、fanout（广播）</p>
+<p>3、topic（主题，规则匹配）</p>
+<p><strong>Binding</strong></p>
+<p>绑定。Exchange和Queue之间的虚拟连接，binding中可以包含routing key。</p>
+<p>一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个由绑定构成的路由表。</p>
+<p><strong>Routing key</strong></p>
+<p>路由键。一个路由规则，虚拟机可用它来确定如何路由一个特定消息。</p>
+<p>队列通过路由键绑定到交换机。</p>
+<p>消息发送到MQ服务器时，消息将拥有一个路由键，即便是空的。RabbitMQ也会将其和绑定使用的路由键进行匹配。</p>
+<p>如果匹配，消息将投递到该队列；如果不匹配，消息将会进入黑洞。</p>
+<p><strong>Connection</strong></p>
+<p>连接，应用程序与Broker的TCP网络连接。</p>
+<p><strong>Channel</strong></p>
+<p>网络信道，是TCP里面的虚拟连接。几乎所有的操作都在Channel中进行， Channel是进行消息读写的通道。客户端可以建立多个Channel，每个Channel代表一个会话任务（类似数据库中Connection中的session）。例如：电缆相当于TCP，信道是一个独立光纤束，一条TCP连接上创建多条信道是没有问题的。</p>
+<p>TCP一旦打开，就会创建AMQP信道。</p>
+<p>无论是发布消息、接收消息、订阅队列，这些动作都是通过信道完成的。</p>
+<p>RabbitMQ为什么需要信道？为什么不是直接通信？</p>
+<p>1、TCP的创建和销毁开销特别大。创建需要3次握手，销毁需要4次分手；</p>
+<p>2、如果不用信道，那应用程序就会以TCP连接RabbitMQ，高峰时每秒成千上万条连接会造成资源巨大浪费，而且操作系统每秒处理TCP连接数也是有限制的，必定造成性能瓶颈；</p>
+<p>3、信道的原理是一条线程一条通道，多条线程多条通道同用一条TCP连接。一条TCP连接可以容纳无限的信道，即使每秒成千上万的请求也不会成为性能瓶颈。</p>
+<p><strong>Queue</strong></p>
+<p>也称为Message Queue（消费者创建），消息队列，保存消息并将它们转发给消费者。它是消息的容器，也是消息的终点。一个消息可以投入一个或多个队列。消息一直在队列里面，等待消费者连接到这个队列上将其取走。</p>
+<h3 id="2、RabbitMQ-交换机"><a href="#2、RabbitMQ-交换机" class="headerlink" title="2、RabbitMQ 交换机"></a>2、RabbitMQ 交换机</h3><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-26_15-45-17.png" alt=""></p>
+<p>Exchange交换机，接收消息，并根据路由键转发消息所绑定的队列。</p>
+<p><strong>交换机属性：</strong></p>
+<p>Name：交换机名称</p>
+<p>Type：交换机类型direct、topic、fanout、headers</p>
+<p>Durability：是否需要持久化（true表示需要持久化）</p>
+<p>Auto Delete：当最后一个绑定到Exchange上的队列删除后，自动删除该Exchange</p>
+<p>Internal：当前Exchange是否用于RabbitMQ内部使用，默认为false（很多场景都不会用到该设置）</p>
+<p>Arguments：扩展参数，用于扩展AMQP协议自制定化使用</p>
+<h5 id="1、Direct-Exchange"><a href="#1、Direct-Exchange" class="headerlink" title="1、Direct Exchange"></a>1、Direct Exchange</h5><p>所有发送到Direct Exchange的消息被转发到RouteKey中指定Queue。</p>
+<p>注意：Direct模式可以使用RabbitMQ自带的Exchange：default Exchange，所以不需要将Exchange进行任何绑定（binding）操作，消息传递时，RouteKey必须完全匹配才会被队列接收，否则该消息会抛弃。</p>
+<h5 id="2、Topic-Exchange"><a href="#2、Topic-Exchange" class="headerlink" title="2、Topic Exchange"></a>2、Topic Exchange</h5><p>所有发送到Topic Exchange的消息被转发到所有关心RouteKey中指定Topic的Queue上。</p>
+<p>Exchange将RouteKey和某个Topic进行模糊匹配，此时队列需要绑定一个Topic。</p>
+<p>注：可以使用通配符进行模糊匹配。</p>
+<h5 id="3、Fanout-Exchange"><a href="#3、Fanout-Exchange" class="headerlink" title="3、Fanout Exchange"></a>3、Fanout Exchange</h5><p>Fanout（群发）不处理路由键，只需要简单的将队列绑定到交换机上。</p>
+<p>发送到交换机的消息都会被转发到与该交换机绑定的所有队列上。</p>
+<p>Fanout交换机转发消息是最快的。</p>
+<h3 id="3、RabbitMQ-消息可靠性"><a href="#3、RabbitMQ-消息可靠性" class="headerlink" title="3、RabbitMQ 消息可靠性"></a>3、RabbitMQ 消息可靠性</h3><h4 id="1-可靠性投递"><a href="#1-可靠性投递" class="headerlink" title="1. 可靠性投递"></a>1. 可靠性投递</h4><p>什么是生产端的可靠性投递？</p>
+<ol>
+<li>保障消息的成功发出；</li>
+<li>保障MQ节点的成功接收；</li>
+<li>发送端收到MQ节点（Broker）确认应答ACK；</li>
+<li>完善的消息进行补偿机制。</li>
+</ol>
+<h4 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h4><h5 id="1、消息落库-持久化"><a href="#1、消息落库-持久化" class="headerlink" title="1、消息落库/持久化"></a>1、消息落库/持久化</h5><p>消息信息落库（即消息持久化），对消息状态进行打标：</p>
+<p>这种方案需要对数据库进行两次持久化操作</p>
+<h5 id="2-延迟投递"><a href="#2-延迟投递" class="headerlink" title="2.延迟投递"></a>2.延迟投递</h5><p>消息落库在高并发场景下，数据库IO压力大，不适用。互联网大厂一般采用的是延迟投递，做二次检查，回调检查。</p>
+<h3 id="4、RabbitMQ-消息幂等性"><a href="#4、RabbitMQ-消息幂等性" class="headerlink" title="4、RabbitMQ 消息幂等性"></a>4、RabbitMQ 消息幂等性</h3><h4 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h4><p>幂等性即对数据进行若干次操作，仍然保证正确。</p>
+<p>消费端实现幂等性，就意味着，我们的消息永远不会消费多次，即使收到多条一样的消息。</p>
+<hr>
+<h2 id="二、RabbitMQ-消息队列的使用"><a href="#二、RabbitMQ-消息队列的使用" class="headerlink" title="二、RabbitMQ 消息队列的使用"></a>二、RabbitMQ 消息队列的使用</h2><p>主要有三个作用：</p>
 <ul>
 <li>解耦</li>
 <li>异步</li>
 <li>削峰</li>
 </ul>
-<hr>
-<h4 id="RabbitMQ几种典型模式"><a href="#RabbitMQ几种典型模式" class="headerlink" title="RabbitMQ几种典型模式"></a>RabbitMQ几种典型模式</h4><ul>
+<h3 id="RabbitMQ几种典型模式"><a href="#RabbitMQ几种典型模式" class="headerlink" title="RabbitMQ几种典型模式"></a>RabbitMQ几种典型模式</h3><ul>
 <li><strong>单模式Simple</strong></li>
 <li><strong>工作模式Work</strong></li>
 <li><strong>发布订阅模式Publish/Subscribe</strong></li>
@@ -295,19 +360,24 @@
 <li><strong>通配符模式Topics</strong></li>
 <li><strong>远程调用模式RPC</strong></li>
 </ul>
-<h4 id="模式1：简单模式（Simple-HelloWorld-单生产单消费）"><a href="#模式1：简单模式（Simple-HelloWorld-单生产单消费）" class="headerlink" title="模式1：简单模式（Simple / HelloWorld 单生产单消费）"></a>模式1：简单模式（Simple / HelloWorld 单生产单消费）</h4><p>简单的发送与接收，没有特别的处理。</p>
+<h4 id="模式1：简单模式"><a href="#模式1：简单模式" class="headerlink" title="模式1：简单模式"></a>模式1：简单模式</h4><p>【Simple / HelloWorld 单生产单消费】</p>
+<p>简单的发送与接收，没有特别的处理。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png" alt=""></p>
 <hr>
-<h4 id="模式2：工作模式（Work单发送多接收，拿到消息即销毁）"><a href="#模式2：工作模式（Work单发送多接收，拿到消息即销毁）" class="headerlink" title="模式2：工作模式（Work单发送多接收，拿到消息即销毁）"></a>模式2：工作模式（Work单发送多接收，拿到消息即销毁）</h4><p>一个生产者端，多个消费者端。示例中为了保证消息发送的可靠性，不丢失消息，使消息持久化了。同时为了防止接收端在处理消息时down掉，只有在消息处理完成后才发送消息确认。</p>
+<h4 id="模式2：工作模式"><a href="#模式2：工作模式" class="headerlink" title="模式2：工作模式"></a>模式2：工作模式</h4><p>【Work单发送多接收，拿到消息即销毁】</p>
+<p>一个生产者端，多个消费者端。示例中为了保证消息发送的可靠性，不丢失消息，使消息持久化了。同时为了防止接收端在处理消息时down掉，只有在消息处理完成后才发送消息确认。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png" alt=""></p>
 <hr>
-<h4 id="模式3：发布、订阅模式-Publish-Subscribe"><a href="#模式3：发布、订阅模式-Publish-Subscribe" class="headerlink" title="模式3：发布、订阅模式(Publish/Subscribe)"></a>模式3：发布、订阅模式(Publish/Subscribe)</h4><p>使用场景：发布、订阅模式，生产者端发送消息，多个消费者同时接收所有的消息。</p>
+<h4 id="模式3：发布、订阅模式"><a href="#模式3：发布、订阅模式" class="headerlink" title="模式3：发布、订阅模式"></a>模式3：发布、订阅模式</h4><p>【Publish/Subscribe】</p>
+<p>使用场景：发布、订阅模式，生产者端发送消息，多个消费者同时接收所有的消息。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png" alt=""></p>
 <hr>
-<h4 id="模式4：路由模式（Routing）"><a href="#模式4：路由模式（Routing）" class="headerlink" title="模式4：路由模式（Routing）"></a>模式4：路由模式（Routing）</h4><p>生产者按routing key发送消息，不同的消费者端按不同的routing key接收消息。</p>
+<h4 id="模式4：路由模式"><a href="#模式4：路由模式" class="headerlink" title="模式4：路由模式"></a>模式4：路由模式</h4><p>【Routing】（direct 直接的）</p>
+<p>生产者按routing key发送消息，不同的消费者端按不同的routing key接收消息。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png" alt=""></p>
 <hr>
-<h4 id="模式5：通配符（或主题）模式（Topics-，按topic发送接收"><a href="#模式5：通配符（或主题）模式（Topics-，按topic发送接收" class="headerlink" title="模式5：通配符（或主题）模式（Topics ，按topic发送接收)"></a>模式5：通配符（或主题）模式（Topics ，按topic发送接收)</h4><p>生产者端不只按固定的routing key发送消息，而是按字符串“匹配”发送，消费者端同样如此。<br>与之前的路由模式相比，它将信息的传输类型的key更加细化，以“key1.key2.keyN…”的模式来指定信息传输的key的大类型和大类型下面的小类型，让消费者端可以更加精细的确认自己想要获取的信息类型。而在消费者端，不用精确的指定具体到哪一个大类型下的小类型的key，而是可以使用类似正则表达式(但与正则表达式规则完全不同)的通配符在指定一定范围或符合某一个字符串匹配规则的key，来获取想要的信息。“通配符交换机”（Topic Exchange）将路由键和某模式进行匹配。此时队列需要绑定在一个模式上。符号“#”匹配一个或多个词，符号“*”仅匹配一个词。</p>
+<h4 id="模式5：通配符（或主题）模式"><a href="#模式5：通配符（或主题）模式" class="headerlink" title="模式5：通配符（或主题）模式"></a>模式5：通配符（或主题）模式</h4><p>【Topics ，按topic发送接收】</p>
+<p>生产者端不只按固定的routing key发送消息，而是按字符串“匹配”发送，消费者端同样如此。<br>与之前的路由模式相比，它将信息的传输类型的key更加细化，以“key1.key2.keyN…”的模式来指定信息传输的key的大类型和大类型下面的小类型，让消费者端可以更加精细的确认自己想要获取的信息类型。而在消费者端，不用精确的指定具体到哪一个大类型下的小类型的key，而是可以使用类似正则表达式(但与正则表达式规则完全不同)的通配符在指定一定范围或符合某一个字符串匹配规则的key，来获取想要的信息。“通配符交换机”（Topic Exchange）将路由键和某模式进行匹配。此时队列需要绑定在一个模式上。符号“#”匹配一个或多个词，符号“*”仅匹配一个词。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png" alt=""></p>
 
     </div>
@@ -405,7 +475,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是消息队列"><span class="nav-number">1.</span> <span class="nav-text">一、什么是消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、为什么使用消息队列"><span class="nav-number">2.</span> <span class="nav-text">二、为什么使用消息队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ几种典型模式"><span class="nav-number">2.1.</span> <span class="nav-text">RabbitMQ几种典型模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式1：简单模式（Simple-HelloWorld-单生产单消费）"><span class="nav-number">2.2.</span> <span class="nav-text">模式1：简单模式（Simple &#x2F; HelloWorld 单生产单消费）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式2：工作模式（Work单发送多接收，拿到消息即销毁）"><span class="nav-number">2.3.</span> <span class="nav-text">模式2：工作模式（Work单发送多接收，拿到消息即销毁）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式3：发布、订阅模式-Publish-Subscribe"><span class="nav-number">2.4.</span> <span class="nav-text">模式3：发布、订阅模式(Publish&#x2F;Subscribe)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式4：路由模式（Routing）"><span class="nav-number">2.5.</span> <span class="nav-text">模式4：路由模式（Routing）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式5：通配符（或主题）模式（Topics-，按topic发送接收"><span class="nav-number">2.6.</span> <span class="nav-text">模式5：通配符（或主题）模式（Topics ，按topic发送接收)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、RabbitMQ-消息队列"><span class="nav-number">1.</span> <span class="nav-text">一、RabbitMQ 消息队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、AMQP"><span class="nav-number">1.1.</span> <span class="nav-text">1、AMQP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、RabbitMQ-交换机"><span class="nav-number">1.2.</span> <span class="nav-text">2、RabbitMQ 交换机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、Direct-Exchange"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">1、Direct Exchange</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Topic-Exchange"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">2、Topic Exchange</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、Fanout-Exchange"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">3、Fanout Exchange</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、RabbitMQ-消息可靠性"><span class="nav-number">1.3.</span> <span class="nav-text">3、RabbitMQ 消息可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-可靠性投递"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 可靠性投递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-解决方案"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、消息落库-持久化"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">1、消息落库&#x2F;持久化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-延迟投递"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">2.延迟投递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、RabbitMQ-消息幂等性"><span class="nav-number">1.4.</span> <span class="nav-text">4、RabbitMQ 消息幂等性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#幂等性"><span class="nav-number">1.4.1.</span> <span class="nav-text">幂等性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、RabbitMQ-消息队列的使用"><span class="nav-number">2.</span> <span class="nav-text">二、RabbitMQ 消息队列的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ几种典型模式"><span class="nav-number">2.1.</span> <span class="nav-text">RabbitMQ几种典型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模式1：简单模式"><span class="nav-number">2.1.1.</span> <span class="nav-text">模式1：简单模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式2：工作模式"><span class="nav-number">2.1.2.</span> <span class="nav-text">模式2：工作模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式3：发布、订阅模式"><span class="nav-number">2.1.3.</span> <span class="nav-text">模式3：发布、订阅模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式4：路由模式"><span class="nav-number">2.1.4.</span> <span class="nav-text">模式4：路由模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式5：通配符（或主题）模式"><span class="nav-number">2.1.5.</span> <span class="nav-text">模式5：通配符（或主题）模式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

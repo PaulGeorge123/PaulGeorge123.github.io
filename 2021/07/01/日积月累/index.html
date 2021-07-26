@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-13-27.png">
 <meta property="article:published_time" content="2021-06-30T23:07:07.000Z">
-<meta property="article:modified_time" content="2021-07-22T01:39:50.982Z">
+<meta property="article:modified_time" content="2021-07-26T14:03:03.287Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="日积月累">
 <meta name="twitter:card" content="summary">
@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-22 09:39:50" itemprop="dateModified" datetime="2021-07-22T09:39:50+08:00">2021-07-22</time>
+                <time title="修改时间：2021-07-26 22:03:03" itemprop="dateModified" datetime="2021-07-26T22:03:03+08:00">2021-07-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,14 +249,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -355,6 +355,82 @@
 </li>
 </ol>
 <p>Memory 存储，比如我们数据变化频繁，不需要入库，同时又频繁的查询和修改，我们考虑使用 memory, 速度极快. （如果 mysql 重启的话，数据就不存在了）</p>
+<hr>
+<h4 id="6、Java中final、finally、finalize的区别与用法"><a href="#6、Java中final、finally、finalize的区别与用法" class="headerlink" title="6、Java中final、finally、finalize的区别与用法"></a><font color=#008000>6、Java中final、finally、finalize的区别与用法</font></h4><ul>
+<li>final：java中的关键字，修饰符。<br>1.如果一个类被声明为final，就意味着它不能再派生出新的子类，不能作为父类被继承。因此，一个类不能同时被声明为abstract抽象类的和final的类。<br>2.如果将变量或者方法声明为final，可以保证它们在使用中不被改变.<ul>
+<li>被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。</li>
+<li>被声明final的方法只能使用，不能重载。</li>
+</ul>
+</li>
+<li>finally：java的一种异常处理机制。<br>　　finally是对Java异常处理模型的最佳补充。finally结构使代码总会执行，而不管无异常发生。使用finally可以维护对象的内部状态，并可以清理非内存资源。特别是在关闭数据库连接这方面，如果程序员把数据库连接的close()方法放到finally中，就会大大降低程序出错的几率。</li>
+<li>finalize：Java中的一个方法名。<br>Java技术使用finalize()方法在垃圾收集器将对象从内存中清除出去前，做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没被引用时对这个对象调用的。它是在Object类中定义的，因此所的类都继承了它。子类覆盖finalize()方法以整理系统资源或者执行其他清理工作。finalize()方法是在垃圾收集器删除对象之前对这个对象调用的。</li>
+</ul>
+<hr>
+<h4 id="7、try-catch-finally"><a href="#7、try-catch-finally" class="headerlink" title="7、try-catch-finally"></a><font color=#008000>7、try-catch-finally</font></h4><ol>
+<li>异常处理语法结构中只有 try 块是必需的，也就是说，如果没有 try 块，则不能有后面的 catch 块和 finally 块；</li>
+<li>catch 块和 finally 块都是可选的，但 catch 块和 finally 块至少出现其中之一，也可以同时出现；</li>
+<li>可以有多个 catch 块，捕获父类异常的 catch 块必须位于捕获子类异常的后面；</li>
+<li>不能只有 try 块，既没有 catch 块，也没有 finally 块；</li>
+<li>多个 catch 块必须位于 try 块之后，finally 块必须位于所有的 catch 块之后。</li>
+<li>finally 与 try 语句块匹配的语法格式，此种情况会导致异常丢失，所以不常见。</li>
+</ol>
+<hr>
+<h4 id="8、Java中常见的五种异常"><a href="#8、Java中常见的五种异常" class="headerlink" title="8、Java中常见的五种异常"></a><font color=#008000>8、Java中常见的五种异常</font></h4><ol>
+<li>ClassCastException【类转换异常】</li>
+<li>IndexOutOfBoundsException【数组越界】</li>
+<li>NullPointerException【空指针】</li>
+<li>IllegalAccessException【安全权限异常】</li>
+<li>IOException【输入输出异常】</li>
+</ol>
+<hr>
+<h4 id="9、Java中垃圾回收的目的？什么时候进行？"><a href="#9、Java中垃圾回收的目的？什么时候进行？" class="headerlink" title="9、Java中垃圾回收的目的？什么时候进行？"></a><font color=#008000>9、Java中垃圾回收的目的？什么时候进行？</font></h4><p>垃圾回收是在内存中中存在<strong>没有引用的对象</strong>或<strong>超过作用域的对象时</strong>进行垃圾回收，垃圾回收的目的是识别并且丢弃不再使用的对象来释放和重用资源。</p>
+<p>目的：<br>回收堆中不再使用的对象，释放资源。<br>回收时间：当对象失去引用后，系统会在合适的时间回收它所占的内存。</p>
+<ul>
+<li>老年代的对象所需要的内存大于老年代剩余内存，则会触发老年代 GC（Full GC）。</li>
+<li>当程序调用System.gc() 时也会触发Full GC。</li>
+</ul>
+<hr>
+<h4 id="10、什么是内存泄漏？"><a href="#10、什么是内存泄漏？" class="headerlink" title="10、什么是内存泄漏？"></a><font color=#008000>10、什么是内存泄漏？</font></h4><p>【<strong>out of memory</strong>】</p>
+<p>当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中。</p>
+<p><strong>内存溢出的原因以及解决方法</strong></p>
+<ol>
+<li><p>内存中加载的数据量过于庞大，如一次从数据库取出过多数据；</p>
+</li>
+<li><p>集合类中有对对象的引用，使用完后未清空，使得JVM不能回收；</p>
+</li>
+<li><p>代码中存在死循环或循环产生过多重复的对象实体；</p>
+</li>
+<li><p>启动参数内存值设定的过小</p>
+</li>
+</ol>
+<p>内存溢出的解决方案：</p>
+<p>第一步，修改JVM启动参数，直接增加内存。(-Xms，-Xmx参数一定不要忘记加。)</p>
+<p>第二步，检查错误日志，查看“OutOfMemory”错误前是否有其它异常或错误。</p>
+<p>第三步，对代码进行走查和分析，找出可能发生内存溢出的位置。</p>
+<hr>
+<h4 id="11、String-s-new-String-“xyz”-创建几个String对象？"><a href="#11、String-s-new-String-“xyz”-创建几个String对象？" class="headerlink" title="11、String s = new String(“xyz”);创建几个String对象？"></a><font color=#008000>11、String s = new String(“xyz”);创建几个String对象？</font></h4><p>两个或一个</p>
+<ul>
+<li>第一次调用 new String(“xyz”); 时，会在堆内存中创建一个字符串对象，同时在字符串常量池中创建一个对象 “xyz”</li>
+<li>第二次调用 new String(“xyz”); 时，只会在堆内存中创建一个字符串对象，指向之前在字符串常量池中创建的 “xyz”</li>
+</ul>
+<hr>
+<h4 id="12、类加载器工作机制？"><a href="#12、类加载器工作机制？" class="headerlink" title="12、类加载器工作机制？"></a><font color=#008000>12、类加载器工作机制？</font></h4><ol>
+<li>装载：将Java二进制代码导入jvm中，生成Class文件。</li>
+<li>连接：<ul>
+<li>校验：检查载入Class文件数据的正确性 </li>
+<li>准备：给类的静态变量分配存储空间</li>
+<li>解析：将符号引用转成直接引用</li>
+</ul>
+</li>
+<li>初始化：对类的静态变量，静态方法和静态代码块执行初始化工作。<br>双亲委派模型：类加载器收到类加载请求，首先将请求委派给父类加载器完成 用户自定义加载器-&gt;应用程序加载器-&gt;扩展类加载器-&gt;启动类加载器。</li>
+</ol>
+<hr>
+<h4 id="13、Spring中的Controller-，Service，Dao是不是线程安全的？"><a href="#13、Spring中的Controller-，Service，Dao是不是线程安全的？" class="headerlink" title="13、Spring中的Controller ，Service，Dao是不是线程安全的？"></a><font color=#008000>13、Spring中的Controller ，Service，Dao是不是线程安全的？</font></h4><ol>
+<li>在@Controller/@Service等容器中，默认情况下，scope 值是单例 singleton 的，也是线程不安全的。</li>
+<li>尽量不要在@Controller/@Service等容器中定义静态变量，不论是单例 (singleton) 还是多实例 (prototype) 他都是线程不安全的。</li>
+<li>默认注入的 Bean 对象，在不设置 scope 的时候他也是线程不安全的。</li>
+<li>一定要定义变量的话，用 ThreadLocal 来封装，这个是线程安全的</li>
+</ol>
 <p> <strong>未完待续 … …</strong></p>
 
     </div>
@@ -452,7 +528,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-Autowired和-Resource的区别是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、@Autowired和@Resource的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、HashMap与ConcurrentHashMap的区别？"><span class="nav-number">2.</span> <span class="nav-text">2、HashMap与ConcurrentHashMap的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、处理哈希冲突的方法？"><span class="nav-number">3.</span> <span class="nav-text">3、处理哈希冲突的方法？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、包装类和基本数据类型的区别？"><span class="nav-number">4.</span> <span class="nav-text">4、包装类和基本数据类型的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、MyISAM-和-INNODB-的区别？"><span class="nav-number">5.</span> <span class="nav-text">5、MyISAM 和 INNODB 的区别？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-Autowired和-Resource的区别是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、@Autowired和@Resource的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、HashMap与ConcurrentHashMap的区别？"><span class="nav-number">2.</span> <span class="nav-text">2、HashMap与ConcurrentHashMap的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、处理哈希冲突的方法？"><span class="nav-number">3.</span> <span class="nav-text">3、处理哈希冲突的方法？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、包装类和基本数据类型的区别？"><span class="nav-number">4.</span> <span class="nav-text">4、包装类和基本数据类型的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、MyISAM-和-INNODB-的区别？"><span class="nav-number">5.</span> <span class="nav-text">5、MyISAM 和 INNODB 的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Java中final、finally、finalize的区别与用法"><span class="nav-number">6.</span> <span class="nav-text">6、Java中final、finally、finalize的区别与用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、try-catch-finally"><span class="nav-number">7.</span> <span class="nav-text">7、try-catch-finally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、Java中常见的五种异常"><span class="nav-number">8.</span> <span class="nav-text">8、Java中常见的五种异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、Java中垃圾回收的目的？什么时候进行？"><span class="nav-number">9.</span> <span class="nav-text">9、Java中垃圾回收的目的？什么时候进行？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、什么是内存泄漏？"><span class="nav-number">10.</span> <span class="nav-text">10、什么是内存泄漏？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、String-s-new-String-“xyz”-创建几个String对象？"><span class="nav-number">11.</span> <span class="nav-text">11、String s &#x3D; new String(“xyz”);创建几个String对象？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、类加载器工作机制？"><span class="nav-number">12.</span> <span class="nav-text">12、类加载器工作机制？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13、Spring中的Controller-，Service，Dao是不是线程安全的？"><span class="nav-number">13.</span> <span class="nav-text">13、Spring中的Controller ，Service，Dao是不是线程安全的？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
