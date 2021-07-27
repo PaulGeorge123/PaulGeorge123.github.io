@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-13-27.png">
 <meta property="article:published_time" content="2021-06-30T23:07:07.000Z">
-<meta property="article:modified_time" content="2021-07-26T14:03:03.287Z">
+<meta property="article:modified_time" content="2021-07-27T18:52:03.493Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="日积月累">
 <meta name="twitter:card" content="summary">
@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">41</span></a>
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">42</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">65</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">66</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-26 22:03:03" itemprop="dateModified" datetime="2021-07-26T22:03:03+08:00">2021-07-26</time>
+                <time title="修改时间：2021-07-28 02:52:03" itemprop="dateModified" datetime="2021-07-28T02:52:03+08:00">2021-07-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -431,6 +431,13 @@
 <li>默认注入的 Bean 对象，在不设置 scope 的时候他也是线程不安全的。</li>
 <li>一定要定义变量的话，用 ThreadLocal 来封装，这个是线程安全的</li>
 </ol>
+<hr>
+<h4 id="14、Java-中-sleep-和-wait-的区别？"><a href="#14、Java-中-sleep-和-wait-的区别？" class="headerlink" title="14、Java 中 sleep() 和 wait() 的区别？"></a><font color=#008000>14、Java 中 sleep() 和 wait() 的区别？</font></h4><ol>
+<li>这两个方法来自不同的类分别是，sleep 来自 Thread 类，和 wait 来自 Object 类。</li>
+<li>最主要是 sleep 方法没有释放锁，而 wait 方法释放了锁，使得其他线程可以使用同步控制块或者方法。</li>
+<li>使用范围：wait，notify 和 notifyAll 只能在同步控制方法或者同步控制块里面使用，而 sleep 可以在任何地方使用。</li>
+<li>sleep 必须捕获异常，而 wait，notify 和 notifyAll 不需要捕获异常。</li>
+</ol>
 <p> <strong>未完待续 … …</strong></p>
 
     </div>
@@ -528,7 +535,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-Autowired和-Resource的区别是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、@Autowired和@Resource的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、HashMap与ConcurrentHashMap的区别？"><span class="nav-number">2.</span> <span class="nav-text">2、HashMap与ConcurrentHashMap的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、处理哈希冲突的方法？"><span class="nav-number">3.</span> <span class="nav-text">3、处理哈希冲突的方法？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、包装类和基本数据类型的区别？"><span class="nav-number">4.</span> <span class="nav-text">4、包装类和基本数据类型的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、MyISAM-和-INNODB-的区别？"><span class="nav-number">5.</span> <span class="nav-text">5、MyISAM 和 INNODB 的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Java中final、finally、finalize的区别与用法"><span class="nav-number">6.</span> <span class="nav-text">6、Java中final、finally、finalize的区别与用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、try-catch-finally"><span class="nav-number">7.</span> <span class="nav-text">7、try-catch-finally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、Java中常见的五种异常"><span class="nav-number">8.</span> <span class="nav-text">8、Java中常见的五种异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、Java中垃圾回收的目的？什么时候进行？"><span class="nav-number">9.</span> <span class="nav-text">9、Java中垃圾回收的目的？什么时候进行？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、什么是内存泄漏？"><span class="nav-number">10.</span> <span class="nav-text">10、什么是内存泄漏？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、String-s-new-String-“xyz”-创建几个String对象？"><span class="nav-number">11.</span> <span class="nav-text">11、String s &#x3D; new String(“xyz”);创建几个String对象？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、类加载器工作机制？"><span class="nav-number">12.</span> <span class="nav-text">12、类加载器工作机制？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13、Spring中的Controller-，Service，Dao是不是线程安全的？"><span class="nav-number">13.</span> <span class="nav-text">13、Spring中的Controller ，Service，Dao是不是线程安全的？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-Autowired和-Resource的区别是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、@Autowired和@Resource的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、HashMap与ConcurrentHashMap的区别？"><span class="nav-number">2.</span> <span class="nav-text">2、HashMap与ConcurrentHashMap的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、处理哈希冲突的方法？"><span class="nav-number">3.</span> <span class="nav-text">3、处理哈希冲突的方法？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、包装类和基本数据类型的区别？"><span class="nav-number">4.</span> <span class="nav-text">4、包装类和基本数据类型的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、MyISAM-和-INNODB-的区别？"><span class="nav-number">5.</span> <span class="nav-text">5、MyISAM 和 INNODB 的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Java中final、finally、finalize的区别与用法"><span class="nav-number">6.</span> <span class="nav-text">6、Java中final、finally、finalize的区别与用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、try-catch-finally"><span class="nav-number">7.</span> <span class="nav-text">7、try-catch-finally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、Java中常见的五种异常"><span class="nav-number">8.</span> <span class="nav-text">8、Java中常见的五种异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、Java中垃圾回收的目的？什么时候进行？"><span class="nav-number">9.</span> <span class="nav-text">9、Java中垃圾回收的目的？什么时候进行？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、什么是内存泄漏？"><span class="nav-number">10.</span> <span class="nav-text">10、什么是内存泄漏？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、String-s-new-String-“xyz”-创建几个String对象？"><span class="nav-number">11.</span> <span class="nav-text">11、String s &#x3D; new String(“xyz”);创建几个String对象？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、类加载器工作机制？"><span class="nav-number">12.</span> <span class="nav-text">12、类加载器工作机制？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13、Spring中的Controller-，Service，Dao是不是线程安全的？"><span class="nav-number">13.</span> <span class="nav-text">13、Spring中的Controller ，Service，Dao是不是线程安全的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14、Java-中-sleep-和-wait-的区别？"><span class="nav-number">14.</span> <span class="nav-text">14、Java 中 sleep() 和 wait() 的区别？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -544,7 +551,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -557,7 +564,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/PaulGeorge123.github.io/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
