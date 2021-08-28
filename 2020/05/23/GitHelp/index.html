@@ -21,18 +21,31 @@
     var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="Git 常用命令仓库12345678# 在当前目录新建一个Git代码库$ git init# 新建一个目录，将其初始化为Git代码库$ git init [project-name]# 下载一个项目和它的整个代码历史$ git clone [url]">
+  <meta name="description" content="工作必备小技能  本篇着重介绍一下 Git      写在前面 Git 是什么？能干啥？ 很多人都以为 Git 就是 GitHub ，但是二者并不同一种东西，前者是版本控制工具，而后者则是代码的存储区。 在工作中我们经常会用到，简单说就是用于管理多人协同开发项目的技术。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="https://codeyg.top/2020/05/23/GitHelp/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="Git 常用命令仓库12345678# 在当前目录新建一个Git代码库$ git init# 新建一个目录，将其初始化为Git代码库$ git init [project-name]# 下载一个项目和它的整个代码历史$ git clone [url]">
+<meta property="og:description" content="工作必备小技能  本篇着重介绍一下 Git      写在前面 Git 是什么？能干啥？ 很多人都以为 Git 就是 GitHub ，但是二者并不同一种东西，前者是版本控制工具，而后者则是代码的存储区。 在工作中我们经常会用到，简单说就是用于管理多人协同开发项目的技术。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-23T04:23:21.000Z">
-<meta property="article:modified_time" content="2021-06-14T17:18:49.806Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/1024px-Git-logo.svg.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_00-03-10.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_02-58-57.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_03-33-46.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_03-48-05.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-10.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-18.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_05-06-13.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-41.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-52.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-44-02.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-44-17.png">
+<meta property="article:published_time" content="2020-05-23T01:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-28T21:16:04.822Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/1024px-Git-logo.svg.png">
 
 <link rel="canonical" href="https://codeyg.top/2020/05/23/GitHelp/">
 
@@ -220,14 +233,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-23 12:23:21" itemprop="dateCreated datePublished" datetime="2020-05-23T12:23:21+08:00">2020-05-23</time>
+              <time title="创建时间：2020-05-23 09:00:00" itemprop="dateCreated datePublished" datetime="2020-05-23T09:00:00+08:00">2020-05-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-15 01:18:49" itemprop="dateModified" datetime="2021-06-15T01:18:49+08:00">2021-06-15</time>
+                <time title="修改时间：2021-08-29 05:16:04" itemprop="dateModified" datetime="2021-08-29T05:16:04+08:00">2021-08-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,14 +258,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>6.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -264,9 +277,99 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Git-常用命令"><a href="#Git-常用命令" class="headerlink" title="Git 常用命令"></a>Git 常用命令</h3><h4 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载一个项目和它的整个代码历史</span></span><br><span class="line">$ git <span class="built_in">clone</span> [url]</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>工作必备小技能</p>
+</blockquote>
+<p><strong>本篇着重介绍一下 Git</strong></p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/1024px-Git-logo.svg.png" style="zoom: 33%;" />
 
+
+
+<p><strong>写在前面</strong></p>
+<p><font color=#008000>Git 是什么？能干啥？</font></p>
+<p>很多人都以为 Git 就是 GitHub ，但是二者并不同一种东西，前者是版本控制工具，而后者则是代码的存储区。</p>
+<p>在工作中我们经常会用到，简单说就是用于管理多人协同开发项目的技术。</p>
 <a id="more"></a>
+
+<h3 id="Git-是什么"><a href="#Git-是什么" class="headerlink" title="Git 是什么"></a>Git 是什么</h3><h4 id="官方回答"><a href="#官方回答" class="headerlink" title="官方回答"></a>官方回答</h4><ol>
+<li>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</li>
+<li>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</li>
+<li>Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。</li>
+</ol>
+<h3 id="Git-工作流程"><a href="#Git-工作流程" class="headerlink" title="Git 工作流程"></a>Git 工作流程</h3><p>一般工作流程如下：</p>
+<ul>
+<li>克隆 Git 资源作为工作目录。【 git clone 】</li>
+<li>在克隆的资源上添加或修改文件。</li>
+<li>如果其他人修改了，你可以更新资源。</li>
+<li>在提交前查看修改。</li>
+<li>提交修改。【 git push 】</li>
+<li>在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_00-03-10.png" alt=""></p>
+<hr>
+<h3 id="Git-工作区、暂存区和版本库"><a href="#Git-工作区、暂存区和版本库" class="headerlink" title="Git 工作区、暂存区和版本库"></a>Git 工作区、暂存区和版本库</h3><p>我们先来理解下 Git 工作区、暂存区和版本库概念：</p>
+<ul>
+<li><strong>工作区：</strong>就是你在电脑里能看到的目录。</li>
+<li><strong>暂存区：</strong>英文叫 stage 或 index。一般存放在 <strong>.git</strong> 目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
+<li><strong>版本库：</strong>工作区有一个隐藏目录 <strong>.git</strong>，这个不算工作区，而是 Git 的版本库。</li>
+</ul>
+<p>下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_02-58-57.png" alt=""></p>
+<p><strong>解释</strong></p>
+<ul>
+<li>在版本库中标记为 “index” 的区域是暂存区（stage/index），标记为 “master” 的是 master 分支所代表的目录树。</li>
+<li>“head” 实际是指向 master 分支的一个”游标”。所以图示的命令中出现 head 的地方可以用 master 来替换。</li>
+<li>objects 标识的区域为 Git 的对象库，实际位于 “.git/objects” 目录下，里面包含了创建的各种对象及内容。</li>
+<li>当对工作区修改（或新增）的文件执行 <strong>git add</strong> 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的 id 被记录在暂存区的文件索引中。</li>
+<li>当执行提交操作（ <strong>git commit</strong> ）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。</li>
+<li>当执行 <strong>git reset HEAD</strong> 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。</li>
+<li>当执行 *<em>git rm –cached *</em> 命令时，会直接从暂存区删除文件，工作区则不做出改变。</li>
+<li>当执行 <strong>git checkout .</strong> 或者 *<em>git checkout – *</em> 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</li>
+<li>当执行 <strong>git checkout HEAD .</strong> 或者 *<em>git checkout HEAD *</em> 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
+</ul>
+<blockquote>
+<h4 id="工作流程-工作常用"><a href="#工作流程-工作常用" class="headerlink" title="工作流程 (工作常用)"></a>工作流程 (工作常用)</h4></blockquote>
+<p>使用 git 的工作流程一般是这样的：</p>
+<ol>
+<li>在工作目录中添加、修改文件；</li>
+<li>将需要进行版本管理的文件放入暂存区域；</li>
+<li>将暂存区域的文件提交到 git 仓库。</li>
+</ol>
+<p>因此，git管理的文件有三种状态：已修改（modified）, 已暂存（staged）,已提交（committed）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_03-33-46.png" alt=""></p>
+<ol>
+<li>工作区</li>
+<li>暂存区</li>
+<li>本地仓库</li>
+<li>远程仓库</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_03-48-05.png" alt=""></p>
+<hr>
+<h3 id="Git-工作使用"><a href="#Git-工作使用" class="headerlink" title="Git 工作使用"></a>Git 工作使用</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p>一开始的时候，<code>master</code>分支是一条线，Git用<code>master</code>指向最新的提交，再用<code>HEAD</code>指向<code>master</code>，就能确定当前分支，以及当前分支的提交点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-10.png" alt=""></p>
+<p>当我们创建新的分支，例如<code>dev</code>时，Git新建了一个指针叫<code>dev</code>，指向<code>master</code>相同的提交。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-18.png" alt=""></p>
+<p>再把<code>HEAD</code>指向<code>dev</code>，就表示当前分支在<code>dev</code>上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_05-06-13.png" alt=""></p>
+<p>从现在开始，对工作区的修改和提交就是针对<code>dev</code>分支了，比如新提交一次后，<code>dev</code>指针往前移动一步，而<code>master</code>指针不变。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-41.png" alt=""></p>
+<p>假如我们在<code>dev</code>上的工作完成了，就可以把<code>dev</code>合并到<code>master</code>上。Git怎么合并呢？最简单的方法，就是直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-43-52.png" alt=""></p>
+<p>合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后，我们就剩下了一条<code>master</code>分支。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-44-02.png" alt=""></p>
+<p>实际工作中会多人同时协作开发，所以一条 <code>master</code> 分支上会有多条 <code>dev</code> 分支。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-29_04-44-17.png" alt=""></p>
+<hr>
+<h3 id="Git-常用命令"><a href="#Git-常用命令" class="headerlink" title="Git 常用命令"></a>Git 常用命令</h3><h4 id="工作最常用"><a href="#工作最常用" class="headerlink" title="工作最常用"></a>工作最常用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载一个项目和它的整个代码历史</span></span><br><span class="line">$ git <span class="built_in">clone</span> [url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">$ git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定分支，并更新工作区</span></span><br><span class="line">$ git checkout [branch-name]</span><br><span class="line"></span><br><span class="line">================work================ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交暂存区到仓库区</span></span><br><span class="line">$ git commit -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送所有分支到远程仓库</span></span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">================cycle================</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载远程仓库的所有变动</span></span><br><span class="line">$ git fetch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取回远程仓库的变化，并与本地分支合并</span></span><br><span class="line">$ git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交暂存区到仓库区</span></span><br><span class="line">$ git commit -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送所有分支到远程仓库</span></span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">======complete / delete the branch=====</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line">git branch [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line">git checkout -b [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 代码先推到自己的分支上</span></span><br><span class="line">$ git pull</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">' 描述'</span></span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line">$ git merge [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">$ git branch -d [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line">$ git push origin --delete [branch-name]</span><br><span class="line">$ git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Git-具体命令"><a href="#Git-具体命令" class="headerlink" title="Git 具体命令"></a>Git 具体命令</h3><h4 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载一个项目和它的整个代码历史</span></span><br><span class="line">$ git <span class="built_in">clone</span> [url]</span><br></pre></td></tr></table></figure>
+
+
 
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前的Git配置</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑Git配置文件</span></span><br><span class="line">$ git config -e [--global]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line">$ git config [--global] user.name <span class="string">"[name]"</span></span><br><span class="line">$ git config [--global] user.email <span class="string">"[email address]"</span></span><br></pre></td></tr></table></figure>
 
@@ -310,12 +413,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2020/05/23/HTML/" rel="prev" title="HTML">
+    <a href="/PaulGeorge123.github.io/2020/05/22/HTML/" rel="prev" title="HTML">
       <i class="fa fa-chevron-left"></i> HTML
     </a></div>
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2020/05/23/CSS/" rel="next" title="CSS">
-      CSS <i class="fa fa-chevron-right"></i>
+    <a href="/PaulGeorge123.github.io/2020/05/23/Example%20mybatis/" rel="next" title="Example">
+      Example <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -376,7 +479,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-常用命令"><span class="nav-number">1.</span> <span class="nav-text">Git 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库"><span class="nav-number">1.1.</span> <span class="nav-text">仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">1.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加-删除文件"><span class="nav-number">1.3.</span> <span class="nav-text">增加&#x2F;删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码提交"><span class="nav-number">1.4.</span> <span class="nav-text">代码提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支"><span class="nav-number">1.5.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签"><span class="nav-number">1.6.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看信息"><span class="nav-number">1.7.</span> <span class="nav-text">查看信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程同步"><span class="nav-number">1.8.</span> <span class="nav-text">远程同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销"><span class="nav-number">1.9.</span> <span class="nav-text">撤销</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-是什么"><span class="nav-number">1.</span> <span class="nav-text">Git 是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官方回答"><span class="nav-number">1.1.</span> <span class="nav-text">官方回答</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-工作流程"><span class="nav-number">2.</span> <span class="nav-text">Git 工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-工作区、暂存区和版本库"><span class="nav-number">3.</span> <span class="nav-text">Git 工作区、暂存区和版本库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作流程-工作常用"><span class="nav-number">3.1.</span> <span class="nav-text">工作流程 (工作常用)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-工作使用"><span class="nav-number">4.</span> <span class="nav-text">Git 工作使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图解"><span class="nav-number">4.1.</span> <span class="nav-text">图解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-常用命令"><span class="nav-number">5.</span> <span class="nav-text">Git 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作最常用"><span class="nav-number">5.1.</span> <span class="nav-text">工作最常用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-具体命令"><span class="nav-number">6.</span> <span class="nav-text">Git 具体命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库"><span class="nav-number">6.1.</span> <span class="nav-text">仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">6.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加-删除文件"><span class="nav-number">6.3.</span> <span class="nav-text">增加&#x2F;删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码提交"><span class="nav-number">6.4.</span> <span class="nav-text">代码提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支"><span class="nav-number">6.5.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签"><span class="nav-number">6.6.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看信息"><span class="nav-number">6.7.</span> <span class="nav-text">查看信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程同步"><span class="nav-number">6.8.</span> <span class="nav-text">远程同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销"><span class="nav-number">6.9.</span> <span class="nav-text">撤销</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
