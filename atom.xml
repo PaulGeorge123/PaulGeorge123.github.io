@@ -6,7 +6,7 @@
   <link href="https://codeyg.top/atom.xml" rel="self"/>
   
   <link href="https://codeyg.top/"/>
-  <updated>2021-08-25T17:34:32.746Z</updated>
+  <updated>2021-08-31T00:40:42.923Z</updated>
   <id>https://codeyg.top/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实践一下--工作常用小技巧</title>
+    <link href="https://codeyg.top/2021/08/30/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/"/>
+    <id>https://codeyg.top/2021/08/30/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/</id>
+    <published>2021-08-30T01:00:00.000Z</published>
+    <updated>2021-08-31T00:40:42.923Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>工作常用小技巧</p></blockquote><p><strong>本篇着重介绍一下工作常用小技巧</strong></p><hr><p><strong>写在前面</strong></p><p><font color=#008000>工作中经常会用到的小技巧，来让我们一起来看看？</font></p><a id="more"></a><h3 id="Java正确URL解码方式"><a href="#Java正确URL解码方式" class="headerlink" title="Java正确URL解码方式"></a>Java正确URL解码方式</h3><p> 我们经常会遇到乱码的问题，那么首先可能想到的就是使用过滤器来处理，但是使用过滤器的话就会过滤所有请求，有的请求是不需要过滤的，所以如果需要过滤的请求不多的情况下，我们可以对请求进行特别处理。</p><h4 id="urlEncoder和urlDecode"><a href="#urlEncoder和urlDecode" class="headerlink" title="urlEncoder和urlDecode"></a>urlEncoder和urlDecode</h4><p>使用指定的编码机制将字符串转换为 application/x-www-form-urlencoded 格式 </p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URLEncoder.encode(String s, String enc) 【enc --&gt; <span class="string">"utf-8"</span>】</span><br></pre></td></tr></table></figure><p>使用指定的编码机制对 application/x-www-form-urlencoded 字符串解码。 </p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URLDecoder.decode(String s, String enc) 【enc --&gt; <span class="string">"utf-8"</span>】</span><br></pre></td></tr></table></figure><hr><h3 id="Mybatis中查询时间段内数据"><a href="#Mybatis中查询时间段内数据" class="headerlink" title="Mybatis中查询时间段内数据"></a>Mybatis中查询时间段内数据</h3><h4 id="数据库使用Date类型"><a href="#数据库使用Date类型" class="headerlink" title="数据库使用Date类型"></a>数据库使用Date类型</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"minCreateTime != null and  minCreateTime != ''"</span>&gt;</span></span><br><span class="line">  &lt;![CDATA[ and g.create_time &gt;= to_date(#&#123;minCreateTime,jdbcType=DATE&#125;,'yyyy-MM-dd hh24:mi:ss')]]&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"maxCreateTime != null and  maxCreateTime != ''"</span>&gt;</span></span><br><span class="line">  &lt;![CDATA[ and g.create_time &lt;= to_date(#&#123;maxCreateTime,jdbcType=DATE&#125;,'yyyy-MM-dd hh24:mi:ss')]]&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="数据库使用字符串类型"><a href="#数据库使用字符串类型" class="headerlink" title="数据库使用字符串类型"></a>数据库使用字符串类型</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"createTime != null"</span>&gt;</span></span><br><span class="line">    AND CREATE_TIME = CONCAT(CONCAT('%', #&#123;createTime,jdbcType=DATE&#125;), '%')</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"updateTime != null"</span>&gt;</span></span><br><span class="line">    AND UPDATE_TIME = CONCAT(CONCAT('%', #&#123;updateTime,jdbcType=DATE&#125;), '%')</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure><hr><h3 id="Java-Date-与-String-的相互转换"><a href="#Java-Date-与-String-的相互转换" class="headerlink" title="Java Date 与 String 的相互转换"></a>Java Date 与 String 的相互转换</h3><h4 id="Java-String-转-Date"><a href="#Java-String-转-Date" class="headerlink" title="Java String 转 Date"></a>Java String 转 Date</h4><p>接口之间数据的传输都是字符串，现在需要把数据存储在数据库中，定义对象的时候将日期定义为了Date，所以不得不把String转为Date对象。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间（格式：yyyy-MM-dd HH:mm:ss）</span></span><br><span class="line">String time = <span class="string">"2021-01-01 10:10:10"</span>;</span><br><span class="line"><span class="comment">// 设置日期格式</span></span><br><span class="line">SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">// 将字符串解析成日期</span></span><br><span class="line">Date date = simpleDateFormat.parse(time);</span><br></pre></td></tr></table></figure><h4 id="Java-Date-转-String"><a href="#Java-Date-转-String" class="headerlink" title="Java Date 转 String"></a>Java Date 转 String</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间（返回格式：yyyy-MM-dd HH:mm:ss）</span></span><br><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">// 设置日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">// new Date()为获取当前系统时间</span></span><br><span class="line">String time = df.format(date);</span><br></pre></td></tr></table></figure><h4 id="计算某天n天之后的日期"><a href="#计算某天n天之后的日期" class="headerlink" title="计算某天n天之后的日期"></a>计算某天n天之后的日期</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getBeforeAfterDateDay</span><span class="params">(String time, <span class="keyword">int</span> day)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">    Date date = sdf.parse(time);</span><br><span class="line">    Calendar cal = Calendar.getInstance();</span><br><span class="line">    cal.setTime(date);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> Year = cal.get(Calendar.YEAR);</span><br><span class="line">    <span class="keyword">int</span> Month = cal.get(Calendar.MONTH);</span><br><span class="line">    <span class="keyword">int</span> Day = cal.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> NewDay = Day + day;</span><br><span class="line"></span><br><span class="line">    cal.set(Calendar.YEAR, Year);</span><br><span class="line">    cal.set(Calendar.MONTH, Month);</span><br><span class="line">    cal.set(Calendar.DAY_OF_MONTH, NewDay);</span><br><span class="line"></span><br><span class="line">    String newTime = sdf.format(<span class="keyword">new</span> Date(cal.getTimeInMillis()));</span><br><span class="line">    <span class="keyword">return</span> newTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;工作常用小技巧&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;本篇着重介绍一下工作常用小技巧&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=#008000&gt;工作中经常会用到的小技巧，来让我们一起来看看？&lt;/font&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工作" scheme="https://codeyg.top/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+    <category term="小技巧" scheme="https://codeyg.top/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实践一下--Dubbo</title>
+    <link href="https://codeyg.top/2021/08/30/%E9%9D%A2%E8%AF%95--Dubbo/"/>
+    <id>https://codeyg.top/2021/08/30/%E9%9D%A2%E8%AF%95--Dubbo/</id>
+    <published>2021-08-30T01:00:00.000Z</published>
+    <updated>2021-08-29T17:58:26.380Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>每天一篇面试小知识</p></blockquote><p><strong>本篇着重介绍一下 Dubbo</strong></p><hr><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-30_01-35-39.png" alt=""></p><p><strong>写在前面</strong></p><p><font color=#008000>什么是分布式系统？</font></p><p>我个人觉得就是：分开部署的系统。</p><a id="more"></a><h3 id="为什么要使用分布式系统"><a href="#为什么要使用分布式系统" class="headerlink" title="为什么要使用分布式系统"></a>为什么要使用分布式系统</h3><p>老式系统(单一应用架构)就是把一个系统，统一放到一个服务器当中然后每一个服务器上放一个系统，如果说要更新代码的话，每一个服务器上的系统都要重新去部署十分的麻烦。</p><p>而分布式系统就是将一个完整的系统拆分成多个不同的服务，然后在将每一个服务单独的放到一个服务器当中。</p><h3 id="分布式系统中的相关概念"><a href="#分布式系统中的相关概念" class="headerlink" title="分布式系统中的相关概念"></a>分布式系统中的相关概念</h3><h4 id="衡量网站的性能指标"><a href="#衡量网站的性能指标" class="headerlink" title="衡量网站的性能指标"></a>衡量网站的性能指标</h4><ul><li><p>响应时间：指执行一个请求从开始到最后收到响应数据所花费的总体时间。</p></li><li><p>并发数：指系统同时能处理的请求数量。</p><ul><li>并发连接数：指的是客户端向服务器发起请求，并建立了TCP连接。每秒钟服务器连接的总TCP数量</li><li>请求数：也称为 QPS (Query Per Second) 指每秒多少请求.</li><li>并发用户数：单位时间内有多少用户</li></ul></li><li><p>吞吐量：指单位时间内系统能处理的请求数量。</p><ul><li>QPS：Query Per Second 每秒查询数。 </li><li>TPS：Transactions Per Second 每秒事务数。 </li><li>一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数。</li><li>一个页面的一次访问，只会形成一个TPS；但一次页面请求，可能产生多次对服务器的请求，就会有多个QPS</li></ul></li></ul><center><font color=#FF0000>QPS >= 并发连接数 >= TPS</font></center>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;每天一篇面试小知识&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;本篇着重介绍一下 Dubbo&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-30_01-35-39.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=#008000&gt;什么是分布式系统？&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;我个人觉得就是：分开部署的系统。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="框架" scheme="https://codeyg.top/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="进阶" scheme="https://codeyg.top/tags/%E8%BF%9B%E9%98%B6/"/>
+    
+    <category term="Dubbo" scheme="https://codeyg.top/tags/Dubbo/"/>
+    
+  </entry>
   
   <entry>
     <title>实践一下--跨域问题</title>
@@ -49,9 +107,9 @@
     <link href="https://codeyg.top/2021/08/20/%E5%AE%9E%E7%94%A8%E9%93%BE%E6%8E%A5/"/>
     <id>https://codeyg.top/2021/08/20/%E5%AE%9E%E7%94%A8%E9%93%BE%E6%8E%A5/</id>
     <published>2021-08-20T01:00:00.000Z</published>
-    <updated>2021-08-23T19:47:17.136Z</updated>
+    <updated>2021-08-31T00:36:16.642Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>收集的各种优质的链接</p></blockquote><hr><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/link.png" style="zoom:67%;" /><p><strong>写在前面</strong></p><p><font color=#008000>本片博客是用于汇集各种编程相关的优质链接</font></p><a id="more"></a><h3 id="一、使用教程篇"><a href="#一、使用教程篇" class="headerlink" title="一、使用教程篇"></a>一、使用教程篇</h3><p><a href="https://mp.weixin.qq.com/s/KMkVb1Az8LxsfsJpy9EH8g" target="_blank" rel="noopener">1、全网最全的 postman 工具使用教程</a></p><p><a href="https://zszxz.com/category/springboot/article/2" target="_blank" rel="noopener">2、SpringBoot教程</a></p><hr><h3 id="二、算法提高篇"><a href="#二、算法提高篇" class="headerlink" title="二、算法提高篇"></a>二、算法提高篇</h3><p><a href="https://zhuanlan.zhihu.com/p/383733598" target="_blank" rel="noopener">1、LeetCode 最长公共前缀</a></p><p><a href="https://zhuanlan.zhihu.com/p/383416115" target="_blank" rel="noopener">2、LeetCode 罗马数字转整数</a></p><hr><h3 id="三、知识积累篇"><a href="#三、知识积累篇" class="headerlink" title="三、知识积累篇"></a>三、知识积累篇</h3><p><a href="https://mp.weixin.qq.com/s/HQA8Tcg4a1oElvUBSNlN_A" target="_blank" rel="noopener">1、Redis五种数据结构详解</a></p><p><a href="https://pdai.tech/md/outline/x-outline.html#%E5%85%A8%E6%A0%88%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%80%BB%E8%A7%88" target="_blank" rel="noopener">2、Java 全栈知识体系</a></p><p><a href="https://blog.csdn.net/weixin_42313701/article/details/107729593" target="_blank" rel="noopener">3、Java一些过时方法与替换</a></p><hr><h3 id="四、问题解决篇"><a href="#四、问题解决篇" class="headerlink" title="四、问题解决篇"></a>四、问题解决篇</h3><p><a href="https://www.cnblogs.com/mark5/p/14268122.html" target="_blank" rel="noopener">1、MybatisPlus 主键策略</a></p><p><a href="https://blog.csdn.net/zhangpower1993/article/details/89016503" target="_blank" rel="noopener">2、SpringBoot–WebMvcConfigurer</a></p><hr><h3 id="五、体系架构篇"><a href="#五、体系架构篇" class="headerlink" title="五、体系架构篇"></a>五、体系架构篇</h3><p><a href="https://mp.weixin.qq.com/s/bxRUzYyT_vW7-iJUgee58g" target="_blank" rel="noopener">1、淘宝技术架构演进</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>收集的各种优质的链接</p></blockquote><hr><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/link.png" style="zoom:67%;" /><p><strong>写在前面</strong></p><p><font color=#008000>本篇博客是用于汇集各种编程相关的优质链接</font></p><a id="more"></a><h3 id="一、使用教程篇"><a href="#一、使用教程篇" class="headerlink" title="一、使用教程篇"></a>一、使用教程篇</h3><p><a href="https://mp.weixin.qq.com/s/KMkVb1Az8LxsfsJpy9EH8g" target="_blank" rel="noopener">1、全网最全的 postman 工具使用教程</a></p><p><a href="https://zszxz.com/category/springboot/article/2" target="_blank" rel="noopener">2、SpringBoot教程</a></p><hr><h3 id="二、算法提高篇"><a href="#二、算法提高篇" class="headerlink" title="二、算法提高篇"></a>二、算法提高篇</h3><p><a href="https://zhuanlan.zhihu.com/p/383733598" target="_blank" rel="noopener">1、LeetCode 最长公共前缀</a></p><p><a href="https://zhuanlan.zhihu.com/p/383416115" target="_blank" rel="noopener">2、LeetCode 罗马数字转整数</a></p><hr><h3 id="三、知识积累篇"><a href="#三、知识积累篇" class="headerlink" title="三、知识积累篇"></a>三、知识积累篇</h3><p><a href="https://mp.weixin.qq.com/s/HQA8Tcg4a1oElvUBSNlN_A" target="_blank" rel="noopener">1、Redis五种数据结构详解</a></p><p><a href="https://pdai.tech/md/outline/x-outline.html#%E5%85%A8%E6%A0%88%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%80%BB%E8%A7%88" target="_blank" rel="noopener">2、Java 全栈知识体系</a></p><p><a href="https://blog.csdn.net/weixin_42313701/article/details/107729593" target="_blank" rel="noopener">3、Java一些过时方法与替换</a></p><hr><h3 id="四、问题解决篇"><a href="#四、问题解决篇" class="headerlink" title="四、问题解决篇"></a>四、问题解决篇</h3><p><a href="https://www.cnblogs.com/mark5/p/14268122.html" target="_blank" rel="noopener">1、MybatisPlus 主键策略</a></p><p><a href="https://blog.csdn.net/zhangpower1993/article/details/89016503" target="_blank" rel="noopener">2、SpringBoot–WebMvcConfigurer</a></p><p><a href="https://blog.csdn.net/W_Meng_H/article/details/109253400" target="_blank" rel="noopener">3、Java-时间转换工具类</a></p><hr><h3 id="五、体系架构篇"><a href="#五、体系架构篇" class="headerlink" title="五、体系架构篇"></a>五、体系架构篇</h3><p><a href="https://mp.weixin.qq.com/s/bxRUzYyT_vW7-iJUgee58g" target="_blank" rel="noopener">1、淘宝技术架构演进</a></p><hr><h3 id="六、工作总结"><a href="#六、工作总结" class="headerlink" title="六、工作总结"></a>六、工作总结</h3>]]></content>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -65,7 +123,7 @@
 
 
 &lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;font color=#008000&gt;本片博客是用于汇集各种编程相关的优质链接&lt;/font&gt;&lt;/p&gt;</summary>
+&lt;p&gt;&lt;font color=#008000&gt;本篇博客是用于汇集各种编程相关的优质链接&lt;/font&gt;&lt;/p&gt;</summary>
     
     
     
@@ -597,62 +655,6 @@
     <category term="进阶" scheme="https://codeyg.top/tags/%E8%BF%9B%E9%98%B6/"/>
     
     <category term="redis" scheme="https://codeyg.top/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日积月累</title>
-    <link href="https://codeyg.top/2021/07/01/%E6%97%A5%E7%A7%AF%E6%9C%88%E7%B4%AF/"/>
-    <id>https://codeyg.top/2021/07/01/%E6%97%A5%E7%A7%AF%E6%9C%88%E7%B4%AF/</id>
-    <published>2021-06-30T23:07:07.000Z</published>
-    <updated>2021-08-25T15:59:24.170Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>面试中遇到问题的相关总结</p></blockquote><hr><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-13-27.png" alt=""></p><a id="more"></a><h4 id="1、-Autowired和-Resource的区别是什么？"><a href="#1、-Autowired和-Resource的区别是什么？" class="headerlink" title="1、@Autowired和@Resource的区别是什么？"></a><font color=#008000>1、@Autowired和@Resource的区别是什么？</font></h4><p>联系：</p><ul><li>@Autowired和@Resource注解都是作为bean对象注入的时候使用的；</li><li>两者都可以声明在字段和setter方法上；</li></ul><p>区别：</p><ul><li>@Autowired注解是Spring提供的，而@Resource注解是J2EE本身提供的；</li><li>@Autowird注解默认通过byType方式注入，而@Resource注解默认通过byName方式注入；</li><li>@Autowired注解注入的对象需要在IOC容器中存在，否则需要加上属性required=false，表示忽略当前要注入的bean，如果有直接注入，没有跳过，不会报错；</li></ul><p>其实 @Autowired 注入首先根据 byType 注入，当类型大于1时在根据 byName 注入。</p><hr><h4 id="2、HashMap与ConcurrentHashMap的区别？"><a href="#2、HashMap与ConcurrentHashMap的区别？" class="headerlink" title="2、HashMap与ConcurrentHashMap的区别？"></a><font color=#008000>2、HashMap与ConcurrentHashMap的区别？</font></h4><p>相同点：</p><ul><li>首先两者的相同点在于底层都是数组+链表实现实现的；</li></ul><p>区别：</p><ul><li>HashMap是线程非安全的，ConcurrentHashMap是线程安全的</li></ul><hr><h4 id="3、处理哈希冲突的方法？"><a href="#3、处理哈希冲突的方法？" class="headerlink" title="3、处理哈希冲突的方法？"></a><font color=#008000>3、处理哈希冲突的方法？</font></h4><ul><li>开放定址法</li><li>链地址法（√）</li><li>再散列法</li></ul><hr><h4 id="4、包装类和基本数据类型的区别？"><a href="#4、包装类和基本数据类型的区别？" class="headerlink" title="4、包装类和基本数据类型的区别？"></a><font color=#008000>4、包装类和基本数据类型的区别？</font></h4><p>包装类：</p><ul><li><p>优点：</p><ul><li>可以赋值为null</li><li>提供了一系列的方法常用的有：parseInt(String s)、tostring()、valueOf(String s)、equals( object object)、i.compareto(integer anotherIntger)</li><li><font color=#FF8C00>集合中不允许放基本数据类型，只能放包装类！</font></li></ul></li><li><p>缺点：</p><ul><li>由于每个值分别包装在对象中，所以ArrayList的效率远远低于int[]数组</li></ul></li></ul><p>基本数据类型：</p><ul><li><p>优点：</p><ul><li>计算效率高</li><li>不会由于常量池而引起比较大小的错误</li></ul></li><li><p>缺点：</p><ul><li>当数据库查询出结果封装到结果集时,如何返回的值为null时,会将结果赋值给字段,运行时会报错,不能将null值赋值给基本数据类型</li></ul></li></ul><p><strong>两者的区别：</strong><br>1、声明方式不同，基本类型不适用new关键字，而包装类型需要使用new关键字来在堆中分配存储空间；<br>2、存储方式及位置不同，基本类型是直接将变量值存储在堆栈中，而包装类型是将对象放在堆中，然后通过引用来使用；<br>3、初始值不同，基本类型的初始值如int为0，boolean为false，而包装类型的初始值为null<br>4、使用方式不同，基本类型直接赋值直接使用就好，而包装类型在集合如Collection、Map时会使用到。<br>5、包装类都是继承Number 接口实现Compareble 接口的</p><hr><h4 id="5、MyISAM-和-INNODB-的区别？"><a href="#5、MyISAM-和-INNODB-的区别？" class="headerlink" title="5、MyISAM 和 INNODB 的区别？"></a><font color=#008000>5、MyISAM 和 INNODB 的区别？</font></h4><ol><li><p>事务安全：</p><p>MyISAM 不支持事务（×）</p><p>INNODB  支持事务（√）</p></li><li><p>外键 ：</p><p>MyISAM 不支持外键（×）</p><p> INNODB 支持外键（√）</p></li><li><p>锁机制：</p><p>MyISAM 是表锁</p><p>INNODB 是行锁</p></li><li><p>查询和添加速度：</p><p>MyISAM 批量插入速度快</p></li><li><p>支持全文索引：</p><p>MyISAM 支持全文索引（√）</p><p>INNODB 不支持全文索引（×）</p></li><li><p>MyISAM 内存空间使用率比 INNODB 低</p></li></ol><p>Memory 存储，比如我们数据变化频繁，不需要入库，同时又频繁的查询和修改，我们考虑使用 memory, 速度极快. （如果 mysql 重启的话，数据就不存在了）</p><hr><h4 id="6、Java中final、finally、finalize的区别与用法"><a href="#6、Java中final、finally、finalize的区别与用法" class="headerlink" title="6、Java中final、finally、finalize的区别与用法"></a><font color=#008000>6、Java中final、finally、finalize的区别与用法</font></h4><ul><li>final：java中的关键字，修饰符。<br>1.如果一个类被声明为final，就意味着它不能再派生出新的子类，不能作为父类被继承。因此，一个类不能同时被声明为abstract抽象类的和final的类。<br>2.如果将变量或者方法声明为final，可以保证它们在使用中不被改变.<ul><li>被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。</li><li>被声明final的方法只能使用，不能重载。</li></ul></li><li>finally：java的一种异常处理机制。<br>　　finally是对Java异常处理模型的最佳补充。finally结构使代码总会执行，而不管无异常发生。使用finally可以维护对象的内部状态，并可以清理非内存资源。特别是在关闭数据库连接这方面，如果程序员把数据库连接的close()方法放到finally中，就会大大降低程序出错的几率。</li><li>finalize：Java中的一个方法名。<br>Java技术使用finalize()方法在垃圾收集器将对象从内存中清除出去前，做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没被引用时对这个对象调用的。它是在Object类中定义的，因此所的类都继承了它。子类覆盖finalize()方法以整理系统资源或者执行其他清理工作。finalize()方法是在垃圾收集器删除对象之前对这个对象调用的。</li></ul><hr><h4 id="7、try-catch-finally"><a href="#7、try-catch-finally" class="headerlink" title="7、try-catch-finally"></a><font color=#008000>7、try-catch-finally</font></h4><ol><li>异常处理语法结构中只有 try 块是必需的，也就是说，如果没有 try 块，则不能有后面的 catch 块和 finally 块；</li><li>catch 块和 finally 块都是可选的，但 catch 块和 finally 块至少出现其中之一，也可以同时出现；</li><li>可以有多个 catch 块，捕获父类异常的 catch 块必须位于捕获子类异常的后面；</li><li>不能只有 try 块，既没有 catch 块，也没有 finally 块；</li><li>多个 catch 块必须位于 try 块之后，finally 块必须位于所有的 catch 块之后。</li><li>finally 与 try 语句块匹配的语法格式，此种情况会导致异常丢失，所以不常见。</li></ol><hr><h4 id="8、Java中常见的五种异常"><a href="#8、Java中常见的五种异常" class="headerlink" title="8、Java中常见的五种异常"></a><font color=#008000>8、Java中常见的五种异常</font></h4><ol><li>ClassCastException【类转换异常】</li><li>IndexOutOfBoundsException【数组越界】</li><li>NullPointerException【空指针】</li><li>IllegalAccessException【安全权限异常】</li><li>IOException【输入输出异常】</li></ol><hr><h4 id="9、Java中垃圾回收的目的？什么时候进行？"><a href="#9、Java中垃圾回收的目的？什么时候进行？" class="headerlink" title="9、Java中垃圾回收的目的？什么时候进行？"></a><font color=#008000>9、Java中垃圾回收的目的？什么时候进行？</font></h4><p>垃圾回收是在内存中中存在<strong>没有引用的对象</strong>或<strong>超过作用域的对象时</strong>进行垃圾回收，垃圾回收的目的是识别并且丢弃不再使用的对象来释放和重用资源。</p><p>目的：<br>回收堆中不再使用的对象，释放资源。<br>回收时间：当对象失去引用后，系统会在合适的时间回收它所占的内存。</p><ul><li>老年代的对象所需要的内存大于老年代剩余内存，则会触发老年代 GC（Full GC）。</li><li>当程序调用System.gc() 时也会触发Full GC。</li></ul><hr><h4 id="10、什么是内存泄漏？"><a href="#10、什么是内存泄漏？" class="headerlink" title="10、什么是内存泄漏？"></a><font color=#008000>10、什么是内存泄漏？</font></h4><p>【<strong>out of memory</strong>】</p><p>当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中。</p><p><strong>内存溢出的原因以及解决方法</strong></p><ol><li><p>内存中加载的数据量过于庞大，如一次从数据库取出过多数据；</p></li><li><p>集合类中有对对象的引用，使用完后未清空，使得JVM不能回收；</p></li><li><p>代码中存在死循环或循环产生过多重复的对象实体；</p></li><li><p>启动参数内存值设定的过小</p></li></ol><p>内存溢出的解决方案：</p><p>第一步，修改JVM启动参数，直接增加内存。(-Xms，-Xmx参数一定不要忘记加。)</p><p>第二步，检查错误日志，查看“OutOfMemory”错误前是否有其它异常或错误。</p><p>第三步，对代码进行走查和分析，找出可能发生内存溢出的位置。</p><hr><h4 id="11、String-s-new-String-“xyz”-创建几个String对象？"><a href="#11、String-s-new-String-“xyz”-创建几个String对象？" class="headerlink" title="11、String s = new String(“xyz”);创建几个String对象？"></a><font color=#008000>11、String s = new String(“xyz”);创建几个String对象？</font></h4><p>两个或一个</p><ul><li>第一次调用 new String(“xyz”); 时，会在堆内存中创建一个字符串对象，同时在字符串常量池中创建一个对象 “xyz”</li><li>第二次调用 new String(“xyz”); 时，只会在堆内存中创建一个字符串对象，指向之前在字符串常量池中创建的 “xyz”</li></ul><hr><h4 id="12、类加载器工作机制？"><a href="#12、类加载器工作机制？" class="headerlink" title="12、类加载器工作机制？"></a><font color=#008000>12、类加载器工作机制？</font></h4><ol><li>装载：将Java二进制代码导入jvm中，生成Class文件。</li><li>连接：<ul><li>校验：检查载入Class文件数据的正确性 </li><li>准备：给类的静态变量分配存储空间</li><li>解析：将符号引用转成直接引用</li></ul></li><li>初始化：对类的静态变量，静态方法和静态代码块执行初始化工作。<br>双亲委派模型：类加载器收到类加载请求，首先将请求委派给父类加载器完成 用户自定义加载器-&gt;应用程序加载器-&gt;扩展类加载器-&gt;启动类加载器。</li></ol><hr><h4 id="13、Spring中的Controller-，Service，Dao是不是线程安全的？"><a href="#13、Spring中的Controller-，Service，Dao是不是线程安全的？" class="headerlink" title="13、Spring中的Controller ，Service，Dao是不是线程安全的？"></a><font color=#008000>13、Spring中的Controller ，Service，Dao是不是线程安全的？</font></h4><ol><li>在@Controller/@Service等容器中，默认情况下，scope 值是单例 singleton 的，也是线程不安全的。</li><li>尽量不要在@Controller/@Service等容器中定义静态变量，不论是单例 (singleton) 还是多实例 (prototype) 他都是线程不安全的。</li><li>默认注入的 Bean 对象，在不设置 scope 的时候他也是线程不安全的。</li><li>一定要定义变量的话，用 ThreadLocal 来封装，这个是线程安全的</li></ol><hr><h4 id="14、Java-中-sleep-和-wait-的区别？"><a href="#14、Java-中-sleep-和-wait-的区别？" class="headerlink" title="14、Java 中 sleep() 和 wait() 的区别？"></a><font color=#008000>14、Java 中 sleep() 和 wait() 的区别？</font></h4><ol><li>这两个方法来自不同的类分别是，sleep 来自 Thread 类，和 wait 来自 Object 类。</li><li>最主要是 sleep 方法没有释放锁，而 wait 方法释放了锁，使得其他线程可以使用同步控制块或者方法。</li><li>使用范围：wait，notify 和 notifyAll 只能在同步控制方法或者同步控制块里面使用，而 sleep 可以在任何地方使用。</li><li>sleep 必须捕获异常，而 wait，notify 和 notifyAll 不需要捕获异常。</li></ol><hr><h4 id="15、-bean-注解和-component注解的区别"><a href="#15、-bean-注解和-component注解的区别" class="headerlink" title="15、@bean 注解和 @component注解的区别"></a><font color=#008000>15、@bean 注解和 @component注解的区别</font></h4><ol><li><p>@Component 注解作用于类</p><p>@Bean 注解作用于方法</p></li><li><p>@Component 通常是通过路径扫描来自动侦测以及自动装配到 Spring 容器中【@ComponentScan 注解定义要扫描的路径从中找出标识了需要装配的类自动装配到 Spring 的 bean 容器中】</p><p>@Bean 注解通常是我们在标有该注解的方法中定义产生这个 bean，@Bean 告诉了 Spring 这是某个类的实例，当我们需要用它的时候还给我。</p></li><li><p>@Bean 注解比 @Component 注解的自定义性更强，而且很多地方我们只能通过 @Bean 注解来注册 bean。比如当我们引用第三方库中的类需要装配到 Spring 容器时，只能通过 @Bean 来实现。</p></li></ol><p> <strong>未完待续 … …</strong></p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;面试中遇到问题的相关总结&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-13-27.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="面试篇" scheme="https://codeyg.top/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/"/>
-    
-    
-    <category term="日积月累" scheme="https://codeyg.top/tags/%E6%97%A5%E7%A7%AF%E6%9C%88%E7%B4%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日一面--SpringBoot启动原理</title>
-    <link href="https://codeyg.top/2021/06/27/%E9%9D%A2%E8%AF%95--SpringBoot%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86/"/>
-    <id>https://codeyg.top/2021/06/27/%E9%9D%A2%E8%AF%95--SpringBoot%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86/</id>
-    <published>2021-06-27T13:58:58.000Z</published>
-    <updated>2021-08-25T17:46:19.410Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>每天一篇面试小知识</p></blockquote><p><strong>本篇着重介绍一下 SpringBoot 启动原理：</strong></p><hr><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/spring-boot-logo.png" style="zoom:67%;" /><h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>最近在不断的面试中总结<code>Spring</code>全家桶已经是必须要熟练掌握的框架了，其中化繁为简的<code>SpringBoot</code>更是经常被提及的框架，所以我今天就来聊聊 SpringBoot。</p><p>说起<code>SpringBoot</code>的江湖地位，由于其设计优雅，实现简单，可以节省不少开发时间。</p><a id="more"></a><blockquote><p>以下源码的 <code>SpringBoot</code> 版本：2.3.9.RELEASE</p></blockquote><p>其实<code>SpringBoot</code>的启动大体上分为 2 个步骤：</p><ol><li>启动类上注解：@SpringBootApplication</li><li>启动类中的main方法：org.springframework.boot.SpringApplication#run(java.lang.Class&lt;?&gt;, java.lang.String…)</li></ol><h4 id="启动原理"><a href="#启动原理" class="headerlink" title="启动原理"></a>启动原理</h4><h5 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h5><p>main 方法上的注解 @SpringBootApplication：</p><p>三个注解核心注解：</p><ul><li>@SpringBootConfiguration</li><li>@EnableAutoConfiguratio</li><li>@ComponentScan</li></ul><p><strong>@SpringBootConfiguration</strong></p><p>根据 Javadoc 可知，该注解作用就是将当前的类作为一个 <strong>JavaConfig</strong>，然后<strong>触发注解</strong><code>@EnableAutoConfiguration</code>和<code>@ComponentScan</code>的<strong>处理</strong>，本质上与<strong>@Configuration</strong>注解没有区别。</p><p><strong>@ComponentScan</strong></p><p>扫描的 <code>Spring</code> 对应的组件，如 <strong>@Componet</strong>，<strong>@Repository</strong>。</p><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/2465789-20210816175530643-158529875.png" alt=""></p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;每天一篇面试小知识&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;本篇着重介绍一下 SpringBoot 启动原理：&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/spring-boot-logo.png&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-&lt;h4 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h4&gt;&lt;p&gt;最近在不断的面试中总结&lt;code&gt;Spring&lt;/code&gt;全家桶已经是必须要熟练掌握的框架了，其中化繁为简的&lt;code&gt;SpringBoot&lt;/code&gt;更是经常被提及的框架，所以我今天就来聊聊 SpringBoot。&lt;/p&gt;
-&lt;p&gt;说起&lt;code&gt;SpringBoot&lt;/code&gt;的江湖地位，由于其设计优雅，实现简单，可以节省不少开发时间。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="面试篇" scheme="https://codeyg.top/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/"/>
-    
-    
-    <category term="进阶" scheme="https://codeyg.top/tags/%E8%BF%9B%E9%98%B6/"/>
-    
-    <category term="SpringBoot" scheme="https://codeyg.top/tags/SpringBoot/"/>
     
   </entry>
   
