@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-31_08-47-55.png">
 <meta property="article:published_time" content="2021-03-30T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-08-31T00:49:45.848Z">
+<meta property="article:modified_time" content="2021-08-31T07:00:37.646Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="小技巧">
 <meta name="twitter:card" content="summary">
@@ -126,7 +126,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">47</span></a>
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">49</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">75</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间轴<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-31 08:49:45" itemprop="dateModified" datetime="2021-08-31T08:49:45+08:00">2021-08-31</time>
+                <time title="修改时间：2021-08-31 15:00:37" itemprop="dateModified" datetime="2021-08-31T15:00:37+08:00">2021-08-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,7 +247,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -303,6 +303,39 @@
 
 <h4 id="计算某天n天之后的日期"><a href="#计算某天n天之后的日期" class="headerlink" title="计算某天n天之后的日期"></a>计算某天n天之后的日期</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getBeforeAfterDateDay</span><span class="params">(String time, <span class="keyword">int</span> day)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">    Date date = sdf.parse(time);</span><br><span class="line">    Calendar cal = Calendar.getInstance();</span><br><span class="line">    cal.setTime(date);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> Year = cal.get(Calendar.YEAR);</span><br><span class="line">    <span class="keyword">int</span> Month = cal.get(Calendar.MONTH);</span><br><span class="line">    <span class="keyword">int</span> Day = cal.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> NewDay = Day + day;</span><br><span class="line"></span><br><span class="line">    cal.set(Calendar.YEAR, Year);</span><br><span class="line">    cal.set(Calendar.MONTH, Month);</span><br><span class="line">    cal.set(Calendar.DAY_OF_MONTH, NewDay);</span><br><span class="line"></span><br><span class="line">    String newTime = sdf.format(<span class="keyword">new</span> Date(cal.getTimeInMillis()));</span><br><span class="line">    <span class="keyword">return</span> newTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h3 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h3><h4 id="将最新的master分支代码更新到其他分支"><a href="#将最新的master分支代码更新到其他分支" class="headerlink" title="将最新的master分支代码更新到其他分支"></a>将最新的master分支代码更新到其他分支</h4><ol>
+<li>将分支切换到master</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将代码pull到本地</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改冲突</li>
+</ol>
+<ol start="4">
+<li>提交代码到本地</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"msg"</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>切换到要更新的分支上</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>merge</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge master</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>将本地跟新好的内容push到分支</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -399,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java正确URL解码方式"><span class="nav-number">1.</span> <span class="nav-text">Java正确URL解码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#urlEncoder和urlDecode"><span class="nav-number">1.1.</span> <span class="nav-text">urlEncoder和urlDecode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis中查询时间段内数据"><span class="nav-number">2.</span> <span class="nav-text">Mybatis中查询时间段内数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用Date类型"><span class="nav-number">2.1.</span> <span class="nav-text">数据库使用Date类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用字符串类型"><span class="nav-number">2.2.</span> <span class="nav-text">数据库使用字符串类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Date-与-String-的相互转换"><span class="nav-number">3.</span> <span class="nav-text">Java Date 与 String 的相互转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-String-转-Date"><span class="nav-number">3.1.</span> <span class="nav-text">Java String 转 Date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-Date-转-String"><span class="nav-number">3.2.</span> <span class="nav-text">Java Date 转 String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算某天n天之后的日期"><span class="nav-number">3.3.</span> <span class="nav-text">计算某天n天之后的日期</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java正确URL解码方式"><span class="nav-number">1.</span> <span class="nav-text">Java正确URL解码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#urlEncoder和urlDecode"><span class="nav-number">1.1.</span> <span class="nav-text">urlEncoder和urlDecode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis中查询时间段内数据"><span class="nav-number">2.</span> <span class="nav-text">Mybatis中查询时间段内数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用Date类型"><span class="nav-number">2.1.</span> <span class="nav-text">数据库使用Date类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用字符串类型"><span class="nav-number">2.2.</span> <span class="nav-text">数据库使用字符串类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Date-与-String-的相互转换"><span class="nav-number">3.</span> <span class="nav-text">Java Date 与 String 的相互转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-String-转-Date"><span class="nav-number">3.1.</span> <span class="nav-text">Java String 转 Date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-Date-转-String"><span class="nav-number">3.2.</span> <span class="nav-text">Java Date 转 String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算某天n天之后的日期"><span class="nav-number">3.3.</span> <span class="nav-text">计算某天n天之后的日期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-命令"><span class="nav-number">4.</span> <span class="nav-text">Git 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将最新的master分支代码更新到其他分支"><span class="nav-number">4.1.</span> <span class="nav-text">将最新的master分支代码更新到其他分支</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -415,7 +448,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -428,7 +461,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/PaulGeorge123.github.io/tags/">
           
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
