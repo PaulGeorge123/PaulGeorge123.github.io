@@ -21,24 +21,27 @@
     var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 的五种数据结构   写在前面 Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。 Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。">
+  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 集群 (Redis Cluster)   写在前面 为什么需要 Redis 集群？ 这还用说，肯定是单实例有解决不掉的现实适用场景了呗！但是具体有哪些问题还是需要详细的总结一下，貌似 Redis 集群与其它集群模式还是有些区别滴~ 来，由练习模式过渡到实践模式吧，探寻一下 Redis 集群原理！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每日一面--Redis 五种数据结构详解">
-<meta property="og:url" content="https://codeyg.top/2021/07/21/%E9%9D%A2%E8%AF%95--Redis%205%E7%A7%8D%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/index.html">
+<meta property="og:title" content="实践一下--Redis集群">
+<meta property="og:url" content="https://codeyg.top/2021/09/12/%E9%9D%A2%E8%AF%95--Redis%E9%9B%86%E7%BE%A4/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 的五种数据结构   写在前面 Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。 Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。">
+<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 集群 (Redis Cluster)   写在前面 为什么需要 Redis 集群？ 这还用说，肯定是单实例有解决不掉的现实适用场景了呗！但是具体有哪些问题还是需要详细的总结一下，貌似 Redis 集群与其它集群模式还是有些区别滴~ 来，由练习模式过渡到实践模式吧，探寻一下 Redis 集群原理！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_08-42-43.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_09-28-52.png">
-<meta property="article:published_time" content="2021-07-21T00:08:08.000Z">
-<meta property="article:modified_time" content="2021-07-22T01:38:50.835Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-12_22-41-47.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-13_01-25-33.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-13_00-55-09.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-12_24-18-53.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-13_01-33-40.png">
+<meta property="article:published_time" content="2021-09-12T01:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-12T17:43:24.861Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
-<meta property="article:tag" content="redis">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_08-42-43.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-12_22-41-47.png">
 
-<link rel="canonical" href="https://codeyg.top/2021/07/21/%E9%9D%A2%E8%AF%95--Redis%205%E7%A7%8D%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+<link rel="canonical" href="https://codeyg.top/2021/09/12/%E9%9D%A2%E8%AF%95--Redis%E9%9B%86%E7%BE%A4/">
 
 
 <script id="page-configurations">
@@ -51,7 +54,7 @@
   };
 </script>
 
-  <title>每日一面--Redis 五种数据结构详解 | 宇航员不会飞</title>
+  <title>实践一下--Redis集群 | 宇航员不会飞</title>
   
 
 
@@ -200,7 +203,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/07/21/%E9%9D%A2%E8%AF%95--Redis%205%E7%A7%8D%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/09/12/%E9%9D%A2%E8%AF%95--Redis%E9%9B%86%E7%BE%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
@@ -213,7 +216,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          每日一面--Redis 五种数据结构详解
+          实践一下--Redis集群
         </h1>
 
         <div class="post-meta">
@@ -224,7 +227,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-21 08:08:08" itemprop="dateCreated datePublished" datetime="2021-07-21T08:08:08+08:00">2021-07-21</time>
+              <time title="创建时间：2021-09-12 09:00:00" itemprop="dateCreated datePublished" datetime="2021-09-12T09:00:00+08:00">2021-09-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,14 +252,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>430</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -271,29 +274,123 @@
         <blockquote>
 <p>每天一篇面试小知识</p>
 </blockquote>
-<p><strong>本篇着重介绍一下 Redis 的五种数据结构</strong></p>
+<p><strong>本篇着重介绍一下 Redis 集群 (Redis Cluster)</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_08-42-43.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-12_22-41-47.png" alt=""></p>
 <p><strong>写在前面</strong></p>
-<p>Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。</p>
-<p>Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。</p>
+<p><font color=#008000>为什么需要 Redis 集群？</font></p>
+<p>这还用说，肯定是单实例有解决不掉的现实适用场景了呗！但是具体有哪些问题还是需要详细的总结一下，貌似 Redis 集群与其它集群模式还是有些区别滴~</p>
+<p>来，由练习模式过渡到实践模式吧，探寻一下 Redis 集群原理！</p>
 <a id="more"></a>
 
 
 
-<h4 id="Redis的五种数据结构"><a href="#Redis的五种数据结构" class="headerlink" title="Redis的五种数据结构"></a>Redis的五种数据结构</h4><ol>
-<li><code>String</code>：字符串类型</li>
-<li><code>List</code>：列表类型</li>
-<li><code>Set</code>：无序集合类型</li>
-<li><code>ZSet</code>：有序集合类型</li>
-<li><code>Hash</code>：哈希表类型</li>
+<h3 id="Redis-集群介绍"><a href="#Redis-集群介绍" class="headerlink" title="Redis 集群介绍"></a>Redis 集群介绍</h3><h4 id="Redis-单实例缓存"><a href="#Redis-单实例缓存" class="headerlink" title="Redis 单实例缓存"></a>Redis 单实例缓存</h4><p><strong>在某些场景下，单实例存 Redis 缓存会存在的几个问题</strong></p>
+<ol>
+<li><strong>写并发</strong></li>
 </ol>
-<h4 id="Redis核心对象"><a href="#Redis核心对象" class="headerlink" title="Redis核心对象"></a>Redis核心对象</h4><p>在Redis中有一个<strong>「核心的对象」</strong>叫做 <code>redisObject</code> ，是用来表示所有的 key 和 value 的，用 redisObject 结构体来表示<code>String、Hash、List、Set、ZSet</code>五种数据类型。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_09-28-52.png" alt=""></p>
-<p>在redisObject中<strong>「type表示属于哪种数据类型，encoding表示该数据的存储方式」</strong>，也就是底层的实现的该数据类型的数据结构。</p>
-<h4 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h4><p>redis 中的字符串和 c 语言中的字符串类型却是有明显的区别。</p>
-<p>string 类型的数据结构存储方式有三种<code>int、raw、embstr</code>。</p>
-<p><strong>未完待续……</strong></p>
+<p>Redis 单实例读写分离可以解决读操作的负载均衡，但对于写操作，仍然是全部落在了 master 节点上面，在海量数据高并发场景，一个节点写数据容易出现瓶颈，造成 master 节点的压力上升。</p>
+<ol start="2">
+<li><strong>海量数据的存储压力</strong></li>
+</ol>
+<p>单实例 Redis 本质上只有一台 master 作为存储，如果面对海量数据的存储，一台 redis 的服务器就应付不过来了，而且数据量太大意味着持久化成本高，严重时可能会阻塞服务器，造成服务请求成功率下降，降低服务的稳定性。</p>
+<p><font color=#FF8C00>所以，针对以上的问题，redis 集群提供了较为完善的方案，解决了存储能力受到单机限制，写操作无法负载均衡的问题。投入集群的怀抱吧！</font></p>
+<h4 id="Redis-集群简单概述"><a href="#Redis-集群简单概述" class="headerlink" title="Redis 集群简单概述"></a>Redis 集群简单概述</h4><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-13_01-25-33.png" style="zoom:80%;" />
+
+
+
+<p><strong>Redis Cluster特点</strong></p>
+<ul>
+<li><p>多主多从，去中心化【从节点作为备用，复制主节点，不做读写操作，不提供服务】</p>
+</li>
+<li><p>不支持处理多个key【因为数据分散在多个节点，在数据量大高并发的情况下会影响性能】</p>
+</li>
+<li><p>支持动态扩容节点【Rerdis Cluster 最大的优点之一】</p>
+</li>
+<li><p>节点之间相互通信，相互选举，不再依赖 sentinel【准确来说是主节点之间相互“监督”，保证及时故障转移】</p>
+</li>
+</ul>
+<p><strong>Redis Cluster 与其它集群模式的区别</strong></p>
+<ol>
+<li><p>相比较 sentinel 模式</p>
+<p>多个 master 节点保证主要业务（比如 master 节点主要负责写）稳定性，不需要搭建多个 sentinel 实例监控一个 master 节点；</p>
+</li>
+<li><p>相比较一主多从的模式</p>
+<p>不需要手动切换，具有自我故障检测，故障转移的特点；</p>
+</li>
+</ol>
+<p>★ 相比较其他两个模式而言，对数据进行分片（sharding），不同节点存储的数据是不一样的；</p>
+<p>★ 从某种程度上来说，Sentinel模式主要针对高可用（HA），而Cluster模式是不仅针对大数据量，高并发，同时也支持HA；</p>
+<h3 id="Redis-集群的概念"><a href="#Redis-集群的概念" class="headerlink" title="Redis 集群的概念"></a>Redis 集群的概念</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Redis 集群不支持那些需要同时处理多个键的 Redis 命令， 因为执行这些命令需要在多个 Redis 节点之间移动数据， 并且在高负载的情况下， 这些命令将降低 Redis 集群的性能， 并导致不可预测的错误。</p>
+<p>Redis 集群通过分区（partition）来提供一定程度的可用性（availability）： 即使集群中有一部分节点失效或者无法进行通讯， 集群也可以继续处理命令请求。</p>
+<p>Redis 集群提供了以下两个好处：</p>
+<blockquote>
+<p>将数据自动切分（split）到多个节点的能力。</p>
+</blockquote>
+<blockquote>
+<p>当集群中的一部分节点失效或者无法进行通讯时， 仍然可以继续处理命令请求的能力。</p>
+</blockquote>
+<h4 id="哈希槽（hash-slot）"><a href="#哈希槽（hash-slot）" class="headerlink" title="哈希槽（hash slot）"></a>哈希槽（hash slot）</h4><p>Redis 集群使用一种称作<font color=#FF8C00>一致性哈希的复合分区形式</font>（组合了哈希分区和列表分袂的特征来计算键的归属实例），键的 CRC16 哈希值被称为哈希槽。</p>
+<p>比如对于三个 Redis 节点，哈希槽的分配方式如下：</p>
+<ul>
+<li><p>第一个节点拥有 0-5500 哈希槽；</p>
+</li>
+<li><p>第二节点拥有 5501-11000 哈希槽；</p>
+</li>
+<li><p>第三节点拥有剩余的 11001-16384 哈希槽；</p>
+</li>
+</ul>
+<p>一个键的对应的哈希槽通过计算键的 CRC16 哈希值，然后对16384进行取模得到：<strong><font color=#008000>HASH_SLOT = CRC16 (key) modulo 16383</font></strong>，Redis 提供了 <strong><font color=#FF0000>CLUSTER KEYSLOT</font></strong> 命令来执行哈希槽的计算；</p>
+<p><strong>举个荔枝</strong></p>
+<p>当我们创建一个 Cluster 时，系统会默认给我们分好片（你选择接受系统分配的配置），比如现在有 7000-7005 六个节点，其中我们分配 3 个主节点（7000-7002），3 个从节点（7003-7005）</p>
+<p>其中 slots 系统已经指派给了：Master[1] 节点拥有 0-5500 哈希槽、Master[2] 节点拥有 5501-11000 哈希槽、Master[3] 节点拥有剩余的 11001-16384 哈希槽。</p>
+  <img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-13_00-55-09.png" style="zoom:80%;" />
+
+<br/>
+
+
+
+<h4 id="数据分片（data-sharding）"><a href="#数据分片（data-sharding）" class="headerlink" title="数据分片（data sharding）"></a>数据分片（data sharding）</h4><p>Redis 集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现。</p>
+<ol>
+<li>一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个；</li>
+<li>集群使用公式 CRC16（key） % 16384 来计算键 key 属于哪个槽， 其中 CRC16（key）语句用于计算键 key 的 CRC16 校验和 ；</li>
+<li>集群中的每个节点负责处理一部分哈希槽；</li>
+</ol>
+<br/>
+
+<p><strong>举个荔枝</strong></p>
+<p>根据上述哈希槽来举个例子【一个集群可以有三个哈希槽 A、B、C】</p>
+<ul>
+<li>节点 A 负责处理 0 号至 5500 号哈希槽。</li>
+<li>节点 B 负责处理 5501 号至 11000 号哈希槽。</li>
+<li>节点 C 负责处理 11001 号至 16384 号哈希槽。</li>
+</ul>
+<p>这种将哈希槽分布到不同节点的做法使得用户可以很容易地向集群中添加或者删除节点。</p>
+<p> 比如说：设置一个 <strong>key</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redisKey : <span class="built_in">set</span> hash_name redisOne</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按照 Redis Cluster 的哈希槽算法，CRC16 (‘hash_name’) %16384 = 2412 那么这个 key 就被分配到了节点 A 上。</p>
+<p>同样的，当我连接 (A,B,C) 的任意一个节点想获取 hash_name 这个 key，都会转到节点 A 上。</p>
+<p>再比如，如果用户将新节点 D 添加到集群中， 那么集群只需要将节点 A 、B 、 C 中的某些槽移动到节点 D 就可以了。</p>
+<p>增加一个D节点的结果可能如下：</p>
+<ul>
+<li>节点 A 覆盖 1365-5460</li>
+<li>节点 B 覆盖 6827-10922</li>
+<li>节点 C 覆盖 12288-16383</li>
+<li>节点 D 覆盖 0-1364,5461-6826,10923-1228</li>
+</ul>
+<p>与此类似， 如果用户要从集群中移除节点 A ， 那么集群只需要将节点 A 中的所有哈希槽移动到节点 B 和节点 C ， 然后再移除空白（不包含任何哈希槽）的节点 A 就可以了。</p>
+<p>因为将一个哈希槽从一个节点移动到另一个节点不会造成节点阻塞， 所以无论是添加新节点还是移除已存在节点， 又或者改变某个节点包含的哈希槽数量， 都不会造成集群下线。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-12_24-18-53.png" alt=""></p>
+<center><font color=#FF8C00>Redis Cluster 模型</font></center>
+
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-13_01-33-40.png" style="zoom:75%;" />
+
+<hr>
+<p>未完待续… …</p>
 
     </div>
 
@@ -316,8 +413,8 @@
           <div class="post-tags">
               <a href="/PaulGeorge123.github.io/tags/%E8%BF%9B%E9%98%B6/" rel="tag">
 			  <i class="fa fa-tag"></i> 进阶</a>
-              <a href="/PaulGeorge123.github.io/tags/redis/" rel="tag">
-			  <i class="fa fa-tag"></i> redis</a>
+              <a href="/PaulGeorge123.github.io/tags/Redis/" rel="tag">
+			  <i class="fa fa-tag"></i> Redis</a>
           </div>
 
         
@@ -326,13 +423,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2021/07/19/%E9%9D%A2%E8%AF%95--MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="prev" title="每日一面--MySQL 存储引擎">
-      <i class="fa fa-chevron-left"></i> 每日一面--MySQL 存储引擎
+    <a href="/PaulGeorge123.github.io/2021/09/01/%E5%AE%9E%E8%B7%B5--Neo4j/" rel="prev" title="实践一下--Neo4j">
+      <i class="fa fa-chevron-left"></i> 实践一下--Neo4j
     </a></div>
-      <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2021/07/21/%E9%9D%A2%E8%AF%95--Spring%20%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%8A%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98/" rel="next" title="每日一面--Spring 循环依赖以及三级缓存">
-      每日一面--Spring 循环依赖以及三级缓存 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -392,7 +486,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis的五种数据结构"><span class="nav-number">1.</span> <span class="nav-text">Redis的五种数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis核心对象"><span class="nav-number">2.</span> <span class="nav-text">Redis核心对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String类型"><span class="nav-number">3.</span> <span class="nav-text">String类型</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-集群介绍"><span class="nav-number">1.</span> <span class="nav-text">Redis 集群介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-单实例缓存"><span class="nav-number">1.1.</span> <span class="nav-text">Redis 单实例缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-集群简单概述"><span class="nav-number">1.2.</span> <span class="nav-text">Redis 集群简单概述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-集群的概念"><span class="nav-number">2.</span> <span class="nav-text">Redis 集群的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈希槽（hash-slot）"><span class="nav-number">2.2.</span> <span class="nav-text">哈希槽（hash slot）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据分片（data-sharding）"><span class="nav-number">2.3.</span> <span class="nav-text">数据分片（data sharding）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
