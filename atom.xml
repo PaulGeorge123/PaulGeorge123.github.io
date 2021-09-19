@@ -6,7 +6,7 @@
   <link href="https://codeyg.top/atom.xml" rel="self"/>
   
   <link href="https://codeyg.top/"/>
-  <updated>2021-09-12T17:43:24.861Z</updated>
+  <updated>2021-09-19T18:21:48.716Z</updated>
   <id>https://codeyg.top/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式--总结</title>
+    <link href="https://codeyg.top/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E6%80%BB%E7%BB%93/"/>
+    <id>https://codeyg.top/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E6%80%BB%E7%BB%93/</id>
+    <published>2021-09-19T04:00:00.000Z</published>
+    <updated>2021-09-19T18:21:48.716Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>设计模式总结（Java版）</p></blockquote><br><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/1582516984-5f801c55bbc3c_fix732.png" alt=""></p><br><p><strong>总体来说设计模式分为三大类：</strong></p><p><strong>创建型模式（5种）</strong>：<font color=#008000>工厂方法模式</font>、<font color=#008000>抽象工厂模式</font>、<font color=#008000>单例模式</font>、建造者模式、原型模式</p><p><strong>结构型模式（7种）</strong>：<font color=#0000FF>适配器模式</font>、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式</p><p><strong>行为型模式（11种）</strong>：<font color=#FF8C00>观察者模式</font>、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</p><p><strong>本篇着重总结一下 23 种设计模式：</strong></p><hr><a id="more"></a><p><strong>写在前面</strong></p><p><font color=#FF0000>设计模式的本质是面向对象设计原则的实际运用，是对类的封装性、继承性和多态性以及类的关联关系和组合关系的充分理解</font></p><h4 id="设计模式的七大原则"><a href="#设计模式的七大原则" class="headerlink" title="设计模式的七大原则"></a>设计模式的七大原则</h4><ol><li><p><strong>开闭原则</strong></p><p>一个软件实体，如；类、模块和函数应该面对修改关闭，面对扩展开放。</p></li><li><p><strong>接口隔离原则（细化接口）</strong></p><p>客户端不要使用它不需要的接口；类间的依赖关系应该建立在最小的接口上（接口的功能尽可能单一）</p></li><li><p><strong>组合/聚合原则</strong></p></li></ol><p>  在新对象中使用一些已有的对象，使之成为新对象的一部分。就是说要尽量使用合成和聚合，而不是通过继承关系到达复用的目的。      </p><ol start="4"><li><p><strong>里氏替换原则</strong></p><p>子类对父类的方法尽量不要重写和重载，因为父类代表了定义好的结构，子类不应该随便破坏它；只要有父类出现的地方，都可以使用子类来替代。但反过来不行。</p></li><li><p><strong>迪米特法原则（最少知道原则）</strong><br>  一个类对自己依赖的类知道的越少越好。无论被依赖的类多么复杂，都应该将逻辑封装在方法的内部，通过public方法提供给外部。</p></li><li><p><strong>单一职责原则</strong></p><p>  一个类只负责一种职责。</p></li><li><p><strong>依赖倒置原则</strong><br>  面向接口编程，依赖于抽象而不依赖于具体。写代码用到具体类时，不应与具体类交互，而与具体类的上层接口交互。</p></li></ol><h4 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h4><table><thead><tr><th align="center">范围 \ 目的</th><th align="center">创建型模式</th><th align="center">结构型模式</th><th align="center">行为型模式</th></tr></thead><tbody><tr><td align="center"><strong><font color=#FF8C00>类模式</font></strong></td><td align="center"><strong><font color=#FF8C00>工厂方法</font></strong></td><td align="center"><strong><font color=#FF8C00>(类）适配器</font></strong></td><td align="center"><strong><font color=#FF8C00>模板方法、解释器</font></strong></td></tr><tr><td align="center">对象模式</td><td align="center">抽象工厂</td><td align="center">代理 (对象）、装饰</td><td align="center">策略、命令、备忘录</td></tr><tr><td align="center"></td><td align="center">单例、原型</td><td align="center">适配器、组合</td><td align="center">职责链、状态</td></tr><tr><td align="center"></td><td align="center">建造者</td><td align="center">桥接、享元、外观</td><td align="center">观察者、中介者</td></tr><tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">迭代器、访问者</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;设计模式总结（Java版）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/1582516984-5f801c55bbc3c_fix732.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;br&gt;
+
+&lt;p&gt;&lt;strong&gt;总体来说设计模式分为三大类：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;创建型模式（5种）&lt;/strong&gt;：&lt;font color=#008000&gt;工厂方法模式&lt;/font&gt;、&lt;font color=#008000&gt;抽象工厂模式&lt;/font&gt;、&lt;font color=#008000&gt;单例模式&lt;/font&gt;、建造者模式、原型模式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;结构型模式（7种）&lt;/strong&gt;：&lt;font color=#0000FF&gt;适配器模式&lt;/font&gt;、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;行为型模式（11种）&lt;/strong&gt;：&lt;font color=#FF8C00&gt;观察者模式&lt;/font&gt;、策略模式、模板方法模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本篇着重总结一下 23 种设计模式：&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;</summary>
+    
+    
+    
+    <category term="设计模式" scheme="https://codeyg.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="进阶" scheme="https://codeyg.top/tags/%E8%BF%9B%E9%98%B6/"/>
+    
+    <category term="设计模式" scheme="https://codeyg.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>实践一下--Redis集群</title>
@@ -635,36 +671,6 @@
     <category term="进阶" scheme="https://codeyg.top/tags/%E8%BF%9B%E9%98%B6/"/>
     
     <category term="maven" scheme="https://codeyg.top/tags/maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日一面--布隆过滤器</title>
-    <link href="https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    <id>https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</id>
-    <published>2021-07-16T13:58:58.000Z</published>
-    <updated>2021-07-22T01:39:29.257Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>每天一篇面试小知识</p></blockquote><p><strong>本篇着重介绍一下布隆过滤器</strong></p><hr><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-11-56.png" alt=""></p><p><strong>写在前面</strong></p><p><font color=#008000>为啥要写一篇关于布隆过滤器的博客？</font></p><p>还不是因为上集说到的 redis 中遇到缓存穿透的其中一个解决方案。</p><p>下面我们来详细的介绍一下 “ Bloom Filter ”</p><a id="more"></a><p>百度了一下：</p><p>布隆过滤器本质上布隆过滤器是一种数据结构，比较巧妙的概率型数据结构（probabilistic data structure）</p><p>特点是高效地插入和查询，可以用来告诉你 “某样东西一定不存在或者可能存在” 。</p><p> 相比于传统的 List、Set、Map 等数据结构，它更高效、占用空间更少，但是缺点是其返回的结果是概率性的，而不是确切的。 </p><p><font color=#008000>讲述布隆过滤器的原理之前，我们先思考一下，通常你判断某个元素是否存在用的是什么？ </font></p><p>应该蛮多人回答 HashMap 吧，确实可以将值映射到 HashMap 的 Key，然后可以在 O (1) 的时间复杂度内返回结果，效率奇高。</p><p>了解布隆过滤器原理之前，先回顾下 Hash 函数原理。</p><h4 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h4><p>哈希函数的概念是：将任意大小的输入数据转换成特定大小的输出数据的函数，转换后的数据称为哈希值或哈希编码，也叫散列值。如图：</p><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-00-27.png" alt=""></p><p>所有散列函数都有如下基本特性：</p><ul><li>如果两个散列值是不相同的（根据同一函数），那么这两个散列值的原始输入也是不相同的。这个特性是散列函数具有确定性的结果，具有这种性质的散列函数称为<strong>单向散列函数</strong>。</li><li>散列函数的输入和输出不是唯一对应关系的，如果两个散列值相同，两个输入值很可能是相同的，但也可能不同，这种情况称为“<strong>散列碰撞</strong>（collision）”。</li></ul><p>但是用 hash 表存储大数据量时，空间效率还是很低，当只有一个 hash 函数时，还很容易发生哈希碰撞。</p><h4 id="布隆过滤器数据结构"><a href="#布隆过滤器数据结构" class="headerlink" title="布隆过滤器数据结构"></a>布隆过滤器数据结构</h4><p>布隆过滤器是一个 bit 向量或者说 bit 数组，长这样：</p><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_03-12-52.png" alt=""></p><p>如果我们要映射一个值到布隆过滤器中，我们需要使用<strong>多个不同的哈希函数</strong>生成<strong>多个哈希值，</strong>并对每个生成的哈希值指向的 bit 位置 1，例如针对值 “baidu” 和三个不同的哈希函数分别生成了哈希值 1、4、7（橙色部分）则上图转变为：</p><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_03-13-24.png" alt=""></p><p>我们现在再存一个值 “tencent”，如果哈希函数返回 3、4、8 （紫色部分）图继续变为：</p><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_03-41-55.png" alt=""></p><p>值得注意的是，4 这个 bit 位由于两个值的哈希函数都返回了这个 bit 位，因此它被覆盖了（绿色部分）</p><p>现在我们如果想查询 “google” 这个值是否存在，哈希函数返回了 1、5、8 三个值，结果我们发现 5 这个 bit 位上的值为 0，<strong>说明没有任何一个值映射到这个 bit 位上</strong>;</p><p>因此我们可以很确定地说 “google” 这个值不存在。而当我们需要查询 “baidu” 这个值是否存在的话，那么哈希函数必然会返回 1、4、7，然后我们检查发现这三个 bit 位上的值均为 1;</p><p>那么我们可以说 “baidu” <strong>存在了么？答案是不可以，只能是 “baidu” 这个值可能存在。</strong></p><p>这是为什么呢？</p><p>答案跟简单，因为随着增加的值越来越多，被置为 1 的 bit 位也会越来越多，这样某个值 “taobao” 即使没有被存储过，但是万一哈希函数返回的三个 bit 位，例如：1、3、8 都被其他值置位了 1 ，那么程序还是会判断 “taobao” 这个值存在。</p><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_03-44-00.png" alt=""></p><h4 id="布隆过滤器优点"><a href="#布隆过滤器优点" class="headerlink" title="布隆过滤器优点"></a>布隆过滤器优点</h4><p>相比于其它的数据结构，布隆过滤器在空间和时间方面都有巨大的优势。</p><p>布隆过滤器存储空间和插入/查询时间都是常数。</p><p>另外, Hash 函数相互之间没有关系，方便由硬件并行实现。布隆过滤器不需要存储元素本身，在某些对保密要求非常严格的场合有优势。</p><p>布隆过滤器可以表示全集，其它任何数据结构都不能；</p><p>k 和 m 相同，使用同一组 Hash 函数的两个布隆过滤器的交并差运算可以使用位操作进行。</p><h4 id="布隆过滤器缺点"><a href="#布隆过滤器缺点" class="headerlink" title="布隆过滤器缺点"></a>布隆过滤器缺点</h4><p>布隆过滤器的缺点和优点一样明显。误算率（False Positive）是其中之一。随着存入的元素数量增加，误算率随之增加。但是如果元素数量太少，则使用散列表足矣。</p><p>另外，一般情况下不能从布隆过滤器中删除元素. 我们很容易想到把位列阵变成整数数组，每插入一个元素相应的计数器加1, 这样删除元素时将计数器减掉就可以了。</p><p>然而要保证安全的删除元素并非如此简单。首先我们必须保证删除的元素的确在布隆过滤器里面. 这一点单凭这个过滤器是无法保证的。另外计数器回绕也会造成问题。</p><h4 id="布隆过滤器的使用场景："><a href="#布隆过滤器的使用场景：" class="headerlink" title="布隆过滤器的使用场景："></a>布隆过滤器的使用场景：</h4><p>在程序的世界中，布隆过滤器是程序员的一把利器，利用它可以快速地解决项目中一些比较棘手的问题。</p><p>如网页 URL 去重、垃圾邮件识别、大集合中重复元素的判断和缓存穿透等问题。</p><p>布隆过滤器的典型应用有：</p><ul><li>数据库防止穿库。 Google Bigtable，HBase 和 Cassandra 以及 Postgresql 使用BloomFilter来减少不存在的行或列的磁盘查找。避免代价高昂的磁盘查找会大大提高数据库查询操作的性能。</li><li>业务场景中判断用户是否阅读过某视频或文章，比如抖音或头条，当然会导致一定的误判，但不会让用户看到重复的内容。</li><li>缓存宕机、缓存击穿场景，一般判断用户是否在缓存中，如果在则直接返回结果，不在则查询db，如果来一波冷数据，会导致缓存大量击穿，造成雪崩效应，这时候可以用布隆过滤器当缓存的索引，只有在布隆过滤器中，才去查询缓存，如果没查询到，则穿透到db。如果不在布隆器中，则直接返回。</li><li>WEB拦截器，如果相同请求则拦截，防止重复被攻击。用户第一次请求，将请求参数放入布隆过滤器中，当第二次请求时，先判断请求参数是否被布隆过滤器命中。可以提高缓存命中率。Squid 网页代理缓存服务器在 cache digests 中就使用了布隆过滤器。Google Chrome浏览器使用了布隆过滤器加速安全浏览服务</li><li>Venti 文档存储系统也采用布隆过滤器来检测先前存储的数据。</li><li>SPIN 模型检测器也使用布隆过滤器在大规模验证问题时跟踪可达状态空间。</li></ul><h4 id="布隆过滤器的使用（Java版）"><a href="#布隆过滤器的使用（Java版）" class="headerlink" title="布隆过滤器的使用（Java版）"></a>布隆过滤器的使用（Java版）</h4><ol><li>需要引入依赖</li></ol><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>28.0-jre<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><ol start="2"><li>创建一个布隆过滤器</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.BloomFilter;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.Funnels;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.log4j.Log4j2;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.AfterAll;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.BeforeAll;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.DisplayName;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Log</span>4j2</span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"TestBloomFilterTest测试类"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestBloomFilterTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beforeAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"===============测试开始==============="</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterAll</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">afterAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"===============测试结束==============="</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@DisplayName</span>(<span class="string">"布隆过滤器"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">BloomFilterTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        BloomFilter&lt;String&gt; filter = BloomFilter.create(</span><br><span class="line">                Funnels.stringFunnel(Charset.defaultCharset()),</span><br><span class="line">                <span class="number">1000</span>,</span><br><span class="line">                <span class="number">0.001</span></span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        filter.put(<span class="string">"baidu.com"</span>);</span><br><span class="line">        filter.put(<span class="string">"tencent.com"</span>);</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">"布隆过滤器中是否含有 baidu.com? &#123;&#125;"</span>,filter.mightContain(<span class="string">"baidu.com"</span>));</span><br><span class="line">        log.info(<span class="string">"布隆过滤器中是否含有 google.com? &#123;&#125;"</span>,filter.mightContain(<span class="string">"google.com"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="3"><li>结果</li></ol><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_03-35-30.png" alt=""></p><h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>本质上布隆过滤器是一种数据结构，特点是高效地插入和查询，可以用来确定<font color=#FF8C00>某个值一定不存在或者可能存在</font></p><p>回到 redis 中遇到缓存穿透的其中一个解决方案，布隆过滤器能够过滤掉一定不存在的值，也就是说，我们可以把数据库中所有的数据存储到布隆过滤器中，一旦有非法的值传进来，就能够轻而易举的判断出该值对于数据库来说是否有效，从而避免无谓的查询。</p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;每天一篇面试小知识&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;本篇着重介绍一下布隆过滤器&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-11-56.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;font color=#008000&gt;为啥要写一篇关于布隆过滤器的博客？&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;还不是因为上集说到的 redis 中遇到缓存穿透的其中一个解决方案。&lt;/p&gt;
-&lt;p&gt;下面我们来详细的介绍一下 “ Bloom Filter ”&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="面试篇" scheme="https://codeyg.top/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/"/>
-    
-    
-    <category term="redis" scheme="https://codeyg.top/tags/redis/"/>
     
   </entry>
   
