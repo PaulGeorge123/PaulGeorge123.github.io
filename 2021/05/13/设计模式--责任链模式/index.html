@@ -15,8 +15,8 @@
 
 <link rel="stylesheet" href="/PaulGeorge123.github.io/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/PaulGeorge123.github.io/lib/pace/pace-theme-loading-bar.min.css">
-  <script src="/PaulGeorge123.github.io/lib/pace/pace.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/orange/pace-theme-loading-bar.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/1582516984-5f801c55bbc3c_fix732.png">
 <meta property="article:published_time" content="2021-05-13T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-09T08:37:16.194Z">
+<meta property="article:modified_time" content="2021-09-20T15:27:34.856Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="行为型模式">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">51</span></a>
+    <a href="/PaulGeorge123.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -139,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间文轴<span class="badge">79</span></a>
+    <a href="/PaulGeorge123.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间文轴<span class="badge">80</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -361,14 +361,22 @@
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p><strong>步骤 1，创建传入的对象</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Times</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> time;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Times</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Times</span><span class="params">(<span class="keyword">int</span> time)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.time = time;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> time;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTime</span><span class="params">(<span class="keyword">int</span> time)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.time = time;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Times&#123;"</span> +</span><br><span class="line">                <span class="string">"time="</span> + time +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<br/>
+
 <p><strong>步骤 2，创建处理器抽象接口</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Handler handler;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.handler = handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 抽象的请求拦截方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> times</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(Times times)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
 
 <p><strong>步骤 3，创建继承处理器抽象接口的实现类 1、2、3</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstInterview</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(Times times)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 条件判断是否是属于当前Handler的处理范围之内，不是则向下传递Handler处理器</span></span><br><span class="line">        <span class="keyword">if</span> (times.getTime() == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 假设这里是处理的业务逻辑代码</span></span><br><span class="line">            System.out.println(<span class="string">"第一次面试"</span> + times.getTime());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        handler.handleRequest(times);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondInterview</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(Times times)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 条件判断是否是属于当前Handler的处理范围之内，不是则向下传递Handler处理器</span></span><br><span class="line">        <span class="keyword">if</span> (times.getTime() == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="comment">// 假设这里是处理的业务逻辑代码</span></span><br><span class="line">            System.out.println(<span class="string">"第二次面试"</span> + times.getTime());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        handler.handleRequest(times);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeInterview</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(Times times)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 条件判断是否是属于当前Handler的处理范围之内，不是则向下传递Handler处理器</span></span><br><span class="line">        <span class="keyword">if</span> (times.getTime() == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="comment">// 假设这里是处理的业务逻辑代码</span></span><br><span class="line">            System.out.println(<span class="string">"第N次面试, 恭喜面试通过，HR会跟你联系！！！"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"潜心修炼~ 再接再厉~"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<br/>
+
 <p><strong>步骤 4，编写测试类进行验证</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Handler first = <span class="keyword">new</span> FirstInterview();</span><br><span class="line">        Handler second = <span class="keyword">new</span> SecondInterview();</span><br><span class="line">        Handler three = <span class="keyword">new</span> ThreeInterview();</span><br><span class="line">        <span class="comment">//指定请求的处理的顺序</span></span><br><span class="line">        first.setHandler(second);</span><br><span class="line">        second.setHandler(three);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 第一次面试</span></span><br><span class="line">        first.handleRequest(<span class="keyword">new</span> Times(<span class="number">1</span>));</span><br><span class="line">        <span class="comment">// 第二次面试</span></span><br><span class="line">        first.handleRequest(<span class="keyword">new</span> Times(<span class="number">2</span>));</span><br><span class="line">        <span class="comment">// time == 3,成功</span></span><br><span class="line">        <span class="comment">// time &gt;=3 ,失败</span></span><br><span class="line">        <span class="comment">// 第三次面试</span></span><br><span class="line">        first.handleRequest(<span class="keyword">new</span> Times(<span class="number">5</span>));</span><br><span class="line">        <span class="comment">// 第N次面试</span></span><br><span class="line">        first.handleRequest(<span class="keyword">new</span> Times(<span class="number">3</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
 
 <p><strong>结果</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第一次面试<span class="number">1</span></span><br><span class="line">第二次面试<span class="number">2</span></span><br><span class="line">潜心修炼~ 再接再厉~</span><br><span class="line">第N次面试, 恭喜面试通过，HR会跟你联系！！！</span><br></pre></td></tr></table></figure>
@@ -412,12 +420,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2021/05/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" rel="prev" title="每日一练--工厂模式">
+    <a href="/PaulGeorge123.github.io/2021/05/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" rel="prev" title="每日一练--工厂模式">
       <i class="fa fa-chevron-left"></i> 每日一练--工厂模式
     </a></div>
       <div class="post-nav-item">
-    <a href="/PaulGeorge123.github.io/2021/05/20/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Linux常用命令">
-      Linux常用命令 <i class="fa fa-chevron-right"></i>
+    <a href="/PaulGeorge123.github.io/2021/05/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F--%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/" rel="next" title="每日一练--外观模式">
+      每日一练--外观模式 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -495,7 +503,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/PaulGeorge123.github.io/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -508,7 +516,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/PaulGeorge123.github.io/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -604,7 +612,6 @@ setInterval("createtime()",250);
   </div>
 
   
-  <script color='' opacity='' zIndex='' count='' src="/PaulGeorge123.github.io/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
   <script src="/PaulGeorge123.github.io/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
@@ -624,7 +631,6 @@ setInterval("createtime()",250);
 <script src="/PaulGeorge123.github.io/js/bookmark.js"></script>
 
 
-  <script defer src="/PaulGeorge123.github.io/lib/three/three.min.js"></script>
 
 <script src="/PaulGeorge123.github.io/js/code-unfold.js"></script>
 
