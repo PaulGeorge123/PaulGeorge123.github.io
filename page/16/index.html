@@ -206,7 +206,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2020/05/23/CSS/">
+    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2020/05/23/Example%20mybatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
@@ -220,7 +220,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/PaulGeorge123.github.io/2020/05/23/CSS/" class="post-title-link" itemprop="url">CSS</a>
+            <a href="/PaulGeorge123.github.io/2020/05/23/Example%20mybatis/" class="post-title-link" itemprop="url">Example</a>
         </h2>
 
         <div class="post-meta">
@@ -239,12 +239,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/PaulGeorge123.github.io/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                  <a href="/PaulGeorge123.github.io/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
                 </span>
             </span>
 
           
-            <span id="/PaulGeorge123.github.io/2020/05/23/CSS/" class="post-meta-item leancloud_visitors" data-flag-title="CSS" title="阅读次数">
+            <span id="/PaulGeorge123.github.io/2020/05/23/Example%20mybatis/" class="post-meta-item leancloud_visitors" data-flag-title="Example" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -259,8 +259,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/PaulGeorge123.github.io/2020/05/23/CSS/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/PaulGeorge123.github.io/2020/05/23/CSS/" itemprop="commentCount"></span>
+    <a title="valine" href="/PaulGeorge123.github.io/2020/05/23/Example%20mybatis/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/PaulGeorge123.github.io/2020/05/23/Example%20mybatis/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -270,14 +270,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -289,14 +289,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="css引入样式"><a href="#css引入样式" class="headerlink" title="css引入样式"></a>css引入样式</h4><p>1.内联</p>
-<figure class="highlight"><figcaption><span>1.内联</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color: red"&gt;我是标题&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.内部</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">	<span class="selector-tag">h1</span>&#123;</span><br><span class="line">		<span class="attribute">color</span>: green;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+          <h4 id="一、mapper接口中的方法解析"><a href="#一、mapper接口中的方法解析" class="headerlink" title="一、mapper接口中的方法解析"></a>一、mapper接口中的方法解析</h4><p><strong>mapper接口中的函数及方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">	        	方法	                                         	  功能说明</span><br><span class="line">int countByExample(UserExample example) thorws SQLException	       按条件计数</span><br><span class="line">int deleteByPrimaryKey(Integer id) thorws SQLException			   按主键删除</span><br><span class="line">int deleteByExample(UserExample example) thorws SQLException	   按条件查询</span><br><span class="line">String&#x2F;Integer insert(User record) thorws SQLException			 插入数据（返回值为ID）</span><br><span class="line">User selectByPrimaryKey(Integer id) thorws SQLException		       按主键查询</span><br><span class="line">ListselectByExample(UserExample example) thorws SQLException	   按条件查询</span><br><span class="line">ListselectByExampleWithBLOGs(UserExample example) thorws SQLException   按条件查询（包括BLOB字段）。</span><br><span class="line">int updateByPrimaryKey(User record) thorws SQLException		    	按主键更新</span><br><span class="line">int updateByPrimaryKeySelective(User record) thorws SQLException	按主键更新值不为null的字段</span><br><span class="line">int updateByExample(User record, UserExample example) thorws SQLException	按条件更新</span><br><span class="line">int updateByExampleSelective(User record, UserExample example) thorws SQLException	按条件更新值不为null的字段</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/PaulGeorge123.github.io/2020/05/23/CSS/#more" rel="contents">
+              <a class="btn" href="/PaulGeorge123.github.io/2020/05/23/Example%20mybatis/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
