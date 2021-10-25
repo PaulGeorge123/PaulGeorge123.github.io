@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-08-31_08-47-55.png">
 <meta property="article:published_time" content="2021-03-30T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-20T13:37:49.599Z">
+<meta property="article:modified_time" content="2021-10-23T17:30:40.282Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="小技巧">
 <meta name="twitter:card" content="summary">
@@ -280,14 +280,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -395,6 +395,12 @@
 <blockquote>
 <p>Object 可替换成相应的对象</p>
 </blockquote>
+<h3 id="Sql-中-limit-与-offset连用的区别"><a href="#Sql-中-limit-与-offset连用的区别" class="headerlink" title="Sql 中 limit 与 offset连用的区别"></a>Sql 中 limit 与 offset连用的区别</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">limit</span> <span class="number">2</span>,<span class="number">1</span>;                </span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 含义是跳过2条取出1条数据，limit后面是从第2条开始读，读取1条信息，即读取第3条数据</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">limit</span> <span class="number">2</span> <span class="keyword">offset</span> <span class="number">1</span>;     </span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 含义是从第1条（不包括）数据开始取出2条数据，limit后面跟的是2条数据，offset后面是从第1条开始读取，即读取第2,3条</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <p><strong>未完待续… …</strong></p>
 
     </div>
@@ -493,7 +499,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java正确URL解码方式"><span class="nav-number">1.</span> <span class="nav-text">Java正确URL解码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#urlEncoder和urlDecode"><span class="nav-number">1.1.</span> <span class="nav-text">urlEncoder和urlDecode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis中查询时间段内数据"><span class="nav-number">2.</span> <span class="nav-text">Mybatis中查询时间段内数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用Date类型"><span class="nav-number">2.1.</span> <span class="nav-text">数据库使用Date类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用字符串类型"><span class="nav-number">2.2.</span> <span class="nav-text">数据库使用字符串类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Date-与-String-的相互转换"><span class="nav-number">3.</span> <span class="nav-text">Java Date 与 String 的相互转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-String-转-Date"><span class="nav-number">3.1.</span> <span class="nav-text">Java String 转 Date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-Date-转-String"><span class="nav-number">3.2.</span> <span class="nav-text">Java Date 转 String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算某天n天之后的日期"><span class="nav-number">3.3.</span> <span class="nav-text">计算某天n天之后的日期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-命令"><span class="nav-number">4.</span> <span class="nav-text">Git 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将最新的master分支代码更新到其他分支"><span class="nav-number">4.1.</span> <span class="nav-text">将最新的master分支代码更新到其他分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优雅的代码总结"><span class="nav-number">5.</span> <span class="nav-text">优雅的代码总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-static-成员变量"><span class="nav-number">5.1.</span> <span class="nav-text">1.static 成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-static-成员方法"><span class="nav-number">5.2.</span> <span class="nav-text">2.static 成员方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-static-代码块"><span class="nav-number">5.3.</span> <span class="nav-text">3.static 代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-static-内部类"><span class="nav-number">5.4.</span> <span class="nav-text">4.static 内部类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeepinCopy-深拷贝"><span class="nav-number">6.</span> <span class="nav-text">DeepinCopy 深拷贝</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java正确URL解码方式"><span class="nav-number">1.</span> <span class="nav-text">Java正确URL解码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#urlEncoder和urlDecode"><span class="nav-number">1.1.</span> <span class="nav-text">urlEncoder和urlDecode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis中查询时间段内数据"><span class="nav-number">2.</span> <span class="nav-text">Mybatis中查询时间段内数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用Date类型"><span class="nav-number">2.1.</span> <span class="nav-text">数据库使用Date类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库使用字符串类型"><span class="nav-number">2.2.</span> <span class="nav-text">数据库使用字符串类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Date-与-String-的相互转换"><span class="nav-number">3.</span> <span class="nav-text">Java Date 与 String 的相互转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-String-转-Date"><span class="nav-number">3.1.</span> <span class="nav-text">Java String 转 Date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-Date-转-String"><span class="nav-number">3.2.</span> <span class="nav-text">Java Date 转 String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算某天n天之后的日期"><span class="nav-number">3.3.</span> <span class="nav-text">计算某天n天之后的日期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-命令"><span class="nav-number">4.</span> <span class="nav-text">Git 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将最新的master分支代码更新到其他分支"><span class="nav-number">4.1.</span> <span class="nav-text">将最新的master分支代码更新到其他分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优雅的代码总结"><span class="nav-number">5.</span> <span class="nav-text">优雅的代码总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-static-成员变量"><span class="nav-number">5.1.</span> <span class="nav-text">1.static 成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-static-成员方法"><span class="nav-number">5.2.</span> <span class="nav-text">2.static 成员方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-static-代码块"><span class="nav-number">5.3.</span> <span class="nav-text">3.static 代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-static-内部类"><span class="nav-number">5.4.</span> <span class="nav-text">4.static 内部类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeepinCopy-深拷贝"><span class="nav-number">6.</span> <span class="nav-text">DeepinCopy 深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-中-limit-与-offset连用的区别"><span class="nav-number">7.</span> <span class="nav-text">Sql 中 limit 与 offset连用的区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
