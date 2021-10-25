@@ -6,9 +6,10 @@
 
 ✨*我的 PaulGeorge123*✨ 仓库
 
-- **My Github Blog.[https://codeyg.top/](https://codeyg.top/)**
+- **My Github Blog.[http://yugd.cn/](http://yugd.cn/)**
 - **My Blog.[https://www.cnblogs.com/gyhbk/](https://www.cnblogs.com/gyhbk/)**
 
 * 🔭 I’m currently working on java source code...
 * 🌱 I’m currently learning Java, MySQL, Spring, Redis, Elasticsearch...
 * 📫 How to reach me: gyh_30@163.com
+

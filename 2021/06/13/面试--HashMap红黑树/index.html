@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"yugd.cn","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="每天一篇 Java 小知识  本篇着重介绍一下 HashMap为什么用红黑树：  写在前面上文说到，HashMap的扩容原理。 JDK1.7 使用的是 数组 + 单链表 的数据结构。 JDK1.8 及之后时，使用的是数组+链表+红黑树的数据结构。 当阈值是默认阈值 0.75，链表的深度大于等于 8，数组容量大于等于 64 时，扩容的时候会把链表转成红黑树，时间复杂度从 O(n) 变成 O(log">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一面--HashMap红黑树">
-<meta property="og:url" content="https://codeyg.top/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/index.html">
+<meta property="og:url" content="https://yugd.cn/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇 Java 小知识  本篇着重介绍一下 HashMap为什么用红黑树：  写在前面上文说到，HashMap的扩容原理。 JDK1.7 使用的是 数组 + 单链表 的数据结构。 JDK1.8 及之后时，使用的是数组+链表+红黑树的数据结构。 当阈值是默认阈值 0.75，链表的深度大于等于 8，数组容量大于等于 64 时，扩容的时候会把链表转成红黑树，时间复杂度从 O(n) 变成 O(log">
 <meta property="og:locale" content="zh_CN">
@@ -48,7 +48,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
 
-<link rel="canonical" href="https://codeyg.top/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/">
+<link rel="canonical" href="https://yugd.cn/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/">
 
 
 <script id="page-configurations">
@@ -220,7 +220,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://yugd.cn/2021/06/13/%E9%9D%A2%E8%AF%95--HashMap%E7%BA%A2%E9%BB%91%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">

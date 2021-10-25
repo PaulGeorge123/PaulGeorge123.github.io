@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"yugd.cn","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Redis   写在前面 为什么不直接访问数据库？要在中间加一个Redis缓存？其实我在了解redis之前一直有这样一个疑问，但是既然使用redis作为中间缓存一定是有道理的！ 那么一起来看一下使用redis有哪些好处吧~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一面--Redis">
-<meta property="og:url" content="https://codeyg.top/2021/07/15/%E9%9D%A2%E8%AF%95--Redis/index.html">
+<meta property="og:url" content="https://yugd.cn/2021/07/15/%E9%9D%A2%E8%AF%95--Redis/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis   写在前面 为什么不直接访问数据库？要在中间加一个Redis缓存？其实我在了解redis之前一直有这样一个疑问，但是既然使用redis作为中间缓存一定是有道理的！ 那么一起来看一下使用redis有哪些好处吧~">
 <meta property="og:locale" content="zh_CN">
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-16_21-42-34.png">
 
-<link rel="canonical" href="https://codeyg.top/2021/07/15/%E9%9D%A2%E8%AF%95--Redis/">
+<link rel="canonical" href="https://yugd.cn/2021/07/15/%E9%9D%A2%E8%AF%95--Redis/">
 
 
 <script id="page-configurations">
@@ -211,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/07/15/%E9%9D%A2%E8%AF%95--Redis/">
+    <link itemprop="mainEntityOfPage" href="https://yugd.cn/2021/07/15/%E9%9D%A2%E8%AF%95--Redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
@@ -454,7 +454,7 @@
 <p>比如文章表，一般我们的主键ID都是无符号的自增类型，有些人想要搞垮你的数据库，每次请求都用负数ID，而ID为负数的记录在数据库根本就没有。</p>
 <p><strong>解决方案：</strong></p>
 <ol>
-<li>对于像ID为负数的非法请求直接过滤掉，采用<a href="https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"><font color=#FF8C00>布隆过滤器 ( Bloom Filter )</font> </a>。</li>
+<li>对于像ID为负数的非法请求直接过滤掉，采用<a href="https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/" target="_blank" rel="noopener"><font color=#FF8C00>布隆过滤器 ( Bloom Filter )</font> </a>。</li>
 <li>禁用IP 限制IP访问。</li>
 <li><strong>限流</strong> 每秒最多访问3次。</li>
 <li>针对在数据库中找不到记录的，我们仍然将该空数据存入缓存中，当然一般会设置一个较短的过期时间。</li>

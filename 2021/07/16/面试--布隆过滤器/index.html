@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"codeyg.top","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"yugd.cn","root":"/PaulGeorge123.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下布隆过滤器   写在前面 为啥要写一篇关于布隆过滤器的博客？ 还不是因为上集说到的 redis 中遇到缓存穿透的其中一个解决方案。 下面我们来详细的介绍一下 “ Bloom Filter ”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一面--布隆过滤器">
-<meta property="og:url" content="https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/index.html">
+<meta property="og:url" content="https://yugd.cn/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下布隆过滤器   写在前面 为啥要写一篇关于布隆过滤器的博客？ 还不是因为上集说到的 redis 中遇到缓存穿透的其中一个解决方案。 下面我们来详细的介绍一下 “ Bloom Filter ”">
 <meta property="og:locale" content="zh_CN">
@@ -44,7 +44,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-17_04-11-56.png">
 
-<link rel="canonical" href="https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">
+<link rel="canonical" href="https://yugd.cn/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">
 
 
 <script id="page-configurations">
@@ -216,7 +216,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codeyg.top/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="https://yugd.cn/2021/07/16/%E9%9D%A2%E8%AF%95--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/PaulGeorge123.github.io/images/author.jpg">
