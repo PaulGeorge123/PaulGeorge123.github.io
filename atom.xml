@@ -6,7 +6,7 @@
   <link href="https://yugd.cn/atom.xml" rel="self"/>
   
   <link href="https://yugd.cn/"/>
-  <updated>2021-10-26T14:26:00.114Z</updated>
+  <updated>2021-10-26T18:25:15.907Z</updated>
   <id>https://yugd.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo 博客总结</title>
+    <link href="https://yugd.cn/posts/30553/"/>
+    <id>https://yugd.cn/posts/30553/</id>
+    <published>2021-10-10T01:00:00.000Z</published>
+    <updated>2021-10-26T18:25:15.907Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>hexo 博客优化总结</p></blockquote><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/hexo.png" style="zoom: 50%;" /><p><a href="https://hexo.io/zh-cn/index.html" target="_blank" rel="noopener">Hexo 官网</a></p><a id="more"></a><h3 id="Hexo-生成唯一文章链接"><a href="#Hexo-生成唯一文章链接" class="headerlink" title="Hexo 生成唯一文章链接"></a>Hexo 生成唯一文章链接</h3><p>Hexo 生成博客文章的链接时，默认格式 <code>permalink: :year/:month/:day/:title/</code> ，即按照 年：月：日：标题的格式来生成的。</p><p>如果标题中含中文的话，复制URL链接的话中文字符就会是一大串编码字符。如果想为每一篇文章生成唯一 ID 的话，推荐使用 hexo-abbrlink 或  hexo-uuid</p><h4 id="hexo-abbrlink"><a href="#hexo-abbrlink" class="headerlink" title="hexo-abbrlink"></a>hexo-abbrlink</h4><p>博客根目录下安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure><p><code>config.yml</code> 中修改</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br></pre></td></tr></table></figure><h4 id="hexo-uuid"><a href="#hexo-uuid" class="headerlink" title="hexo-uuid"></a>hexo-uuid</h4><p>博客根目录下安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-uuid --save</span><br></pre></td></tr></table></figure><p><code>config.yml</code> 中修改</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:uuid/</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;hexo 博客优化总结&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/hexo.png&quot; style=&quot;zoom: 50%;&quot; /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hexo.io/zh-cn/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo 官网&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="博客框架" scheme="https://yugd.cn/categories/%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="hexo" scheme="https://yugd.cn/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>学习--ElasticSearch</title>
@@ -633,39 +659,6 @@
     <category term="进阶" scheme="https://yugd.cn/tags/%E8%BF%9B%E9%98%B6/"/>
     
     <category term="redis" scheme="https://yugd.cn/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日一面--Spring 循环依赖以及三级缓存</title>
-    <link href="https://yugd.cn/posts/52633/"/>
-    <id>https://yugd.cn/posts/52633/</id>
-    <published>2021-07-21T01:00:00.000Z</published>
-    <updated>2021-10-26T14:26:00.211Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>每天一篇面试小知识</p></blockquote><p><strong>本篇着重介绍一下 Spring 循环依赖以及三级缓存</strong></p><hr><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_08-45-33.png" alt=""></p><p><strong>写在前面</strong></p><p><font color=#008000>什么是循环依赖？</font></p><p>简单的说就是 A 依赖 B，B 依赖 A 这样就构成了循环依赖。</p><p><font color=#008000>具体说一说 spring 是如何解决循环依赖的吧</font></p><p>让我好好想一想……</p><a id="more"></a><h3 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h3><p>所谓的循环依赖是指，A 依赖 B，B 又依赖 A，它们之间形成了循环依赖。或者是 A 依赖 B，B 依赖 C，C 又依赖 A，形成了循环依赖。更或者是自己依赖自己。</p><p>举个图解荔枝：</p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_22-16-10.png" style="zoom:90%;" /><p>举个代码荔枝：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanB</span> </span>&#123;</span><br><span class="line">     <span class="keyword">private</span> BeanA beanA;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanA</span><span class="params">(BeanA beanA)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">this</span>.beanA = beanA;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanA</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> BeanB beanB;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanB</span><span class="params">(BeanB beanB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.beanB = beanB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>配置文件：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"beanA"</span> <span class="attr">class</span>=<span class="string">"com.ase.BeanA"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"beanB"</span> <span class="attr">ref</span>=<span class="string">"beanB"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"beanB"</span> <span class="attr">class</span>=<span class="string">"com.ase.BeanB"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"beanA"</span> <span class="attr">ref</span>=<span class="string">"beanA"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure><p>按照上面的例子，Spring 启动后，读取如上的配置文件，会按顺序先实例化 A，但是创建的时候又发现它依赖了 B，接着就去实例化 B ，同样又发现它依赖了 A ，从而导致了无限循环，淦！</p><p><strong>尝试思考</strong></p><p>Spring 实例化对象分两步：</p><p>第一步，会先创建一个原始对象，只是没有设置属性，可以理解为”半成品”—— 官方叫 A 对象的早期引用（EarlyBeanReference）；</p><p>第二步，当实例化 B 的时候发现依赖了 A， B 就会把这个“半成品”设置进去先完成实例化，既然 B 完成了实例化，所以 A 就可以获得 B 的引用，也完成实例化了，这其实就是 Spring 解决循环依赖的思想；</p><hr><h3 id="循环依赖发生的时机"><a href="#循环依赖发生的时机" class="headerlink" title="循环依赖发生的时机"></a>循环依赖发生的时机</h3><h4 id="Bean-实例化"><a href="#Bean-实例化" class="headerlink" title="Bean 实例化"></a>Bean 实例化</h4><p>主要分为三步，如图：</p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_22-33-22.png" style="zoom:80%;" /><p>问题出现在：第一步和第二步的过程中，也就是填充属性 / 方法的过程中</p><h4 id="Spring-如何解决的"><a href="#Spring-如何解决的" class="headerlink" title="Spring 如何解决的"></a>Spring 如何解决的</h4><ul><li>Spring 为了解决单例的循环依赖问题，使用了 <strong>三级缓存</strong> ，递归调用时发现 Bean 还在创建中即为循环依赖</li><li>单例模式的 Bean 保存在如下的数据结构中：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**一级缓存，用于存放完全初始化好的 bean，从该缓存中取出的 bean 可以直接使用*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; singletonObjects = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;(<span class="number">256</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 二级缓存：存放原始的 bean 对象（尚未填充属性），用于解决循环依赖 */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; earlySingletonObjects = <span class="keyword">new</span> HashMap&lt;&gt;(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 三级级缓存：存放 bean 工厂对象，用于解决循环依赖 */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = <span class="keyword">new</span> HashMap&lt;&gt;(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">bean 的获取过程：先从一级获取，失败再从二级、三级里面获取</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">创建中状态：是指对象已经 new 出来了但是所有的属性均为 null 等待被 init</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure><ul><li>一级缓存：singletonObjects，存放完全实例化属性赋值完成的 Bean，直接可以使用。</li><li>二级缓存：earlySingletonObjects，存放早期 Bean 的引用，尚未属性装配的 Bean</li><li>三级缓存：singletonFactories，三级缓存，存放实例化完成的 Bean工厂。</li></ul><h4 id="循环依赖的解决流程图"><a href="#循环依赖的解决流程图" class="headerlink" title="循环依赖的解决流程图"></a>循环依赖的解决流程图</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-13-55.png" alt=""></p><hr><h4 id="A、B-相互依赖"><a href="#A、B-相互依赖" class="headerlink" title="A、B 相互依赖"></a>A、B 相互依赖</h4><p>检测循环依赖的过程如下：</p><ul><li><p>A 创建过程中需要 B，于是 <strong>A 将自己放到三级缓里面</strong> ，去实例化 B</p></li><li><p>B 实例化的时候发现需要 A，于是 B 先查一级缓存，没有，再查二级缓存，还是没有，再查三级缓存，找到了</p><ul><li><strong>然后把三级缓存里面的这个 A 放到二级缓存里面，并删除三级缓存里面的 A</strong></li><li>B 顺利初始化完毕，<strong>将自己放到一级缓存里面</strong>（此时B里面的A依然是创建中状态）</li></ul></li><li><p>然后回来接着创建 A，此时 B 已经创建结束，直接从一级缓存里面拿到 B ，然后完成创建，<strong>并将自己放到一级缓存里面</strong></p></li><li><p>如此一来便解决了循环依赖的问题</p></li></ul><p><strong>总结</strong></p><p>先让最底层对象完成初始化，通过三级缓存与二级缓存提前曝光创建中的 Bean，让其他 Bean 率先完成初始化。</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p><font color=#FF8C00>Spring 还是有一些无法解决的循环依赖！</font></p><p>使用构造器注入其他 Bean 的实例，这个就没办法了，要手动改代码。</p>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;每天一篇面试小知识&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;本篇着重介绍一下 Spring 循环依赖以及三级缓存&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_08-45-33.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;font color=#008000&gt;什么是循环依赖？&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;简单的说就是 A 依赖 B，B 依赖 A 这样就构成了循环依赖。&lt;/p&gt;
-&lt;p&gt;&lt;font color=#008000&gt;具体说一说 spring 是如何解决循环依赖的吧&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;让我好好想一想……&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="面试篇" scheme="https://yugd.cn/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/"/>
-    
-    
-    <category term="进阶" scheme="https://yugd.cn/tags/%E8%BF%9B%E9%98%B6/"/>
-    
-    <category term="Spring" scheme="https://yugd.cn/tags/Spring/"/>
     
   </entry>
   
