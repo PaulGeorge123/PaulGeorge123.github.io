@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yugd.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Redis   写在前面 为什么不直接访问数据库？要在中间加一个Redis缓存？其实我在了解redis之前一直有这样一个疑问，但是既然使用redis作为中间缓存一定是有道理的！ 那么一起来看一下使用redis有哪些好处吧~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日一面--Redis">
+<meta property="og:url" content="https://yugd.cn/posts/3169/index.html">
+<meta property="og:site_name" content="宇航员不会飞">
+<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis   写在前面 为什么不直接访问数据库？要在中间加一个Redis缓存？其实我在了解redis之前一直有这样一个疑问，但是既然使用redis作为中间缓存一定是有道理的！ 那么一起来看一下使用redis有哪些好处吧~">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-16_21-42-34.png">
+<meta property="article:published_time" content="2021-07-15T13:58:58.000Z">
+<meta property="article:modified_time" content="2021-10-26T14:29:33.584Z">
+<meta property="article:author" content="白日梦想家">
+<meta property="article:tag" content="进阶">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-16_21-42-34.png">
+
+<link rel="canonical" href="https://yugd.cn/posts/3169/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>每日一面--Redis | 宇航员不会飞</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="宇航员不会飞" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">宇航员不会飞</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">里面的人想出去，外面的人想进来</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">55</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>作者</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言</a>
+
+  </li>
+        <li class="menu-item menu-item-talk">
+
+    <a href="/talk/" rel="section"><i class="fa fa-comment fa-fw"></i>说说</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/PaulGeorge123" class="github-corner" title="欢迎来到我的GitHub" aria-label="欢迎来到我的GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yugd.cn/posts/3169/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="白日梦想家">
+      <meta itemprop="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇航员不会飞">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每日一面--Redis
+        </h1>
+
+        <div class="post-meta">
+		  
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-15 21:58:58" itemprop="dateCreated datePublished" datetime="2021-07-15T21:58:58+08:00">2021-07-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">面试篇</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/3169/" class="post-meta-item leancloud_visitors" data-flag-title="每日一面--Redis" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/3169/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/3169/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>每天一篇面试小知识</p>
+</blockquote>
+<p><strong>本篇着重介绍一下 Redis</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-16_21-42-34.png" alt=""></p>
+<p><strong>写在前面</strong></p>
+<h4 id="为什么不直接访问数据库？要在中间加一个Redis缓存？"><a href="#为什么不直接访问数据库？要在中间加一个Redis缓存？" class="headerlink" title="为什么不直接访问数据库？要在中间加一个Redis缓存？"></a><font color=#008000>为什么不直接访问数据库？要在中间加一个Redis缓存？</font></h4><p>其实我在了解redis之前一直有这样一个疑问，但是既然使用redis作为中间缓存一定是有道理的！</p>
+<p>那么一起来看一下使用redis有哪些好处吧~</p>
+<a id="more"></a>
+
+
+
+<p><strong>原因：</strong></p>
+<ol>
+<li>Redis 可以用几十 G 内存来做缓存；</li>
+<li>Redis 的缓存可以持久化 （RBD &amp; AOF）；</li>
+<li>Redis 可以实现分布式的缓存；</li>
+<li>Redis 可以处理每秒百万级的并发，是专业的缓存服务；</li>
+<li>Redis 缓存有过期机制；</li>
+<li>Redis 有丰富的 API。</li>
+</ol>
+<p>其中redis最典型的应用场景，当做缓存使用。</p>
+<p>因为传统的关系型数据库如Mysql已经不能适用所有的场景了，比如秒杀的库存扣减，APP首页的访问流量高峰等等……</p>
+<ul>
+<li>服务在处理请求时先从redis里获取结果，获取到了就可以直接返回，没有获取到的话再从数据库里获取，然后存到redis里以供下次使用。</li>
+<li>用redis的好处是可以做到分布式，有状态的数据都存在redis里，使业务服务层无状态，以便业务层有很高的可扩展性。</li>
+</ul>
+<h4 id="先来说下redis是什么吧？"><a href="#先来说下redis是什么吧？" class="headerlink" title="先来说下redis是什么吧？"></a><font color=#008000>先来说下redis是什么吧？</font></h4><p>我：Redis是C语言开发的一个开源的高性能键值对（key-value）的内存数据库；</p>
+<p>它是一种NoSQL（非关系型数据库）的数据库。</p>
+<p>可以用作数据库、缓存、消息中间件等。</p>
+<p>我接着说：Redis作为一个内存数据库。</p>
+<ol>
+<li>性能优秀，数据在内存中，读写速度非常快，支持并发10W QPS；</li>
+<li>单进程单线程，是线程安全的，采用IO多路复用机制；</li>
+<li>丰富的数据类型；</li>
+<li>支持数据持久化。可以将内存中数据保存在磁盘中，重启时加载；</li>
+<li>主从复制，哨兵，高可用；</li>
+<li>可以用作分布式锁；</li>
+<li>可以作为消息中间件使用，支持发布订阅。</li>
+</ol>
+<br/>
+
+<h4 id="具体说一下Redis有哪些数据结构呀？"><a href="#具体说一下Redis有哪些数据结构呀？" class="headerlink" title="具体说一下Redis有哪些数据结构呀？"></a><font color=#008000>具体说一下Redis有哪些数据结构呀？</font></h4><p>答：字符串（String）、字典（Hash）、列表（List）、集合（Set）、有序集合（SortedSet）</p>
+<p><font color=#FF8C00>后面了解到还有：HyperLogLog、Geo、Pub/Sub 【这是加分的内容】</font></p>
+<br/>
+
+<h4 id="使用过Redis分布式锁么，它是怎么回事？"><a href="#使用过Redis分布式锁么，它是怎么回事？" class="headerlink" title="使用过Redis分布式锁么，它是怎么回事？"></a><font color=#008000>使用过Redis分布式锁么，它是怎么回事？</font></h4><p>答：先拿setnx来争抢锁，抢到之后，再用expire给锁加一个过期时间防止锁忘记了释放。</p>
+<br/>
+
+<h4 id="假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？"><a href="#假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？" class="headerlink" title="假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？"></a><font color=#008000>假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？</font></h4><p>（这道题很经典啊，网上见过~）</p>
+<p>答：使用<code>keys</code>指令可以扫出指定模式的key列表 【 key  keys xxx*】</p>
+<br/>
+
+<h4 id="那如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？"><a href="#那如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？" class="headerlink" title="那如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？"></a><font color=#008000>那如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？</font></h4><p>答：redis的单线程的。keys指令会导致线程阻塞一段时间，线上服务会停顿，直到指令执行完毕，服务才能恢复。</p>
+<p><font color=#FF8C00>后面了解到：这个时候可以使用scan指令，scan指令可以无阻塞的提取出指定模式的key列表，但是会有一定的重复概率，在客户端做一次去重就可以了，但是整体所花费的时间会比直接用keys指令长。</font></p>
+<br/>
+
+<h4 id="使用过Redis做异步队列么，你是怎么用的？"><a href="#使用过Redis做异步队列么，你是怎么用的？" class="headerlink" title="使用过Redis做异步队列么，你是怎么用的？"></a><font color=#008000>使用过Redis做异步队列么，你是怎么用的？</font></h4><p>答：一般使用list结构作为队列，<code>rpush</code>生产消息，<code>lpop</code>消费消息。list还有个指令叫<code>blpop</code>，在没有消息的时候，它会阻塞住直到消息到来。</p>
+<br/>
+
+<h4 id="能不能生产一次消费多次呢？"><a href="#能不能生产一次消费多次呢？" class="headerlink" title="能不能生产一次消费多次呢？"></a><font color=#008000>能不能生产一次消费多次呢？</font></h4><p>答：使用pub/sub主题订阅者模式，可以实现 1:N 的消息队列。</p>
+<br/>
+
+<h4 id="pub-su-b有什么缺点？"><a href="#pub-su-b有什么缺点？" class="headerlink" title="pub/su b有什么缺点？"></a><font color=#008000>pub/su b有什么缺点？</font></h4><p>在消费者下线的情况下，生产的消息会丢失，得使用专业的消息队列如<code>RabbitMQ</code>等。</p>
+<br/>
+
+<h4 id="Redis是怎么持久化的？"><a href="#Redis是怎么持久化的？" class="headerlink" title="Redis是怎么持久化的？"></a><font color=#008000>Redis是怎么持久化的？</font></h4><p>（送分题~）</p>
+<p>答：RBD 和 AOF </p>
+<ul>
+<li><p>RDB做镜像全量持久化，即将整个Redis内存数据持久化到一个文件。</p>
+</li>
+<li><p>AOF做增量持久化，AOF会将redis中每一步对数据修改的操作记录（日志）append到相应的文件中。</p>
+</li>
+</ul>
+<br/>
+
+<h4 id="那说一下-RBD-和-AOF-的优劣，及其原理吧"><a href="#那说一下-RBD-和-AOF-的优劣，及其原理吧" class="headerlink" title="那说一下 RBD 和 AOF 的优劣，及其原理吧"></a><font color=#008000>那说一下 RBD 和 AOF 的优劣，及其原理吧</font></h4><p>答：</p>
+<p><strong>RDB</strong></p>
+<p>优点：</p>
+<ul>
+<li>二进制压缩文件，恢复速度快</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>可能丢失数据（服务器宕机的时候）</li>
+</ul>
+<p>原理：</p>
+<p><strong>fork</strong> 和 <strong>cow</strong></p>
+<ul>
+<li>fork是指redis通过创建子进程来进行RDB操作；</li>
+<li>cow指的是copy on write，子进程创建后，父子进程共享数据段，父进程继续提供读写服务，写脏的页面数据会逐渐和子进程分离开来。</li>
+</ul>
+<p><strong>AOF</strong></p>
+<p>优点：</p>
+<ul>
+<li>不易丢失数据，数据完整性好</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>每一步操作都记录，相对影响性能</li>
+<li>数据恢复慢，文件较大</li>
+</ul>
+<p>原理：</p>
+<p>为了降低 IO 消耗，AOF 写文件时，会先将数据写到缓冲区，然后再把缓冲区的内容 flush 到磁盘，这个过程叫做 fsync。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ appendfsync always  //每次写操作都flush，影响性能</span><br><span class="line">$ appendfsync everysec  //每秒flush</span><br><span class="line">$ appendfsync no  //消极等待OS刷新(一般30s),可能丢失数据</span><br></pre></td></tr></table></figure>
+
+<p>相比于always的激进和no的消极，everysec在性能和数据完整性上取了一个折中。</p>
+<br/>
+
+<h4 id="是否使用过Redis集群，集群的高可用怎么保证，集群的原理是什么？"><a href="#是否使用过Redis集群，集群的高可用怎么保证，集群的原理是什么？" class="headerlink" title="是否使用过Redis集群，集群的高可用怎么保证，集群的原理是什么？"></a><font color=#008000>是否使用过Redis集群，集群的高可用怎么保证，集群的原理是什么？</font></h4><p>答：</p>
+<ul>
+<li><p>Redis Sentinal 着眼于高可用，在 master 宕机时会自动将 slave 提升为 master，继续提供服务。</p>
+</li>
+<li><p>Redis Cluster 着眼于扩展性，在单个 redis 内存不足时，使用 Cluster 进行分片存储。</p>
+</li>
+</ul>
+<br/>
+
+<h4 id="Redis-会遇到的缓存雪崩，缓存穿透，缓存击穿吧"><a href="#Redis-会遇到的缓存雪崩，缓存穿透，缓存击穿吧" class="headerlink" title="Redis 会遇到的缓存雪崩，缓存穿透，缓存击穿吧"></a><font color=#008000>Redis 会遇到的缓存雪崩，缓存穿透，缓存击穿吧</font></h4><p>先来了解一下缓存雪崩，缓存穿透，缓存击穿是什么意思！</p>
+<p>一、缓存雪崩</p>
+<p><strong>含义：</strong></p>
+<p>缓存雪崩表示在某一时间段，缓存集中失效，导致请求全部走数据库，有可能搞垮数据库，使整个服务瘫痪。</p>
+<p>使缓存集中失效的原因：</p>
+<ol>
+<li><p>redis服务器挂掉了。</p>
+</li>
+<li><p>对缓存数据设置了相同的过期时间，导致某时间段内缓存集中失效。（√）</p>
+</li>
+</ol>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li><p>针对原因1，可以实现redis的高可用，Redis Cluster 或者 Redis Sentinel(哨兵) 等方案。</p>
+</li>
+<li><p>针对原因2，设置缓存过期时间时加上一个随机值，避免缓存在同一时间过期。</p>
+</li>
+</ol>
+<p>举个荔枝：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 设置过期时间加上一个随机值</span></span><br><span class="line"><span class="variable">$redis</span>-&gt;<span class="built_in">set</span>(<span class="string">'article_content_1'</span>, <span class="string">'文章内容'</span>, 60 + mt_rand(1, 60));</span><br><span class="line"><span class="variable">$redis</span>-&gt;<span class="built_in">set</span>(<span class="string">'article_content_2'</span>, <span class="string">'文章内容'</span>, 60 + mt_rand(1, 60));</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用双缓存策略，设置两个缓存，原始缓存和备用缓存，原始缓存失效时，访问备用缓存，备用缓存失效时间设置长点。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 原始缓存</span></span><br><span class="line"><span class="variable">$redis</span>-&gt;<span class="built_in">set</span>(<span class="string">'article_content_2'</span>, <span class="string">'文章内容'</span>, 60);</span><br><span class="line"><span class="comment">## 设置备用缓存，失效时间设置长点</span></span><br><span class="line"><span class="variable">$redis</span>-&gt;<span class="built_in">set</span>(<span class="string">'article_content_backup_2'</span>, <span class="string">'文章内容'</span>, 1800);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>二、缓存穿透</p>
+<p><strong>含义：</strong></p>
+<p>缓存穿透表示查询一个一定不存在的数据，由于没有获取到缓存，所以没写入缓存，导致这个不存在的数据每次都需要去数据库查询，失去了缓存的意义。</p>
+<p>请求的数据大量的没有获取到缓存，导致走数据库，有可能搞垮数据库，使整个服务瘫痪。</p>
+<p>比如文章表，一般我们的主键ID都是无符号的自增类型，有些人想要搞垮你的数据库，每次请求都用负数ID，而ID为负数的记录在数据库根本就没有。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>对于像ID为负数的非法请求直接过滤掉，采用<a href="https://yugd.cn/posts/11389/"><font color=#FF8C00>布隆过滤器 ( Bloom Filter )</font> </a>。</li>
+<li>禁用IP 限制IP访问。</li>
+<li><strong>限流</strong> 每秒最多访问3次。</li>
+<li>针对在数据库中找不到记录的，我们仍然将该空数据存入缓存中，当然一般会设置一个较短的过期时间。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//设置文章ID为-10000的缓存为空</span><br><span class="line"><span class="variable">$id</span> = -10000;</span><br><span class="line"><span class="variable">$redis</span>-&gt;<span class="built_in">set</span>(<span class="string">'article_content_'</span> . <span class="variable">$id</span>, <span class="string">''</span>, 60);</span><br><span class="line"> </span><br><span class="line">var_dump(<span class="variable">$redis</span>-&gt;get(<span class="string">'article_content_'</span> . <span class="variable">$id</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<p>三、缓存击穿</p>
+<p><strong>含义：</strong></p>
+<p>缓存击穿表示某个key的缓存非常热门，有很高的并发一直在访问，如果该缓存失效，那同时会走数据库，压垮数据库。</p>
+<p>缓存击穿与缓存雪崩的区别是这里针对的是某一热门 key 缓存，而雪崩针对的是大量缓存的集中失效。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>让该热门 key 的缓存永不过期。</li>
+<li>使用互斥锁，通过 redis 的 setnx 实现互斥锁。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRedis</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $redis = <span class="keyword">new</span> Redis();</span><br><span class="line">    $redis-&gt;connect(<span class="string">'127.0.0.1'</span>, <span class="number">6379</span>, <span class="number">60</span>);</span><br><span class="line">    <span class="keyword">return</span> $redis;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//加锁</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lock</span>(<span class="params">$key, $random</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $redis = getRedis();</span><br><span class="line">    <span class="comment">//设置锁的超时时间，避免释放锁失败，del()操作失败，产生死锁。</span></span><br><span class="line">    $ret = $redis-&gt;<span class="keyword">set</span>($key, $random, ['nx', 'ex' =&gt; 3 * 60]);</span><br><span class="line">    return $ret;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//解锁</span><br><span class="line">function unLock($key, $random)</span><br><span class="line">&#123;</span><br><span class="line">    $redis = getRedis();</span><br><span class="line">    <span class="comment">//这里的随机数作用是，防止更新缓存操作时间过长，超过了锁的有效时间，导致其他请求拿到了锁。</span></span><br><span class="line">    <span class="comment">//但上一个请求更新缓存完毕后，如果不加判断直接删除锁，就会误删其他请求创建的锁。</span></span><br><span class="line">    <span class="keyword">if</span> ($redis-&gt;<span class="keyword">get</span>($key) == $random) &#123;</span><br><span class="line">        $redis-&gt;del($key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//从缓存中获取文章数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArticleInCache</span>(<span class="params">$id</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $redis = getRedis();</span><br><span class="line">    $key = <span class="string">'article_content_'</span> . $id;</span><br><span class="line">    $ret = $redis-&gt;<span class="keyword">get</span>($key);</span><br><span class="line">    if ($ret === false) &#123;</span><br><span class="line">        <span class="comment">//生成锁的key</span></span><br><span class="line">        $lockKey = $key . <span class="string">'_lock'</span>;</span><br><span class="line">        <span class="comment">//生成随机数，用于设置锁的值，后面释放锁时会用到</span></span><br><span class="line">        $random = mt_rand();</span><br><span class="line">        <span class="comment">//拿到互斥锁</span></span><br><span class="line">        <span class="keyword">if</span> (lock($lockKey, $random)) &#123;</span><br><span class="line">            <span class="comment">//这里是伪代码，表示从数据库中获取文章数据</span></span><br><span class="line">            $value = $db-&gt;getArticle($id);</span><br><span class="line">            <span class="comment">//更新缓存，过期时间可以根据情况自已调整</span></span><br><span class="line">            $redis-&gt;<span class="keyword">set</span>($key, $value, 2 * 60);</span><br><span class="line">            //释放锁</span><br><span class="line">            unLock($lockKey, $random);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            <span class="comment">//等待200毫秒，然后重新获取缓存值，让其他获取到锁的进程取得数据并设置缓存</span></span><br><span class="line">            usleep(<span class="number">200</span>);</span><br><span class="line">            getArticleInCache($id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> $ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束，感谢您的阅读-------------</div>
+    
+</div>
+
+	  
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%9B%E9%98%B6/" rel="tag">
+			  <i class="fa fa-tag"></i> 进阶</a>
+              <a href="/tags/redis/" rel="tag">
+			  <i class="fa fa-tag"></i> redis</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/33770/" rel="prev" title="日积月累">
+      <i class="fa fa-chevron-left"></i> 日积月累
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/11389/" rel="next" title="每日一面--布隆过滤器">
+      每日一面--布隆过滤器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不直接访问数据库？要在中间加一个Redis缓存？"><span class="nav-number">1.</span> <span class="nav-text">为什么不直接访问数据库？要在中间加一个Redis缓存？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先来说下redis是什么吧？"><span class="nav-number">2.</span> <span class="nav-text">先来说下redis是什么吧？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体说一下Redis有哪些数据结构呀？"><span class="nav-number">3.</span> <span class="nav-text">具体说一下Redis有哪些数据结构呀？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用过Redis分布式锁么，它是怎么回事？"><span class="nav-number">4.</span> <span class="nav-text">使用过Redis分布式锁么，它是怎么回事？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？"><span class="nav-number">5.</span> <span class="nav-text">假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#那如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？"><span class="nav-number">6.</span> <span class="nav-text">那如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用过Redis做异步队列么，你是怎么用的？"><span class="nav-number">7.</span> <span class="nav-text">使用过Redis做异步队列么，你是怎么用的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#能不能生产一次消费多次呢？"><span class="nav-number">8.</span> <span class="nav-text">能不能生产一次消费多次呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pub-su-b有什么缺点？"><span class="nav-number">9.</span> <span class="nav-text">pub&#x2F;su b有什么缺点？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis是怎么持久化的？"><span class="nav-number">10.</span> <span class="nav-text">Redis是怎么持久化的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#那说一下-RBD-和-AOF-的优劣，及其原理吧"><span class="nav-number">11.</span> <span class="nav-text">那说一下 RBD 和 AOF 的优劣，及其原理吧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#是否使用过Redis集群，集群的高可用怎么保证，集群的原理是什么？"><span class="nav-number">12.</span> <span class="nav-text">是否使用过Redis集群，集群的高可用怎么保证，集群的原理是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-会遇到的缓存雪崩，缓存穿透，缓存击穿吧"><span class="nav-number">13.</span> <span class="nav-text">Redis 会遇到的缓存雪崩，缓存穿透，缓存击穿吧</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="白日梦想家"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">白日梦想家</p>
+  <div class="site-description" itemprop="description">很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PaulGeorge123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PaulGeorge123" rel="noopener" target="_blank"><i class="github-square fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白日梦想家</span>
+</div>
+
+<!-- 不蒜子统计 -->
+<i class="fa fa-eye"></i>
+本站总访问量:<span id="busuanzi_value_site_pv"></span>次
+<span class="post-meta-divider">|</span>
+<i class="fa fa-user"></i>
+本站访客数:<span id="busuanzi_value_site_uv"></span>人
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--<script src="../../source/js/src/Valine.min.js"></script> -->
+
+<!--添加网站运行时间 -->
+<div class="runtime">
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/15/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站居然运行了 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+<script src="/js/code-unfold.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+   
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~" + OriginTitile;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*)被你发现啦~" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Hk0H724DTDwcL4Jbnl6o5Dje-gzGzoHsz',
+      appKey     : 'xucnYtkjjPYjXkDMzyOfuYM2',
+      placeholder: "留下你的评论吧",
+      avatar     : 'mp',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
