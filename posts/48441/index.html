@@ -26,17 +26,22 @@
 <!-- 导入jquery -->
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
 
-  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 的五种数据结构   写在前面 Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。 Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。">
+  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 的五种数据结构   写在前面 Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。 Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。 Redis 键的类型总是 string Redis–基本语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一面--Redis 五种数据结构详解">
 <meta property="og:url" content="https://yugd.cn/posts/48441/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 的五种数据结构   写在前面 Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。 Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。">
+<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 的五种数据结构   写在前面 Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。 Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。 Redis 键的类型总是 string Redis–基本语句">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_08-42-43.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_09-28-52.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-02_22-46-13.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-02_22-59-44.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-03_00-19-23.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-03_00-29-56.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-02_23-43-18.png">
 <meta property="article:published_time" content="2021-07-21T00:08:08.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.200Z">
+<meta property="article:modified_time" content="2021-11-02T16:40:39.645Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="redis">
@@ -278,14 +283,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>430</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -306,22 +311,92 @@
 <p><strong>写在前面</strong></p>
 <p>Redis 是基于 C 语言编写的开源非关系型内存数据库，可以用作数据库、缓存、消息中间件。</p>
 <p>Redis 的五种数据结构详解，包括这五种的数据结构的底层原理实现。</p>
+<p><font color=#FF0000>Redis 键的类型总是 string</font></p>
+<p><a href="https://yugd.cn/posts/18405/">Redis–基本语句</a></p>
 <a id="more"></a>
 
 
 
-<h4 id="Redis的五种数据结构"><a href="#Redis的五种数据结构" class="headerlink" title="Redis的五种数据结构"></a>Redis的五种数据结构</h4><ol>
-<li><code>String</code>：字符串类型</li>
-<li><code>List</code>：列表类型</li>
-<li><code>Set</code>：无序集合类型</li>
-<li><code>ZSet</code>：有序集合类型</li>
-<li><code>Hash</code>：哈希表类型</li>
-</ol>
-<h4 id="Redis核心对象"><a href="#Redis核心对象" class="headerlink" title="Redis核心对象"></a>Redis核心对象</h4><p>在Redis中有一个<strong>「核心的对象」</strong>叫做 <code>redisObject</code> ，是用来表示所有的 key 和 value 的，用 redisObject 结构体来表示<code>String、Hash、List、Set、ZSet</code>五种数据类型。</p>
+<h3 id="Redis核心对象"><a href="#Redis核心对象" class="headerlink" title="Redis核心对象"></a>Redis核心对象</h3><p>在Redis中有一个<strong>「核心的对象」</strong>叫做 <code>redisObject</code> ，是用来表示所有的 key 和 value 的，用 redisObject 结构体来表示<code>String、Hash、List、Set、ZSet</code>五种数据类型。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-21_09-28-52.png" alt=""></p>
 <p>在redisObject中<strong>「type表示属于哪种数据类型，encoding表示该数据的存储方式」</strong>，也就是底层的实现的该数据类型的数据结构。</p>
-<h4 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h4><p>redis 中的字符串和 c 语言中的字符串类型却是有明显的区别。</p>
-<p>string 类型的数据结构存储方式有三种<code>int、raw、embstr</code>。</p>
+<h3 id="Redis的五种数据结构"><a href="#Redis的五种数据结构" class="headerlink" title="Redis的五种数据结构"></a>Redis的五种数据结构</h3><ol>
+<li><p><code>String</code>：字符串类型</p>
+</li>
+<li><p><code>List</code>：列表类型</p>
+</li>
+<li><p><code>Set</code>：无序集合类型</p>
+</li>
+<li><p><code>ZSet</code>：有序集合类型</p>
+</li>
+<li><p><code>Hash</code>：哈希表类型</p>
+</li>
+</ol>
+<h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><ol>
+<li>可以存储<strong>字符串</strong>、<strong>整数</strong>或者<strong>浮点数</strong>（如果存储的是整数或者浮点数，还能执行自增或者自减操作）。</li>
+<li>String 类型是二进制安全的，存储大小是由上限的 512 M。</li>
+<li>redis 中的字符串（SDS）和 c 语言中的字符串类型却是有明显的区别，字符串不是根据某种特殊的标志位来（C语言的\0）解析的。</li>
+</ol>
+<p>下面重点解释一下Redis底层定义了自己的一种数据结构 </p>
+<h4 id="简单动态字符串（SDS）"><a href="#简单动态字符串（SDS）" class="headerlink" title="简单动态字符串（SDS）"></a>简单动态字符串（SDS）</h4><p><strong>SDS 的定义</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> *sds;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span> &#123;</span></span><br><span class="line">    <span class="comment">// buf 已占用长度</span></span><br><span class="line">    <span class="keyword">int</span> len;</span><br><span class="line">    <span class="comment">// buf 剩余可用长度</span></span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">    <span class="comment">// 实际保存字符串数据的地方</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>SDS 遵循 C语言以空字符串为结尾的惯例。保存空字符串的 1 字节将不会被计算到 SDS 的 len 属性里面，并且为空字符串额外分配 1 字节的空间。</p>
+<blockquote>
+<p>redis 使用 len 属性来判断字符串是否结束。</p>
+</blockquote>
+<p>（了解）空间预分配 and 惰性空间释放</p>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-02_22-46-13.png" alt=""></p>
+<p>内部为当前字符串实际分配的空间 capacity 一般要高于实际字符串长度 len。</p>
+<p>当字符串长度小于 1M 时，扩容都是加倍现有的空间（ len = free ），如果超过 1M，扩容时一次 只会多扩 1M 的空间。需要注意的是字符串最大长度为 512M。</p>
+<hr>
+<h3 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h3><p><strong>单键多值</strong></p>
+<ol>
+<li>Redis 的列表类型和许多程序语言中的列表类型类似，<strong>可以有序地存储多个字符串</strong>。</li>
+<li>支持从列表的左端和右端推入或弹出元素。</li>
+<li>它的底层实际是个双向链表，对两端的操作性能很高。</li>
+</ol>
+<h4 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h4><p>它将所有的元素紧挨着一起存储，分配的是一块连续的内存。</p>
+<p>当数据量比较多的时候才会改成 quicklist。因为普通的链表需要的附加指针空间太大，会比较浪费空间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-02_22-59-44.png" alt=""></p>
+<p>Redis 将链表和 ziplist 结合起来组成了 quicklist。也就是将多个 ziplist 使用双向指 针串起来使用。这样既满足了快速的插入删除性能，又不会出现太大的空间冗余。</p>
+<hr>
+<h3 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h3><p>字典 又称 符号表（symbol table），是一种用于保存键值对（key-value pairs）的抽象数据结构。</p>
+<p>字典中，一个键（key）和一个值（value）进行关联，关联的的键值称之为键值对。</p>
+<p>Set 是 string 类型的<strong>无序集合</strong>。<font color=#FF0000>它底层其实是一个 value 为 null 的 hash 表</font>，所 以添加，删除，查找的复杂度都是 O(1)。</p>
+<hr>
+<h3 id="ZSet-类型"><a href="#ZSet-类型" class="headerlink" title="ZSet 类型"></a>ZSet 类型</h3><p>有序集合 zset 与普通集合 set 非常相似，是一个没有重复元素的字符串集合。</p>
+<p>不同之处是有序集合的每个成员都关联了一个评分（score）用来从低到高进行排序。</p>
+<h4 id="跳跃表"><a href="#跳跃表" class="headerlink" title="跳跃表"></a>跳跃表</h4><p>跳表，是基于链表实现的一种类似“二分”的算法。它可以快速的实现增，删，改，查操作。</p>
+<p>支持平均 O(logN) 、最坏 O(N) 复杂度的几点查找，还可以通过顺序性操作来批量处理节点。</p>
+<p>其性能能够和平衡树相媲美，且实现起来比平衡树更加的简单。</p>
+<p>一个 skipList 节点最高可以达到 64 层，一个“跳表”中最多可以存储 2^64 个元素，每个节点都是一个 skiplistNode（跳表节点）</p>
+<p><strong>skipList 结构体</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedf <span class="class"><span class="keyword">struct</span> <span class="title">zskiplist</span>&#123;</span></span><br><span class="line">    <span class="comment">//头节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">header</span>;</span></span><br><span class="line">    <span class="comment">//尾节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">tail</span>;</span></span><br><span class="line">    <span class="comment">// 跳表中的元素个数</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> length;</span><br><span class="line">    <span class="comment">//表内节点的最大层数</span></span><br><span class="line">    <span class="keyword">int</span> level;</span><br><span class="line">&#125;zskiplist;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<p> <strong>skiplist 结构</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-03_00-19-23.png" alt=""></p>
+<p>链表想要查询某个节点的数据需要从 head 节点进行遍历，但是随着节点的增多其查询效率也就越低。</p>
+<p>为了提高查询效率，我们给该单链表加多级索引，将会改善查询效率。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-03_00-29-56.png" alt=""></p>
+<p>每隔一个节点就提取出来一个元素到上一层，把这一层称作索引，其中的 <code>down</code> 指针指向原始链表。</p>
+<p>利用生成的索引进行范围确定，在进行向下查询，当数据量增大到一定程度的时候，效率将会有显著的提升。</p>
+<p><strong>注意</strong></p>
+<p>跳跃表以有序的方式在层次化的链表中保存元素，效率和平衡树媲美：查找、删除、添加等操作都可以在对数期望时间下完成。跳跃表体现了“<strong>空间换时间</strong>”的思想。</p>
+<hr>
+<h3 id="Hash-类型"><a href="#Hash-类型" class="headerlink" title="Hash 类型"></a>Hash 类型</h3><p>一个 hash 类型的 key 最多可以存储 2^32-1（约 40 亿个）字段 / 值。</p>
+<p> hash 是一个 string 类型的 field 和 value 的映射表，hash 特别适合用于存储对象。</p>
+<h4 id="数据结构-2"><a href="#数据结构-2" class="headerlink" title="数据结构"></a>数据结构</h4><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-02_23-43-18.png" style="zoom:80%;" />
+
+<p>Hash 类型对应的数据结构是两种：ziplist（压缩列表），hashtable（哈希表）。</p>
+<p>当存储的数据量较少的时，hash 采用 ziplist 作为底层存储结构：</p>
+<ul>
+<li>哈希对象保存的所有键值对（键和值）的字符串长度总和小于 64 个字节。</li>
+<li>哈希对象保存的键值对数量要小于 512 个。</li>
+</ul>
+<p>当无法满足上述条件时，hash 就会采用第二种方式来存储数据，也就是 dict（字典结构）。</p>
 <p><strong>未完待续……</strong></p>
 
     </div>
@@ -422,7 +497,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis的五种数据结构"><span class="nav-number">1.</span> <span class="nav-text">Redis的五种数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis核心对象"><span class="nav-number">2.</span> <span class="nav-text">Redis核心对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String类型"><span class="nav-number">3.</span> <span class="nav-text">String类型</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis核心对象"><span class="nav-number">1.</span> <span class="nav-text">Redis核心对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis的五种数据结构"><span class="nav-number">2.</span> <span class="nav-text">Redis的五种数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-类型"><span class="nav-number">3.</span> <span class="nav-text">String 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单动态字符串（SDS）"><span class="nav-number">3.1.</span> <span class="nav-text">简单动态字符串（SDS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">3.2.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-类型"><span class="nav-number">4.</span> <span class="nav-text">List 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构-1"><span class="nav-number">4.1.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-类型"><span class="nav-number">5.</span> <span class="nav-text">Set 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSet-类型"><span class="nav-number">6.</span> <span class="nav-text">ZSet 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#跳跃表"><span class="nav-number">6.1.</span> <span class="nav-text">跳跃表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-类型"><span class="nav-number">7.</span> <span class="nav-text">Hash 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构-2"><span class="nav-number">7.1.</span> <span class="nav-text">数据结构</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
