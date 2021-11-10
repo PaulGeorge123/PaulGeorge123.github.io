@@ -26,13 +26,14 @@
 <!-- 导入jquery -->
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
 
-  <meta name="description" content="每天一篇 Java 小知识  本篇着重介绍一下 Java 中的锁：  写在前面面试中我们都会遇到一个场景： 在某某某并发场景下，我们为了保证线程的安全性，应该如何处理呢？ 很多人脑海里最先想到的一定是“加锁”。 提到锁，大家肯定想到的是 sychronized 关键字，用它可以解决一切并发问题。 除了使用 sychronized 关键字，还有其他的解决方案吗？ JDK 1.5 之前，使用 syn">
+  <meta name="description" content="每天一篇 Java 小知识  本篇着重介绍一下 Java 中的锁：      写在前面面试中我们都会遇到一个场景： 在某某某并发场景下，我们为了保证线程的安全性，应该如何处理呢？ 很多人脑海里最先想到的一定是“加锁”。 提到锁，大家肯定想到的是 sychronized 关键字，用它可以解决一切并发问题。 除了使用 sychronized 关键字，还有其他的解决方案吗？ JDK 1.5 之前，使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一面--锁（Lock）">
 <meta property="og:url" content="https://yugd.cn/posts/29556/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="每天一篇 Java 小知识  本篇着重介绍一下 Java 中的锁：  写在前面面试中我们都会遇到一个场景： 在某某某并发场景下，我们为了保证线程的安全性，应该如何处理呢？ 很多人脑海里最先想到的一定是“加锁”。 提到锁，大家肯定想到的是 sychronized 关键字，用它可以解决一切并发问题。 除了使用 sychronized 关键字，还有其他的解决方案吗？ JDK 1.5 之前，使用 syn">
+<meta property="og:description" content="每天一篇 Java 小知识  本篇着重介绍一下 Java 中的锁：      写在前面面试中我们都会遇到一个场景： 在某某某并发场景下，我们为了保证线程的安全性，应该如何处理呢？ 很多人脑海里最先想到的一定是“加锁”。 提到锁，大家肯定想到的是 sychronized 关键字，用它可以解决一切并发问题。 除了使用 sychronized 关键字，还有其他的解决方案吗？ JDK 1.5 之前，使用">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-10_10-35-58.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-16_01-13-50.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/lock.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/optimistic_pessimistic.png">
@@ -50,12 +51,12 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-16_01-00-45.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-16_01-02-36.png">
 <meta property="article:published_time" content="2021-06-15T13:58:58.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.221Z">
+<meta property="article:modified_time" content="2021-11-10T02:36:35.816Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="锁">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-16_01-13-50.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-10_10-35-58.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/29556/">
 
@@ -315,6 +316,10 @@
 <p>每天一篇 Java 小知识</p>
 </blockquote>
 <p><strong>本篇着重介绍一下 Java 中的锁：</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-10_10-35-58.png" style="zoom: 80%;" />
+
+
+
 <hr>
 <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>面试中我们都会遇到一个场景：</p>
 <p><font color=#008000>在某某某并发场景下，我们为了保证线程的安全性，应该如何处理呢？</font></p>
