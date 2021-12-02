@@ -35,7 +35,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-12-02_10-21-57.png">
 <meta property="article:published_time" content="2021-04-02T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-02T02:34:50.964Z">
+<meta property="article:modified_time" content="2021-12-02T03:17:36.483Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="小技巧">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>498</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -318,7 +318,24 @@
 <p>方法二：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal num = <span class="keyword">new</span> BigDecimal(<span class="string">"10"</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(num.equals(BigDecimal.ZERO))&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h3 id="MyBatis-Plus-链式调用-Lambda-式"><a href="#MyBatis-Plus-链式调用-Lambda-式" class="headerlink" title="MyBatis-Plus  链式调用 Lambda 式"></a>MyBatis-Plus  链式调用 Lambda 式</h3><p>使用了lambda表达式 可以通过方法引用的方式来使用实体字段名的操作，避免直接写数据库表字段名时的错写名字；</p>
+<h4 id="QueryWrapper"><a href="#QueryWrapper" class="headerlink" title="QueryWrapper"></a>QueryWrapper</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询条件构造器</span></span><br><span class="line">QueryWrapper&lt;User&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">wrapper.eq(<span class="string">"user_id"</span>, id);</span><br><span class="line"><span class="comment">// 查询操作</span></span><br><span class="line">List&lt;User&gt; userList = userMapper.selectList(wrapper);</span><br></pre></td></tr></table></figure>
 
+<p>引入lambda, 避免在代码中写类似的于user_id的硬编码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QueryWrapper&lt;User&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">wrapper.lambda().eq(User::getUserId, id);</span><br><span class="line">List&lt;User&gt; userList = userMapper.selectList(wrapper);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="LambdaQueryWrapper"><a href="#LambdaQueryWrapper" class="headerlink" title="LambdaQueryWrapper"></a>LambdaQueryWrapper</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LambdaQueryWrapper&lt;User&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda();</span><br><span class="line">wrapper.eq(User::getUserId, id);</span><br><span class="line">List&lt;User&gt; userList = userMapper.selectList(wrapper);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="链式查询"><a href="#链式查询" class="headerlink" title="链式查询"></a>链式查询</h5><p>查询一组数据, 使用.list()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; user = <span class="keyword">new</span> LambdaQueryChainWrapper&lt;&gt;(userMapper)</span><br><span class="line">                        .eq(User::getUserId, id)</span><br><span class="line">                        .list();</span><br></pre></td></tr></table></figure>
+
+<p>如果只想查询一条记录，例如通过id查询某条记录的详情，使用.one()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> LambdaQueryChainWrapper&lt;&gt;(userMapper)</span><br><span class="line">                        .eq(User::getUserId, id)</span><br><span class="line">                        .one();</span><br></pre></td></tr></table></figure>
 
 
 
@@ -422,7 +439,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-中的数据转换问题"><span class="nav-number">1.</span> <span class="nav-text">Java 中的数据转换问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java-中-BigDecimal-和-0-比较"><span class="nav-number">1.1.</span> <span class="nav-text">java 中 BigDecimal 和 0 比较</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-中的数据转换问题"><span class="nav-number">1.</span> <span class="nav-text">Java 中的数据转换问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java-中-BigDecimal-和-0-比较"><span class="nav-number">1.1.</span> <span class="nav-text">java 中 BigDecimal 和 0 比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis-Plus-链式调用-Lambda-式"><span class="nav-number">2.</span> <span class="nav-text">MyBatis-Plus  链式调用 Lambda 式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#QueryWrapper"><span class="nav-number">2.1.</span> <span class="nav-text">QueryWrapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LambdaQueryWrapper"><span class="nav-number">2.2.</span> <span class="nav-text">LambdaQueryWrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#链式查询"><span class="nav-number">2.2.1.</span> <span class="nav-text">链式查询</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
