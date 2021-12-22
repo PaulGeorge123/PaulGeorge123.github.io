@@ -35,7 +35,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-12-02_10-21-57.png">
 <meta property="article:published_time" content="2021-04-02T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-20T07:21:49.745Z">
+<meta property="article:modified_time" content="2021-12-22T04:30:31.363Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="小技巧">
 <meta name="twitter:card" content="summary">
@@ -276,14 +276,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -317,6 +317,43 @@
 
 <p>方法二：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal num = <span class="keyword">new</span> BigDecimal(<span class="string">"10"</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(num.equals(BigDecimal.ZERO))&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="BigDecimal-的相关用法"><a href="#BigDecimal-的相关用法" class="headerlink" title="BigDecimal 的相关用法"></a>BigDecimal 的相关用法</h4><p><strong>构造器描述</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal(<span class="keyword">int</span>)       <span class="comment">//创建一个具有参数所指定整数值的对象。</span></span><br><span class="line">BigDecimal(<span class="keyword">double</span>)    <span class="comment">//创建一个具有参数所指定双精度值的对象。</span></span><br><span class="line">BigDecimal(<span class="keyword">long</span>)      <span class="comment">//创建一个具有参数所指定长整数值的对象。</span></span><br><span class="line">BigDecimal(String)    <span class="comment">//创建一个具有参数所指定以字符串表示的数值的对象。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>方法描述</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">add(BigDecimal)        <span class="comment">//BigDecimal对象中的值相加，然后返回这个对象。</span></span><br><span class="line">subtract(BigDecimal)   <span class="comment">//BigDecimal对象中的值相减，然后返回这个对象。</span></span><br><span class="line">multiply(BigDecimal)   <span class="comment">//BigDecimal对象中的值相乘，然后返回这个对象。</span></span><br><span class="line">divide(BigDecimal)     <span class="comment">//BigDecimal对象中的值相除，然后返回这个对象。</span></span><br><span class="line">    </span><br><span class="line">toString()             <span class="comment">//将BigDecimal对象的数值转换成字符串。</span></span><br><span class="line">doubleValue()          <span class="comment">//将BigDecimal对象中的值以双精度数返回。</span></span><br><span class="line">floatValue()           <span class="comment">//将BigDecimal对象中的值以单精度数返回。</span></span><br><span class="line">longValue()            <span class="comment">//将BigDecimal对象中的值以长整数返回。</span></span><br><span class="line">intValue()             <span class="comment">//将BigDecimal对象中的值以整数返回。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>保留两位小数</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 保留两位小数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BigDecimalTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> num=<span class="number">13.154215</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//方式一</span></span><br><span class="line">    String str = <span class="keyword">new</span> DecimalFormat(<span class="string">"0.00"</span>).format(num);</span><br><span class="line">    System.out.println(str);  <span class="comment">//13.15</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方式二</span></span><br><span class="line">    <span class="comment">// #.00 表示两位小数 #.0000四位小数</span></span><br><span class="line">    String str2 = <span class="keyword">new</span> DecimalFormat(<span class="string">"#.00"</span>).format(num);</span><br><span class="line">    System.out.println(str2);  <span class="comment">//13.15</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方式三</span></span><br><span class="line">    <span class="comment">//%.2f %. 表示 小数点前任意位数   2 表示两位小数 格式后的结果为f 表示浮点型</span></span><br><span class="line">    String result = String.format(<span class="string">"%.2f"</span>, num);</span><br><span class="line">    System.out.println(result);  <span class="comment">//13.15</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>四舍五入</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 四舍五入</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BigDecimalTest2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">double</span> num = <span class="number">3.1415926</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//保留2位小数</span></span><br><span class="line">    <span class="keyword">double</span> result = <span class="keyword">new</span> BigDecimal(num).setScale(<span class="number">2</span>, BigDecimal.ROUND_HALF_UP).doubleValue();</span><br><span class="line">    System.out.println(result);  <span class="comment">//3.14</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>BigDecimal.setScale() //方法用于格式化小数点</li>
+</ul>
+<ul>
+<li>setScale(1) //表示保留一位小数，默认用四舍五入方式 </li>
+<li>setScale(1,BigDecimal.ROUND_DOWN) //直接删除多余的小数位，如2.35会变成2.3 </li>
+<li>setScale(1,BigDecimal.ROUND_UP) //进位处理，2.35变成2.4 </li>
+<li>setScale(1,BigDecimal.ROUND_HALF_UP) //四舍五入，2.35变成2.4</li>
+<li>setScaler(1,BigDecimal.ROUND_HALF_DOWN) //四舍五入，2.35变成2.3，如果是5则向下舍</li>
+<li>setScaler(1,BigDecimal.ROUND_CEILING) //接近正无穷大的舍入</li>
+<li>setScaler(1,BigDecimal.ROUND_FLOOR) //接近负无穷大的舍入，数字&gt;0和ROUND_UP作用一样，数字&lt;0和ROUND_DOWN作用一样</li>
+<li>setScaler(1,BigDecimal.ROUND_HALF_EVEN) //向最接近的数字舍入，如果与两个相邻数字的距离相等，则向相邻的偶数舍入。</li>
+</ul>
+<p><strong>科学计数法</strong></p>
+<p>涉及到从Excel导入数据，但如果Excel里单元格类型为数值，但内容数据太长时（如银行账号），导入时，会默认读取为科学计数法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BigDecimalTest3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String result = <span class="keyword">new</span> BigDecimal(<span class="string">"3.40256010353E11"</span>).toPlainString();</span><br><span class="line">    System.out.println(result);  <span class="comment">//340256010353</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <hr>
 <h3 id="MyBatis-Plus-链式调用-Lambda-式"><a href="#MyBatis-Plus-链式调用-Lambda-式" class="headerlink" title="MyBatis-Plus  链式调用 Lambda 式"></a>MyBatis-Plus  链式调用 Lambda 式</h3><p>使用了lambda表达式 可以通过方法引用的方式来使用实体字段名的操作，避免直接写数据库表字段名时的错写名字；</p>
@@ -391,6 +428,7 @@
 <blockquote>
 <p>另外开窗函数和聚合函数的不同之处是：开窗函数对于每个组返回<strong>多行</strong>，而聚合函数对于每个组只返回<strong>一行</strong></p>
 </blockquote>
+<hr>
 <br/>
 
 <p><strong>未完待续 … …</strong></p>
@@ -491,7 +529,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-中的数据转换问题"><span class="nav-number">1.</span> <span class="nav-text">Java 中的数据转换问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java-中-BigDecimal-和-0-比较"><span class="nav-number">1.1.</span> <span class="nav-text">java 中 BigDecimal 和 0 比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis-Plus-链式调用-Lambda-式"><span class="nav-number">2.</span> <span class="nav-text">MyBatis-Plus  链式调用 Lambda 式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#QueryWrapper"><span class="nav-number">2.1.</span> <span class="nav-text">QueryWrapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LambdaQueryWrapper"><span class="nav-number">2.2.</span> <span class="nav-text">LambdaQueryWrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#链式查询"><span class="nav-number">2.2.1.</span> <span class="nav-text">链式查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySql-窗口函数-PARTITION-BY"><span class="nav-number">3.</span> <span class="nav-text">MySql 窗口函数 PARTITION BY</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确认MySQL服务器是否支持分区表"><span class="nav-number">3.1.</span> <span class="nav-text">确认MySQL服务器是否支持分区表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有此插件的话"><span class="nav-number">3.2.</span> <span class="nav-text">有此插件的话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本语法"><span class="nav-number">3.3.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排名开窗函数"><span class="nav-number">3.4.</span> <span class="nav-text">排名开窗函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合开窗函数"><span class="nav-number">3.5.</span> <span class="nav-text">聚合开窗函数</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-中的数据转换问题"><span class="nav-number">1.</span> <span class="nav-text">Java 中的数据转换问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java-中-BigDecimal-和-0-比较"><span class="nav-number">1.1.</span> <span class="nav-text">java 中 BigDecimal 和 0 比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BigDecimal-的相关用法"><span class="nav-number">1.2.</span> <span class="nav-text">BigDecimal 的相关用法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis-Plus-链式调用-Lambda-式"><span class="nav-number">2.</span> <span class="nav-text">MyBatis-Plus  链式调用 Lambda 式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#QueryWrapper"><span class="nav-number">2.1.</span> <span class="nav-text">QueryWrapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LambdaQueryWrapper"><span class="nav-number">2.2.</span> <span class="nav-text">LambdaQueryWrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#链式查询"><span class="nav-number">2.2.1.</span> <span class="nav-text">链式查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySql-窗口函数-PARTITION-BY"><span class="nav-number">3.</span> <span class="nav-text">MySql 窗口函数 PARTITION BY</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确认MySQL服务器是否支持分区表"><span class="nav-number">3.1.</span> <span class="nav-text">确认MySQL服务器是否支持分区表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有此插件的话"><span class="nav-number">3.2.</span> <span class="nav-text">有此插件的话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本语法"><span class="nav-number">3.3.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排名开窗函数"><span class="nav-number">3.4.</span> <span class="nav-text">排名开窗函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合开窗函数"><span class="nav-number">3.5.</span> <span class="nav-text">聚合开窗函数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
