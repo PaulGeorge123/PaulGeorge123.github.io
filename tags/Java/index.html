@@ -29,7 +29,7 @@
   <meta name="description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
 <meta property="og:type" content="website">
 <meta property="og:title" content="宇航员不会飞">
-<meta property="og:url" content="https://yugd.cn/tags/Java/index.html">
+<meta property="og:url" content="https://yugd.cn/tags/java/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="Vue.js">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yugd.cn/tags/Java/">
+<link rel="canonical" href="https://yugd.cn/tags/java/">
 
 
 <script id="page-configurations">
@@ -55,7 +55,7 @@
   };
 </script>
 
-  <title>标签: Java | 宇航员不会飞</title>
+  <title>标签: java | 宇航员不会飞</title>
   
 
 
@@ -132,17 +132,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">57</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">58</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间<span class="badge">90</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间<span class="badge">91</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -216,7 +216,7 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <h2 class="collection-header">Java
+        <h2 class="collection-header">java
           <small>标签</small>
         </h2>
       </div>
@@ -231,55 +231,15 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2021-06-13T23:58:58+08:00"
-              content="2021-06-13">
-          06-13
+              datetime="2021-07-27T21:58:58+08:00"
+              content="2021-07-27">
+          07-27
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/posts/26971/" itemprop="url">
-            <span itemprop="name">【JVM系列】-- JVM垃圾回收机制</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-06-13T22:58:58+08:00"
-              content="2021-06-13">
-          06-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/43345/" itemprop="url">
-            <span itemprop="name">【JVM系列】-- JVM内存结构</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-06-13T21:58:58+08:00"
-              content="2021-06-13">
-          06-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/8906/" itemprop="url">
-            <span itemprop="name">【JVM系列】-- Java的类加载机制</span>
+          <a class="post-title-link" href="/posts/5574/" itemprop="url">
+            <span itemprop="name">每日一面--Thread Pool</span>
           </a>
       </div>
 
@@ -359,20 +319,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -511,6 +471,48 @@ setInterval("createtime()",250);
     if (document.hidden) {
       document.title = "(つェ⊂)我藏好了哦~" + OriginTitile;
       clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*)被你发现啦~" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Hk0H724DTDwcL4Jbnl6o5Dje-gzGzoHsz',
+      appKey     : 'xucnYtkjjPYjXkDMzyOfuYM2',
+      placeholder: "留下你的评论吧",
+      avatar     : 'mp',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+</body>
+</html>
+out(titleTime);
     } else {
       document.title = "(*´∇｀*)被你发现啦~" + OriginTitile;
       titleTime = setTimeout(function() {
