@@ -26,18 +26,20 @@
 <!-- 导入jquery -->
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
 
-  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Docker        写在前面 what is docker？ Docker 是一个基于 Go 语言开源的应用容器引擎。可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
+  <meta name="description" content="每天一篇面试小知识  本篇着重介绍一下 Docker (基础)        写在前面 what is docker？ Docker 是一个基于 Go 语言开源的应用容器引擎。可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实践一下--Docker">
+<meta property="og:title" content="实践一下--Docker基础版">
 <meta property="og:url" content="https://yugd.cn/posts/59617/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
-<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Docker        写在前面 what is docker？ Docker 是一个基于 Go 语言开源的应用容器引擎。可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
+<meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Docker (基础)        写在前面 what is docker？ Docker 是一个基于 Go 语言开源的应用容器引擎。可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Docker_logo.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-07_22-12-53.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-08_02-48-47.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-10_00-17-55.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-10_01-14-48.png">
 <meta property="article:published_time" content="2022-01-07T01:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-07T19:00:41.470Z">
+<meta property="article:modified_time" content="2022-01-09T17:31:40.126Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -56,7 +58,7 @@
   };
 </script>
 
-  <title>实践一下--Docker | 宇航员不会飞</title>
+  <title>实践一下--Docker基础版 | 宇航员不会飞</title>
   
 
 
@@ -228,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          实践一下--Docker
+          实践一下--Docker基础版
         </h1>
 
         <div class="post-meta">
@@ -252,7 +254,7 @@
             </span>
 
           
-            <span id="/posts/59617/" class="post-meta-item leancloud_visitors" data-flag-title="实践一下--Docker" title="阅读次数">
+            <span id="/posts/59617/" class="post-meta-item leancloud_visitors" data-flag-title="实践一下--Docker基础版" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -278,14 +280,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -300,7 +302,7 @@
         <blockquote>
 <p>每天一篇面试小知识</p>
 </blockquote>
-<p><strong>本篇着重介绍一下 Docker</strong></p>
+<p><strong>本篇着重介绍一下 Docker (基础)</strong></p>
 <hr>
 <img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Docker_logo.png" style="zoom: 6%;" />
 
@@ -403,7 +405,7 @@
 <img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-08_02-48-47.png" style="zoom: 80%;" />
 
 <hr>
-<h4 id="容器-contain"><a href="#容器-contain" class="headerlink" title="容器(contain)"></a>容器(contain)</h4><p><strong>明确一点</strong></p>
+<h4 id="容器-contain"><a href="#容器-contain" class="headerlink" title="容器 (contain)"></a>容器 (contain)</h4><p><strong>明确一点</strong></p>
 <ul>
 <li>docker是运行在linux内核上的！</li>
 <li>启动守护式(后台运行)</li>
@@ -415,6 +417,8 @@
 </li>
 <li><p><strong>启动一个交互式容器(镜像实例)(前端有伪终端, 说白了就是有个bash交互命令平台)</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -it images </span><br><span class="line"></span><br><span class="line">-P 随机(端口映射) </span><br><span class="line">-p 指定(端口映射) [8080:8080]==&gt;[外部访问docker端口8080映射到里面的容器实例端口8080]</span><br><span class="line"></span><br><span class="line">eg：</span><br><span class="line">docker run -it --name=my_ubuntu ubuntu /bin/bash </span><br><span class="line"></span><br><span class="line">退出终端</span><br><span class="line"><span class="built_in">exit</span>; 		(容器停止)</span><br><span class="line">ctrl+p+q 	(容器不停止)</span><br></pre></td></tr></table></figure>
+
+<br/>
 </li>
 <li><p><strong>列出所有已启动的容器实例</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
@@ -442,11 +446,99 @@
 
 
 
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>守护进程模式(返回一个容器id)[如果是ubuntu这种操作系统的话，就需要我们使用 -it 这种形式] -itd</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d ubuntu</span><br><span class="line"></span><br><span class="line">docker run -itd --name ubuntu-test ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>进入已经启动的容器, 退出容器还继续运行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it xxxxxxxxxx /bin/bash </span><br><span class="line"></span><br><span class="line">退出终端(因为使用的是<span class="built_in">exec</span>)</span><br><span class="line"><span class="built_in">exit</span> 		(容器不停止)</span><br><span class="line">ctrl+p+q 	(容器不停止)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>容器文件备份到主机上</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp xxxxxxxxxx(id):/xx/xx.txt /xx/xxx.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>容器(整个)导出到主机上</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> xxxxxxxxxx &gt; xxx.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>容器(整个)导入到主机上</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat xxx.tar | docker import -xxx/xxx:1.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新包管理工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装(vim)</span></span><br><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交新的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m=<span class="string">"xxxxx"</span> -a=<span class="string">"zhangsan"</span> xxxxxxxxxx(id) linux/ubuntu_vim:1.0</span><br><span class="line">[docker commit -m=<span class="string">"unbutu have vim"</span> -a=<span class="string">"yuha"</span> 19654dd238a4 linux/ubuntu_vim:1.0]</span><br></pre></td></tr></table></figure>
+
+
+
 
 
 </li>
 </ol>
-<h4 id="仓库-repository"><a href="#仓库-repository" class="headerlink" title="仓库(repository)"></a>仓库(repository)</h4><hr>
+<h4 id="容器卷-container-volume"><a href="#容器卷-container-volume" class="headerlink" title="容器卷 (container volume)"></a>容器卷 (container volume)</h4><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-10_00-17-55.png" style="zoom:67%;" />
+
+<ol>
+<li><p><strong>数据卷</strong></p>
+<p>挂载 (mount): docker挂载就是用本机文件或文件夹覆盖容器内的文件或文件夹;</p>
+</li>
+<li><p><strong>容器卷和主机互通互联</strong></p>
+<p>[docker run -it –privileged=true -v /宿主机绝对路径目录:/容器内目录 –name=镜像别名 镜像名]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --privileged=<span class="literal">true</span> -v /temp/host_data:/temp/docker_data --name=my_ubuntu ubuntu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>privileged</strong></p>
+<p>容器内的root拥有真正的root权限;</p>
+<p>否则，容器内的root只是外部的一个普通用户权限;</p>
+<p>privileged启动的容器，可以看到很多host上的设备，并且可以执行mount;</p>
+</li>
+</ol>
+<p><strong>注意</strong>：如果实现容器卷和主机互通互联，即使容器stop，主机上与容器卷之间互通的文件部分也会做相应的同步。</p>
+<hr>
+<h3 id="Docker-常用软件安装"><a href="#Docker-常用软件安装" class="headerlink" title="Docker 常用软件安装"></a>Docker 常用软件安装</h3><h4 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h4><ol>
+<li><p>pull</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull tomcat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run 指定外部端口映射8080</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8080:8080 --name my_tomcat tomcat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问8080</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip:8080</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可能出现的问题：访问出现404</p>
+<p>新版本 tomcat 的 webapp 是空的，新增了文件 webapps.dist，需要我们删除掉webapps，并重命名文件 webapps.dist 为 webapps ;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf webapps</span><br><span class="line">mv webapps.dist webapps</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ol>
+<li><p>pull</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run</p>
+<p>先查看端口号3306是否被占用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep mysql</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name my_mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<hr>
+</li>
+</ol>
+   <img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2022-01-10_01-14-48.png" style="zoom: 67%;" />
+
+<hr>
+<p><strong>注意</strong>：docker中的mysql字符自是默认拉丁，不是UTF-8</p>
+<h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4><ol>
+<li><p>pull</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis:6.0.8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run -d -p 6379:6379 --name my_redis redis:6.0.8</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
 <br/>
 
 <p><strong>未完待续 … …</strong></p>
@@ -544,7 +636,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-架构"><span class="nav-number">1.</span> <span class="nav-text">Docker 架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 基本概念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-基本命令"><span class="nav-number">2.</span> <span class="nav-text">Docker 基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手动安装-默认是root权限"><span class="nav-number">2.1.</span> <span class="nav-text">手动安装(默认是root权限)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-三要素"><span class="nav-number">3.</span> <span class="nav-text">Docker 三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像-image"><span class="nav-number">3.1.</span> <span class="nav-text">镜像 (image)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器-contain"><span class="nav-number">3.2.</span> <span class="nav-text">容器(contain)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库-repository"><span class="nav-number">3.3.</span> <span class="nav-text">仓库(repository)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-架构"><span class="nav-number">1.</span> <span class="nav-text">Docker 架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 基本概念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-基本命令"><span class="nav-number">2.</span> <span class="nav-text">Docker 基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手动安装-默认是root权限"><span class="nav-number">2.1.</span> <span class="nav-text">手动安装(默认是root权限)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-三要素"><span class="nav-number">3.</span> <span class="nav-text">Docker 三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像-image"><span class="nav-number">3.1.</span> <span class="nav-text">镜像 (image)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器-contain"><span class="nav-number">3.2.</span> <span class="nav-text">容器 (contain)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器卷-container-volume"><span class="nav-number">3.3.</span> <span class="nav-text">容器卷 (container volume)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-常用软件安装"><span class="nav-number">4.</span> <span class="nav-text">Docker 常用软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Apache-Tomcat"><span class="nav-number">4.1.</span> <span class="nav-text">Apache Tomcat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL"><span class="nav-number">4.2.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis"><span class="nav-number">4.3.</span> <span class="nav-text">Redis</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
