@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -31,19 +29,19 @@
 <meta property="og:url" content="https://yugd.cn/posts/33708/index.html">
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-26_15-45-17.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-26_15-45-17.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png">
 <meta property="article:published_time" content="2021-04-05T14:29:58.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.198Z">
+<meta property="article:modified_time" content="2022-05-26T18:17:28.143Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="消息队列">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg">
 
 <link rel="canonical" href="https://yugd.cn/posts/33708/">
 
@@ -299,7 +297,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg" style="zoom:67%;" />
+        <img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/rabbitMQ.jpg" style="zoom:67%;" />
 
 
 
@@ -345,7 +343,7 @@
 <p>3、信道的原理是一条线程一条通道，多条线程多条通道同用一条TCP连接。一条TCP连接可以容纳无限的信道，即使每秒成千上万的请求也不会成为性能瓶颈。</p>
 <p><strong>Queue</strong></p>
 <p>也称为Message Queue（消费者创建），消息队列，保存消息并将它们转发给消费者。它是消息的容器，也是消息的终点。一个消息可以投入一个或多个队列。消息一直在队列里面，等待消费者连接到这个队列上将其取走。</p>
-<h3 id="2、RabbitMQ-交换机"><a href="#2、RabbitMQ-交换机" class="headerlink" title="2、RabbitMQ 交换机"></a>2、RabbitMQ 交换机</h3><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-26_15-45-17.png" alt=""></p>
+<h3 id="2、RabbitMQ-交换机"><a href="#2、RabbitMQ-交换机" class="headerlink" title="2、RabbitMQ 交换机"></a>2、RabbitMQ 交换机</h3><p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-26_15-45-17.png" alt=""></p>
 <p>Exchange交换机，接收消息，并根据路由键转发消息所绑定的队列。</p>
 <p><strong>交换机属性：</strong></p>
 <p>Name：交换机名称</p>
@@ -391,23 +389,23 @@
 </ul>
 <h4 id="模式1：简单模式"><a href="#模式1：简单模式" class="headerlink" title="模式1：简单模式"></a>模式1：简单模式</h4><p>【Simple / HelloWorld 单生产单消费】</p>
 <p>简单的发送与接收，没有特别的处理。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170451647.png" alt=""></p>
 <hr>
 <h4 id="模式2：工作模式"><a href="#模式2：工作模式" class="headerlink" title="模式2：工作模式"></a>模式2：工作模式</h4><p>【Work单发送多接收，拿到消息即销毁】</p>
 <p>一个生产者端，多个消费者端。示例中为了保证消息发送的可靠性，不丢失消息，使消息持久化了。同时为了防止接收端在处理消息时down掉，只有在消息处理完成后才发送消息确认。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170522132.png" alt=""></p>
 <hr>
 <h4 id="模式3：发布、订阅模式"><a href="#模式3：发布、订阅模式" class="headerlink" title="模式3：发布、订阅模式"></a>模式3：发布、订阅模式</h4><p>【Publish/Subscribe】</p>
 <p>使用场景：发布、订阅模式，生产者端发送消息，多个消费者同时接收所有的消息。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170540476.png" alt=""></p>
 <hr>
 <h4 id="模式4：路由模式"><a href="#模式4：路由模式" class="headerlink" title="模式4：路由模式"></a>模式4：路由模式</h4><p>【Routing】（direct 直接的）</p>
 <p>生产者按routing key发送消息，不同的消费者端按不同的routing key接收消息。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170555287.png" alt=""></p>
 <hr>
 <h4 id="模式5：通配符（或主题）模式"><a href="#模式5：通配符（或主题）模式" class="headerlink" title="模式5：通配符（或主题）模式"></a>模式5：通配符（或主题）模式</h4><p>【Topics ，按topic发送接收】</p>
 <p>生产者端不只按固定的routing key发送消息，而是按字符串“匹配”发送，消费者端同样如此。<br>与之前的路由模式相比，它将信息的传输类型的key更加细化，以“key1.key2.keyN…”的模式来指定信息传输的key的大类型和大类型下面的小类型，让消费者端可以更加精细的确认自己想要获取的信息类型。而在消费者端，不用精确的指定具体到哪一个大类型下的小类型的key，而是可以使用类似正则表达式(但与正则表达式规则完全不同)的通配符在指定一定范围或符合某一个字符串匹配规则的key，来获取想要的信息。“通配符交换机”（Topic Exchange）将路由键和某模式进行匹配。此时队列需要绑定在一个模式上。符号“#”匹配一个或多个词，符号“*”仅匹配一个词。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img1/20181113170631174.png" alt=""></p>
 
     </div>
 
@@ -620,8 +618,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

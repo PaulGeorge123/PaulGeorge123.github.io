@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,14 +31,14 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="写在前面 为啥要写这篇文章呢？还要从很久之前的一次问答说起！ 什么是 Java 垃圾回收机制？（ JC 哥问我） 我：就是收集一些不被用到的对象，然后集中销毁吧~ 那应该如何来判断那些对象不被用到呢？ 我：好像是 … … 我真的不知道 仔细想想 我：莫非是判断此对象有没有它的引用？或者说有没有指针指向它？ 我就说嘛，想想能知道的，继续 我：继续不下去了，按照我做前端的经验，难道是通过价格标志位来判">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-21_02-26-58.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-21_02-26-58.png">
 <meta property="article:published_time" content="2021-06-13T15:58:58.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.102Z">
+<meta property="article:modified_time" content="2022-05-26T18:19:41.917Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="进阶">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-21_02-26-58.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-21_02-26-58.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/26971/">
 
@@ -374,7 +372,7 @@
 </ol>
 <p><font color=#008000>重点说一下分代-收集算法</font></p>
 <h4 id="分代-收集算法（generation-collect）"><a href="#分代-收集算法（generation-collect）" class="headerlink" title="分代-收集算法（generation-collect）"></a>分代-收集算法（generation-collect）</h4><h5 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h5><p>根据对象存活周期的不同将内存划分为几块，一般是<strong>新生代</strong>和<strong>老年代</strong>，新生代基本采用标记-复制算法，老年代采用标记-整理算法和标记-清除算法。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-21_02-26-58.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-06-21_02-26-58.png" alt=""></p>
 <p>新生代每次垃圾回收大偶会后大批的对象死去，每次回收存活后的少量对象在阈值将去到老年代。</p>
 <h5 id="回收"><a href="#回收" class="headerlink" title="回收"></a>回收</h5><p><strong>对象优先在 Eden 区分配：</strong></p>
 <p>多数情况，对象都在新生代 Eden 区分配。</p>
@@ -606,8 +604,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

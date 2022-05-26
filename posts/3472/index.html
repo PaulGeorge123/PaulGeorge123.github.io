@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,23 +31,23 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇 Java 小知识  本篇着重介绍一下 HashMap为什么用红黑树：  写在前面上文说到，HashMap的扩容原理。 JDK1.7 使用的是 数组 + 单链表 的数据结构。 JDK1.8 及之后时，使用的是数组+链表+红黑树的数据结构。 当阈值是默认阈值 0.75，链表的深度大于等于 8，数组容量大于等于 64 时，扩容的时候会把链表转成红黑树，时间复杂度从 O(n) 变成 O(log">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-35-38.517Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-36-27.077Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T12-57-32.630Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-03-36.302Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-13-21.964Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-15-54.465Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-37-06.560Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T14-44-46.777Z.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-41-28.142Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-35-38.517Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-36-27.077Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T12-57-32.630Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-03-36.302Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-13-21.964Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-15-54.465Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-37-06.560Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T14-44-46.777Z.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-41-28.142Z.png">
 <meta property="article:published_time" content="2021-06-13T13:58:58.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.177Z">
+<meta property="article:modified_time" content="2022-05-26T18:17:01.994Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="HashMap">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/3472/">
 
@@ -330,33 +328,33 @@
 <p>二叉树还可以继续分类，衍生出<strong>满二叉树</strong>和<strong>完全二叉树</strong>。</p>
 </blockquote>
 <h4 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h4><p>如果二叉树中除了叶子结点，每个结点的度都为 2，则此二叉树称为<strong>满二叉树</strong>。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-34-34.898Z.png" alt=""></p>
 <h4 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h4><p>如果二叉树中除去最后一层节点为满二叉树，且最后一层的结点依次从左到右分布，则此二叉树被称为<strong>完全二叉树</strong>。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-35-38.517Z.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-35-38.517Z.png" alt=""></p>
 <center>完全二叉树</center>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-36-27.077Z.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T15-36-27.077Z.png" alt=""></p>
 <center>非完全二叉树</center>
 
 <hr>
 <p>好了说完二叉树相关的知识后，还没有引入红黑树，因为在不断优化的过程中还是需要慢慢来，回顾一下平衡二叉树（AVL Tree）。</p>
 <h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h4><p>二叉树具有以下性质：左子树的键值小于根的键值，右子树的键值大于根的键值。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T12-57-32.630Z.png" style="zoom:67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T12-57-32.630Z.png" style="zoom:67%;" />
 
 <p>对二叉树的节点进行查找发现深度为 1 的节点的查找次数为 1，深度为2的查找次数为 2，深度为n的节点的查找次数为n，因此其平均查找次数为  (1+2+2+3+3+3) / 6 = 2.3 次</p>
 <p>当然上面是理想的情况，因为二叉查找树可以任意地构造，同样是 2,3,5,6,7,8 这六个数字，也可以按照下图的方式来构造。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-03-36.302Z.png" style="zoom:67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-03-36.302Z.png" style="zoom:67%;" />
 
 <p>但是这棵二叉树的查询效率就低了。因此若想二叉树的查询效率尽可能高，需要这棵二叉树是平衡的，从而引出新的定义——平衡二叉树，或称 AVL 树。</p>
 <h4 id="平衡二叉树（AVL-Tree）"><a href="#平衡二叉树（AVL-Tree）" class="headerlink" title="平衡二叉树（AVL Tree）"></a>平衡二叉树（AVL Tree）</h4><p>平衡二叉树（AVL树）在符合二叉查找树的条件下，还满足任何节点的两个子树的高度最大差为1。</p>
 <p>AVL树，它的任何节点的两个子树的高度差&lt;=1；</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-13-21.964Z.png" style="zoom: 67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-13-21.964Z.png" style="zoom: 67%;" />
 
 <center>AVL树</center>
 
 <p>不是AVL树，其根节点的左子树高度为3，而右子树高度为1；</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-15-54.465Z.png" style="zoom:67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T13-15-54.465Z.png" style="zoom:67%;" />
 
 <center>非AVL树</center>
 
@@ -374,14 +372,14 @@
 <li><strong>性质5：任意一结点到每个叶子结点的路径都包含数量相同的黑结点。</strong></li>
 </ul>
 <p>从性质5又可以推出：<strong>如果一个结点存在黑子结点，那么该结点肯定有两个子结点</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-37-06.560Z.png" style="zoom:80%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-37-06.560Z.png" style="zoom:80%;" />
 
 
 
 <hr>
 <h4 id="B树（Balance-Tree）"><a href="#B树（Balance-Tree）" class="headerlink" title="B树（Balance-Tree）"></a>B树（Balance-Tree）</h4><p><strong>B树是一颗多路平衡查找树</strong></p>
 <p>它类似普通的平衡二叉树，不同的一点是B 树允许每个节点有更多的子节点。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T14-44-46.777Z.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T14-44-46.777Z.png" alt=""></p>
 <p>B 树有如下特点:</p>
 <ol>
 <li>所有键值分布在整颗树中（索引值和具体data都在每个节点里）；</li>
@@ -398,7 +396,7 @@
 <li>所有叶子节点之间都有一个链指针；</li>
 <li><strong>数据记录都存放在叶子节点中</strong>；（查询时间复杂度固定为 log n）</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-41-28.142Z.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2021-06-14T16-41-28.142Z.png" alt=""></p>
 <p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种<strong>链式环结构</strong>。</p>
 <p>咋一看 B+ 树好像查询要比 B 树慢一些（同样的数据，查询【IO】次数变多了），但是是事实如此吗？</p>
 <p>根据空间局部性原理：如果一个存储器的某个位置被访问，那么将它附近的位置也会被访问。</p>
@@ -627,8 +625,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

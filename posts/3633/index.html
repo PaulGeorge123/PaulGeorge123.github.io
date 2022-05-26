@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,25 +31,25 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="实践是检验真理的唯一标准  本篇着重介绍一下 Neo4j      写在前面 为啥要使用 Neo4j？ MySQL 不好用了吗？  No、No、No！因为最近的工作中遇到了一些知识图谱的工作，自然就用到了图数据库， NoSQL 数据库可以很好的展示节点之间的关联关系，对于一些图谱的关系操作是很好的选择哦～ Neo4j官网">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/neo4j_logo.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_00-53-49.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-38-08.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-03-47.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-05-46.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-07-02.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-08-18.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-09-16.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-11-32.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-16.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-27.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-20-06.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/neo4j_logo.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_00-53-49.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-38-08.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-03-47.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-05-46.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-07-02.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-08-18.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-09-16.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-11-32.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-16.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-27.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-20-06.png">
 <meta property="article:published_time" content="2021-09-01T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.136Z">
+<meta property="article:modified_time" content="2022-05-26T18:18:41.536Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="Neo4j">
 <meta property="article:tag" content="NoSQl">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/neo4j_logo.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/neo4j_logo.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/3633/">
 
@@ -312,7 +310,7 @@
 </blockquote>
 <p><strong>本篇着重介绍一下 Neo4j</strong></p>
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/neo4j_logo.png" style="zoom: 33%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/neo4j_logo.png" style="zoom: 33%;" />
 
 
 
@@ -327,27 +325,27 @@
 <h3 id="Neo4j-介绍"><a href="#Neo4j-介绍" class="headerlink" title="Neo4j 介绍"></a>Neo4j 介绍</h3><h4 id="Neo4j-是什么"><a href="#Neo4j-是什么" class="headerlink" title="Neo4j 是什么"></a>Neo4j 是什么</h4><p> Neo4j 是图数据库中的佼佼者，采用 Java 编写，社区版已开源，商业版需收费。</p>
 <p>Neo4j 是一个高性能的 NoSQL 图形数据库（Graph Database），它将结构化数据存储在网络上而不是表中。它是一个嵌入式的、基于磁盘的、具备完全的事务特性的 Java 持久化引擎，但是它将结构化数据存储在网络(从数学角度叫做图)上而不是表中。Neo4j 也可以被看作是一个高性能的图引擎，该引擎具有成熟数据库的所有特性。Neo4j 拥有十分酷炫的可视化界面，这是一般图数据库所不具备的。</p>
 <p>在一个图中包含两种基本的数据类型：<strong>Nodes</strong>（节点） 和 <strong>Relationships</strong>（关系）。Nodes 和 Relationships 包含 key / value 形式的属性。Nodes通过 Relationships 所定义的关系相连起来，形成关系型网络结构。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_00-53-49.png" style="zoom: 80%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_00-53-49.png" style="zoom: 80%;" />
 
 
 
 
 
-<h4 id="Neo4j-概览"><a href="#Neo4j-概览" class="headerlink" title="Neo4j 概览"></a>Neo4j 概览</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-38-08.png" alt=""></p>
+<h4 id="Neo4j-概览"><a href="#Neo4j-概览" class="headerlink" title="Neo4j 概览"></a>Neo4j 概览</h4><p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-38-08.png" alt=""></p>
 <p>在上述例子中，共有两类节点：City 和 Company，一类关系：(Company) -[belongTo]-&gt; (City)。</p>
 <h3 id="Neo4j-使用-Cypher"><a href="#Neo4j-使用-Cypher" class="headerlink" title="Neo4j 使用 [Cypher]"></a>Neo4j 使用 [Cypher]</h3><h4 id="Add"><a href="#Add" class="headerlink" title="Add"></a>Add</h4><p>City的节点可以通过使用如下命令使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create (city: City&#123;name: &quot;上海市&quot;, area: &quot;6340.5平方千米&quot;, population: &quot;2487.09万人&quot;, alias: [&quot;沪&quot;, &quot;申&quot;]&#125;);</span><br><span class="line">create (city: City&#123;name: &quot;北京市&quot;, area: &quot;16410平方千米&quot;, population: &quot;2189.31万人&quot;, alias: [&quot;京&quot;, &quot;帝都&quot;]&#125;);</span><br><span class="line">create (city: City&#123;name: &quot;深圳市&quot;, area: &quot;1997.49平方千米&quot;, population: &quot;1756万人&quot;, alias: [&quot;深&quot;, &quot;鹏城&quot;]&#125;);</span><br><span class="line">create (city: City&#123;name: &quot;杭州市&quot;, area: &quot;16850平方千米&quot;, population: &quot;1193万人&quot;, alias: [&quot;杭&quot;]&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>在上述语句中，create表示新建，小括号内是节点信息，节点的类型（label）是City，city是其别名，花括号内是该节点的属性，共有name、area、population、alias四个属性。<strong>注意：Neo4j支持列表这个数据类型，但不支持时间日期这个数据类型。</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-03-47.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-03-47.png" alt=""></p>
 <p>  Company的节点可以通过使用如下命令使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create (company: Company&#123;name: &quot;阿里&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;网易&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;百度&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;字节跳动&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;新浪&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;拼多多&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;B站&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;小红书&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;华为&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;腾讯&quot;&#125;);</span><br><span class="line">create (company: Company&#123;name: &quot;招商银行&quot;&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-05-46.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-05-46.png" alt=""></p>
 <p>创建关系的命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">match (city: City&#123;name: &quot;杭州市&quot;&#125;), (company: Company&#123;name: &quot;阿里&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;杭州市&quot;&#125;), (company: Company&#123;name: &quot;网易&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;上海市&quot;&#125;), (company: Company&#123;name: &quot;拼多多&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;上海市&quot;&#125;), (company: Company&#123;name: &quot;B站&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;上海市&quot;&#125;), (company: Company&#123;name: &quot;小红书&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;北京市&quot;&#125;), (company: Company&#123;name: &quot;新浪&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;北京市&quot;&#125;), (company: Company&#123;name: &quot;百度&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;北京市&quot;&#125;), (company: Company&#123;name: &quot;字节跳动&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;深圳市&quot;&#125;), (company: Company&#123;name: &quot;华为&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;深圳市&quot;&#125;), (company: Company&#123;name: &quot;腾讯&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br><span class="line">match (city: City&#123;name: &quot;深圳市&quot;&#125;), (company: Company&#123;name: &quot;招商银行&quot;&#125;) create (company) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-07-02.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-07-02.png" alt=""></p>
 <p>事实上，我们还可以用如下命令来实现关系的新建：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create (company: Company&#123;name: &quot;阿里&quot;&#125;) -[r:belongTo&#123;name: &quot;所在城市&quot;&#125;]-&gt; (city:City&#123;name: &quot;杭州市&quot;&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -356,8 +354,8 @@
 <h4 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h4><p>如果需要更新某个节点的属性，命令如下（比如将上海市节点的简称新增“魔都”这个名字）:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MATCH (city:City)</span><br><span class="line">WHERE city.name&#x3D;&quot;上海市&quot;</span><br><span class="line">SET city.alias&#x3D;[&quot;沪&quot;, &quot;申&quot;, &quot;魔都&quot;]</span><br><span class="line">RETURN city;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-08-18.png" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-09-16.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-08-18.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-09-16.png" alt=""></p>
 <h4 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h4><p>CQL 的删除命令有 delete 和 remove，两者的区别为：</p>
 <ul>
 <li>delete 命令为删除节点、删除节点及相关节点和关系；</li>
@@ -366,7 +364,7 @@
 <p>我们以删除上海市节点的alias属性为例，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (city: City&#123;name: &quot;上海市&quot;&#125;)</span><br><span class="line">REMOVE city.alias</span><br><span class="line">RETURN city;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-11-32.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_01-11-32.png" alt=""></p>
 <p>注意，当我们在删除某个节点的时候，需要确定该节点无其他节点无关系相连，即该节点为孤立节点，否则，就会报错！</p>
 <h4 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h4><p>CQL的查询语句是灵活、功能强大的。我们仅介绍简单的几个命令。</p>
 <p>查询所有的节点：</p>
@@ -428,11 +426,11 @@
 
 
 <h4 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h4><p>分别添加两个 User，这里我测试数据为张三、李四，id 分别为 001，002</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-16.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-16.png" alt=""></p>
 <p>添加关系，将 UserId 为 001 和 002 两个节点添加 friend 的关系</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-27.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-15-27.png" alt=""></p>
 <p>访问路径：<a href="http://localhost:7474/browser/" target="_blank" rel="noopener">http://localhost:7474/browser/</a> ，成功~</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-20-06.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-09-01_02-20-06.png" alt=""></p>
 
     </div>
 
@@ -647,8 +645,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

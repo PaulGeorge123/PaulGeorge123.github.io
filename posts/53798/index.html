@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,13 +31,13 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="Android中的日志工具类是Log（android.util.Log），这个类中提供了如下5个方法来供我们打印日志。 Log.v()。用于打印那些最为琐碎的、意义最小的日志信息。对应级别verbose，是Android日志里面级别最低的一种。 Log.d()。用于打印一些调试信息，这些信息对你调试程序和分析问题应该是有帮助的。对应级别debug，比verbose高一级。 Log.i()。用于打印">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809171754117.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809171754117.png">
 <meta property="article:published_time" content="2020-08-09T13:26:06.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.116Z">
+<meta property="article:modified_time" content="2022-05-26T18:18:59.169Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809171754117.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809171754117.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/53798/">
 
@@ -308,7 +306,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    String Tag;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        Log.d(Tag,<span class="string">"OnCreate execute!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Log.d()方法中传入了两个参数：第一个参数是tag，一般传入当前的类名就好，主要用于对打印信息进行过滤；第二个参数是msg，即想要打印的具体的内容。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809171754117.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/image-20200809171754117.png" alt=""></p>
 <blockquote>
 <p>这里还有一个小技巧，我们在onCreate()方法的外面输入logt，然后按下Tab键，这时就会以当前的类名作为值自动生成一个TAG常量。</p>
 </blockquote>
@@ -524,8 +522,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

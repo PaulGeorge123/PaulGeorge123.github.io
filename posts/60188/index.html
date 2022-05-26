@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,22 +31,22 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 和 MySQL 数据一致性问题   写在前面 对于Web来说，用户量和访问量增一定程度上推动项目技术和架构的更迭和进步。 当页面并发量和访问量并不多，MySQL足以支撑自己逻辑业务的发展。其实可以不加缓存，最多对静态页面进行缓存即可。 什么时候需要缓存？ 页面的并发量显著增多，数据库有些压力，并且有些数据更新频率较低反复被查询或者查询速度较慢。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-53-11.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-08-41.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-24-18.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-37-06.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-49-00.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-04-31.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-11-16.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-23-14.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-34-36.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-53-11.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-08-41.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-24-18.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-37-06.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-49-00.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-04-31.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-11-16.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-23-14.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-34-36.png">
 <meta property="article:published_time" content="2021-07-22T00:58:58.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.206Z">
+<meta property="article:modified_time" content="2022-05-26T18:17:35.850Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-53-11.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-53-11.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/60188/">
 
@@ -309,7 +307,7 @@
 </blockquote>
 <p><strong>本篇着重介绍一下 Redis 和 MySQL 数据一致性问题</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-53-11.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_00-53-11.png" alt=""></p>
 <p><strong>写在前面</strong></p>
 <p>对于Web来说，用户量和访问量增一定程度上推动项目技术和架构的更迭和进步。</p>
 <p>当页面并发量和访问量并不多，MySQL<code>足以支撑</code>自己逻辑业务的发展。其实可以不加缓存，最多对静态页面进行缓存即可。</p>
@@ -321,7 +319,7 @@
 
 
 
-<h3 id="Redis-缓存的应用"><a href="#Redis-缓存的应用" class="headerlink" title="Redis 缓存的应用"></a>Redis 缓存的应用</h3><h4 id="不使用缓存的时候"><a href="#不使用缓存的时候" class="headerlink" title="不使用缓存的时候"></a>不使用缓存的时候</h4><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-08-41.png"  />
+<h3 id="Redis-缓存的应用"><a href="#Redis-缓存的应用" class="headerlink" title="Redis 缓存的应用"></a>Redis 缓存的应用</h3><h4 id="不使用缓存的时候"><a href="#不使用缓存的时候" class="headerlink" title="不使用缓存的时候"></a>不使用缓存的时候</h4><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-08-41.png"  />
 
 <hr>
 <h4 id="缓存适用的高并发场景"><a href="#缓存适用的高并发场景" class="headerlink" title="缓存适用的高并发场景"></a>缓存适用的高并发场景</h4><p>缓存适用于高并发的场景，提升服务容量。</p>
@@ -340,7 +338,7 @@
 <li>基于内存，读写较快</li>
 <li>使用哈希算法直接定位结果不需要计算</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-24-18.png"  />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-24-18.png"  />
 
 <hr>
 <h3 id="Redis-缓存需要注意的问题"><a href="#Redis-缓存需要注意的问题" class="headerlink" title="Redis 缓存需要注意的问题"></a>Redis 缓存需要注意的问题</h3><p>缓存使用不当会带来很多问题，所以需要对一些细节进行认真考量和设计。</p>
@@ -350,28 +348,28 @@
 <h4 id="过期策略选择"><a href="#过期策略选择" class="headerlink" title="过期策略选择"></a>过期策略选择</h4><p>缓存装的是相对热点和常用的数据，redis 资源也是有限，需要选择一个合理的策略让缓存过期删除，根据时间来的 FIFO 是最好实现的。且 redis 在全局 key 支持过期策略。</p>
 <p>并且过期时间也要根据系统情况合理设置，如果硬件好点当前可以稍微久一点，但是过期时间过久或者过短可能都不太好，过短可能缓存命中率不高，而过久很可能造成很多冷门数据存储在Redis中不释放。</p>
 <h3 id="Redis-缓存数据一致性问题"><a href="#Redis-缓存数据一致性问题" class="headerlink" title="Redis 缓存数据一致性问题"></a>Redis 缓存数据一致性问题</h3><h4 id="读数据"><a href="#读数据" class="headerlink" title="读数据"></a>读数据</h4><p><code>read</code>：从 redis 中读取，如果 redis 中没有，那么就从 MySQL 中获取更新 redis 缓存。 </p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-37-06.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-37-06.png" alt=""></p>
 <hr>
-<h4 id="写数据-【先更新数据库，再更新缓存-普通低并发-】"><a href="#写数据-【先更新数据库，再更新缓存-普通低并发-】" class="headerlink" title="写数据 【先更新数据库，再更新缓存(普通低并发)】"></a>写数据 【先更新数据库，再更新缓存(普通低并发)】</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-49-00.png" alt=""></p>
+<h4 id="写数据-【先更新数据库，再更新缓存-普通低并发-】"><a href="#写数据-【先更新数据库，再更新缓存-普通低并发-】" class="headerlink" title="写数据 【先更新数据库，再更新缓存(普通低并发)】"></a>写数据 【先更新数据库，再更新缓存(普通低并发)】</h4><p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_01-49-00.png" alt=""></p>
 <p>先更新数据库信息，再更新Redis缓存。这是常规做法，缓存基于数据库，取自数据库。</p>
 <p>但是其中可能遇到一些问题，例如上述如果更新缓存失败(宕机等其他状况)，将会使得数据库和 redis 数据不一致。<font color=#FF0000>造成 DB 新数据，缓存旧数据</font></p>
 <hr>
-<h4 id="写数据-【先删除缓存，再写入数据库-低并发优化-】"><a href="#写数据-【先删除缓存，再写入数据库-低并发优化-】" class="headerlink" title="写数据 【先删除缓存，再写入数据库(低并发优化)】"></a>写数据 【先删除缓存，再写入数据库(低并发优化)】</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-04-31.png" alt=""></p>
+<h4 id="写数据-【先删除缓存，再写入数据库-低并发优化-】"><a href="#写数据-【先删除缓存，再写入数据库-低并发优化-】" class="headerlink" title="写数据 【先删除缓存，再写入数据库(低并发优化)】"></a>写数据 【先删除缓存，再写入数据库(低并发优化)】</h4><p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-04-31.png" alt=""></p>
 <p>这种情况能够有效避免【先更新数据库，再更新缓存】中防止写入 redis 失败的问题。将缓存删除进行更新。理想是让下次访问 redis 为空去 mysql 取得最新值到缓存中。但是这种情况仅限于低并发的场景中而不适用高并发场景!</p>
 <p><strong>存在的问题</strong></p>
 <p>我们在【先更新数据库，再更新缓存】讨论过如果更新库成功，缓存更新失败会导致脏数据。我们理想是删除缓存让下一个线程访问适合更新缓存。问题是：如果这下一个线程来的太早呢？</p>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-11-16.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-11-16.png" alt=""></p>
 <p>因为在多线的情况下，无法保证那条线程优先执行。</p>
 <p>将会出现 redis 缓存数据和 mysql 不一致</p>
 <p><font color=#FF0000>高并发下依然会造成缓存是旧数据，DB 是新数据</font></p>
 <hr>
-<h4 id="写数据【延时双删策略】"><a href="#写数据【延时双删策略】" class="headerlink" title="写数据【延时双删策略】"></a>写数据【延时双删策略】</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-23-14.png" alt=""></p>
+<h4 id="写数据【延时双删策略】"><a href="#写数据【延时双删策略】" class="headerlink" title="写数据【延时双删策略】"></a>写数据【延时双删策略】</h4><p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-23-14.png" alt=""></p>
 <p>能过缓解在【先删除缓存，再写入数据库】中在更新MySQL过程中有读的线程进入造成Redis缓存与MySQL数据不一致。</p>
 <p>方法就是 <font color=#FF0000>删除缓存</font>-&gt;<font color=#008000>更新缓存</font>-&gt;<font color=#FF0000>延时【几百ms，可异步】再次删除缓存</font></p>
 <p><strong>存在的问题</strong></p>
 <p>第二次删除错误、多写多读高并发情况下对MySQL访问的压力等等，当然你可以选择用MQ等消息队列异步解决。</p>
 <hr>
-<h4 id="写数据【直接操作缓存，定期写入sql-适合高并发-】"><a href="#写数据【直接操作缓存，定期写入sql-适合高并发-】" class="headerlink" title="写数据【直接操作缓存，定期写入sql(适合高并发)】"></a>写数据【直接操作缓存，定期写入sql(适合高并发)】</h4><p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-34-36.png" alt=""></p>
+<h4 id="写数据【直接操作缓存，定期写入sql-适合高并发-】"><a href="#写数据【直接操作缓存，定期写入sql-适合高并发-】" class="headerlink" title="写数据【直接操作缓存，定期写入sql(适合高并发)】"></a>写数据【直接操作缓存，定期写入sql(适合高并发)】</h4><p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-07-22_02-34-36.png" alt=""></p>
 <p>直接操作缓存，将缓存定期写入sql。</p>
 <p>因为 redis 这种非关系数据库又基于内存操作 KV 相比传统关系型要快很多！</p>
 <p><strong>异步更新缓存(基于订阅 binlog 的同步机制)</strong></p>
@@ -601,8 +599,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

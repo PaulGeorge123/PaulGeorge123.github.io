@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,21 +31,21 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 Redis 事务、锁机制   写在前面 Redis 事务、锁机制相较于 MySQL 有什么特别的吗？ 还真的是有挺大的区别，比如 … …  接下来一起来通过实践来探究其中的机制~">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-17-56.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-40-22.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-36-08.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-40-20.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-43-50.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-46-37.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-17-56.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-40-22.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-36-08.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-40-20.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-43-50.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-46-37.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png">
 <meta property="article:published_time" content="2021-09-09T01:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-04T15:31:09.516Z">
+<meta property="article:modified_time" content="2022-05-26T18:19:24.988Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-17-56.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-17-56.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/32436/">
 
@@ -308,7 +306,7 @@
 </blockquote>
 <p><strong>本篇着重介绍一下 Redis 事务、锁机制</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-17-56.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-17-56.png" alt=""></p>
 <p><strong>写在前面</strong></p>
 <p>Redis 事务、锁机制相较于 MySQL 有什么特别的吗？</p>
 <p>还真的是有挺大的区别，比如 … … </p>
@@ -321,7 +319,7 @@
 <p>Redis 事务的主要作用就是<font color=#FF0000>串联多个命令防止别的命令插队</font>。</p>
 <h4 id="Redis-事务重要关键字"><a href="#Redis-事务重要关键字" class="headerlink" title="Redis 事务重要关键字"></a>Redis 事务重要关键字</h4><p><strong>Multi、Exec、Discard</strong></p>
 <p><strong>图解</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-40-22.png" style="zoom:80%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_21-40-22.png" style="zoom:80%;" />
 
 
 
@@ -333,7 +331,7 @@
 </ol>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;multi </span><br><span class="line">&gt;set key1 value1</span><br><span class="line">&gt;set key2 value2</span><br><span class="line">&gt;exec</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-36-08.png" style="zoom: 67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-36-08.png" style="zoom: 67%;" />
 
 <hr>
 <ol start="2">
@@ -341,7 +339,7 @@
 </ol>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;multi </span><br><span class="line">&gt;set a1 v1</span><br><span class="line">&gt;set a2 v2</span><br><span class="line">&gt;discard</span><br><span class="line">&gt;get a1 </span><br><span class="line">&gt;get a2</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-40-20.png" style="zoom: 67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-40-20.png" style="zoom: 67%;" />
 
 <hr>
 <ol start="3">
@@ -349,7 +347,7 @@
 </ol>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;multi </span><br><span class="line">&gt;set m1 v1</span><br><span class="line">&gt;set m2</span><br><span class="line">&gt;set m3 v3</span><br><span class="line">&gt;exec</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-43-50.png" style="zoom: 67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-43-50.png" style="zoom: 67%;" />
 
 <hr>
 <ol start="4">
@@ -357,14 +355,14 @@
 </ol>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;multi</span><br><span class="line">&gt;set s1 v1</span><br><span class="line">&gt;incr s1</span><br><span class="line">&gt;set s2 v2</span><br><span class="line">&gt;exec</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-46-37.png" style="zoom: 67%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-46-37.png" style="zoom: 67%;" />
 
 <hr>
 <h4 id="Redis-事务的错误处理"><a href="#Redis-事务的错误处理" class="headerlink" title="Redis 事务的错误处理"></a>Redis 事务的错误处理</h4><p>组队中某个命令出现了报告错误，执行时整个的所有队列都会被取消。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png" style="zoom:80%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png" style="zoom:80%;" />
 
 <p>如果执行阶段某个命令报出了错误，则只有报错的命令不会被执行，而其他的命令都会执行，不会回滚。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png" style="zoom:80%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/Snipaste_2021-11-04_22-54-08.png" style="zoom:80%;" />
 
 
 
@@ -665,8 +663,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

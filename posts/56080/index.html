@@ -14,9 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-loading-bar.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+  <link rel="stylesheet" href="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -33,16 +31,16 @@
 <meta property="og:site_name" content="宇航员不会飞">
 <meta property="og:description" content="每天一篇面试小知识  本篇着重介绍一下 MyBatis   写在前面 用久了 MyBatis 的逆向工程，原生的写法有点生疏了，趁着想起来赶紧复习一下！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-logo.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-01.jpg">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-02.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-logo.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-01.jpg">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-02.png">
 <meta property="article:published_time" content="2021-07-23T00:58:58.000Z">
-<meta property="article:modified_time" content="2021-10-26T14:26:00.188Z">
+<meta property="article:modified_time" content="2022-05-26T18:17:17.003Z">
 <meta property="article:author" content="白日梦想家">
 <meta property="article:tag" content="进阶">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-logo.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-logo.png">
 
 <link rel="canonical" href="https://yugd.cn/posts/56080/">
 
@@ -303,7 +301,7 @@
 </blockquote>
 <p><strong>本篇着重介绍一下 MyBatis</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-logo.png" alt=""></p>
+<p><img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-logo.png" alt=""></p>
 <p><strong>写在前面</strong></p>
 <p>用久了 MyBatis 的逆向工程，原生的写法有点生疏了，趁着想起来赶紧复习一下！</p>
 <a id="more"></a>
@@ -470,7 +468,7 @@
 <p>mybatis 的缓存分为两级：一级缓存、二级缓存</p>
 <p>namespace 指定的是对应的 mapper 接口</p>
 <h3 id="一级缓存："><a href="#一级缓存：" class="headerlink" title="一级缓存："></a>一级缓存：</h3><p>一级缓存为 <code>sqlsesson</code> 缓存，缓存的数据只在 SqlSession 内有效。在操作数据库的时候需要先创建 SqlSession 会话对象，在对象中有一个 HashMap 用于存储缓存数据，此 HashMap 是当前会话对象私有的，别的 SqlSession 会话对象无法访问。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-01.jpg" style="zoom: 50%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-01.jpg" style="zoom: 50%;" />
 
 <h4 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h4><p>第一次执行 select 完毕会将查到的数据写入 SqlSession 内的 HashMap 中缓存起来</p>
 <p>第二次执行 select 会从缓存中查数据，如果 select 同传参数一样，那么就能从缓存中返回数据，不用去数据库了，从而提高了效率。</p>
@@ -479,7 +477,7 @@
 <p>3、 mybatis 的缓存是基于 [namespace:sql语句:参数] 来进行缓存的，意思就是， SqlSession 的 HashMap 存储缓存数据时，是使用 [namespace:sql:参数] 作为 key ，查询返回的语句作为 value 保存的</p>
 <p><strong>4、一级缓存只在数据库会话内部共享。</strong></p>
 <h3 id="二级缓存："><a href="#二级缓存：" class="headerlink" title="二级缓存："></a>二级缓存：</h3><h4 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h4><p>在上文中提到的一级缓存中，其最大的共享范围就是一个 SqlSession 内部，如果多个 SqlSession 之间需要共享缓存，则需要使用到二级缓存。</p>
-<img src="https://cdn.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-02.png" style="zoom: 80%;" />
+<img src="https://gcore.jsdelivr.net/gh/PaulGeorge123/cloudimg@master/img/all/mybatis-sql-session-02.png" style="zoom: 80%;" />
 
 
 
@@ -710,8 +708,8 @@ setInterval("createtime()",250);
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//gcore.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//gcore.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
